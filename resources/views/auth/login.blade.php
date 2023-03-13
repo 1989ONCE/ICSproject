@@ -43,5 +43,7 @@
             </div>
         </div>
     </div>
+    <livewire:counter /> 
 </main>
+    
 @endsection
