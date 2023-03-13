@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
+Route::get('index', [CustomAuthController::class, 'dashboard']); 
 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
@@ -38,4 +38,8 @@ Route::get('/login2', [UserController::class, 'index']);
 Route::get('/users', function()
 {
     return 'Users!';
+});
+
+Route::get('index', function () {
+    return view('index');
 });
