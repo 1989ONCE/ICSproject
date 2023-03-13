@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 use Livewire\Component;
+use App\Models\Counter as ctm;
+
 
 class Counter extends Component
 {
@@ -19,6 +21,17 @@ class Counter extends Component
     }
  
     public function printsubmit(){
+        ctm::create([
+            'name' => $this->title,
+            'counter' => $this->count
+        ]);
+        session()->flash('success','Post Created Successfully!!');
+
+        // DB::table('counter')
+        // ->updateOrInsert(
+        //     ['name' => $this->title],
+        //     ['counter' => $this->count]
+        // );        
         dump($this->title. ", you submit number " .$this->count);
     }
 
