@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Route::get('url', [Controller::class, 'function_name'])->name('view可呼叫的名字'); 
 
 Route::get('index', [CustomAuthController::class, 'dashboard']); 
 
@@ -24,6 +25,12 @@ Route::get('registration', [CustomAuthController::class, 'registration'])->name(
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
+// function section
+Route::get('info', [InfoController::class, 'index'])->name('info'); 
+Route::get('warn', [WarnController::class, 'index'])->name('warning'); 
+Route::get('realtime', [RealTimeController::class, 'index'])->name('rt'); 
+Route::get('chart', [ChartController::class, 'index'])->name('chart'); 
 
 
 
@@ -38,8 +45,4 @@ Route::get('/login2', [UserController::class, 'index']);
 Route::get('/users', function()
 {
     return 'Users!';
-});
-
-Route::get('index', function () {
-    return view('index');
 });
