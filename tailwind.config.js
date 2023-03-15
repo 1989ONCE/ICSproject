@@ -7,7 +7,7 @@ module.exports = {
     "./resources/views/livewire/counter.blade.php",
     "./resources/views/index.blade.php",
     "./resources/views/welcome.blade.php",
-  ],,
+  ],
   theme: {
     extend: {},
   },
