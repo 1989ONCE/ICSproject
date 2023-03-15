@@ -43,8 +43,9 @@ class CustomAuthController extends Controller
     public function customRegistration(Request $request)
     {  
         $request->validate([
-            'name' => 'required',
+            'user_name' => 'required',
             'email' => 'required|email|unique:users',
+            'phone' => 'required|regex:/09[0-9]{8}/',
             'password' => 'required|min:6',
         ]);
             
@@ -58,9 +59,10 @@ class CustomAuthController extends Controller
     public function create(array $data)
     {
       return User::create([
-        'name' => $data['name'],
+        'user_name' => $data['user_name'],
         'email' => $data['email'],
-        'password' => Hash::make($data['password'])
+        'phone' => $data['phone'],
+        'hashed_pwd' => Hash::make($data['password'])
       ]);
     }    
      
@@ -70,8 +72,8 @@ class CustomAuthController extends Controller
         if(Auth::check()){
             return view('index');
         }
-   
-        return redirect("login")->withSuccess('You are not allowed to access');
+        return view("index");
+        // return redirect("login")->withSuccess('You are not allowed to access');
     }
      
  
