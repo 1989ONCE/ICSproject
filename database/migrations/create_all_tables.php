@@ -63,7 +63,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('hashed_pwd');
+            $table->string('password');
             $table->bigInteger('fk_group_id')->unsigned();
             $table->foreign('fk_group_id')
                  ->references('group_id')

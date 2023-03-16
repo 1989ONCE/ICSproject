@@ -22,7 +22,8 @@ class User extends Authenticatable
         'user_name',
         'email',
         'phone',
-        'hashed_pwd',
+        'password',
+        'fk_group_id',
     ];
 
     /**

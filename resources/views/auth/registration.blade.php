@@ -61,6 +61,17 @@
                                         @endif
                                     </div>
                                     <div class="form-group mb-3">
+                                        <select id="group" name="group">
+                                            <option value="1">主管</option>
+                                            <option value="2">維修部門</option>
+                                            <option value="3">廠商</option>
+                                            <option value="4">主任</option>
+                                        </select>
+                                        @if ($errors->has('group'))
+                                        <span class="text-danger">{{ $errors->first('group') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group mb-3">
                                         <div class="checkbox">
                                             <label><input type="checkbox" name="remember"> Remember Me</label>
                                         </div>

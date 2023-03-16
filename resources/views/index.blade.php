@@ -71,49 +71,34 @@
                 </div>
             </div>
         </nav> -->
-        @guest
-        <div class="container">
-            <div class="box">
-                <a href="{{route('warning')}}">告警管理</a>
-            </div>
-            <div class="box">
-                <a href="{{route('rt')}}">即時資料</a>
-            </div>
-            <div class="box">
-                <a href="{{route('chart')}}">報表</a>
-            </div>
-            <div class="box">
-                <a href="{{route('login')}}">登入/註冊</a>
-            </div>
-        </div>
-                    <!-- <div class="content-evenly">
-                        <div>
-                            <a class="content-evenly" href="{{route('warning')}}">告警管理</a>
+                    @guest
+                    <div class="container">
+                        <div class="box">
+                            <a href="{{route('warning')}}">告警管理</a>
                         </div>
-                        <div>
-                            <a class="content-evenly" href="{{route('rt')}}">即時資料</a>
+                        <div class="box">
+                            <a href="{{route('rt')}}">即時資料</a>
                         </div>
-                        <div>
-                            <a class="content-evenly" href="{{route('chart')}}">報表</a>
+                        <div class="box">
+                            <a href="{{route('chart')}}">報表</a>
                         </div>
-                        <div>
-                            <a class="content-evenly" href="{{route('login')}}">登入/註冊</a>
+                        <div class="box">
+                            <a href="{{route('login')}}">登入/註冊</a>
                         </div>
-                    </div> -->
-                        
+                    </div>
                     @else
-                    <div class="content-evenly">
-                        <div>
-                            <a class="content-evenly" href="{{route('warning')}}">告警管理</a>
+                    <div class="container">
+                        <div class="box">
+                            <a href="{{route('warning')}}">告警管理</a>
                         </div>
-                        <div>
-                            <a class="content-evenly" href="{{route('rt')}}">即時資料</a>
+                        <div class="box">
+                            <a href="{{route('rt')}}">即時資料</a>
                         </div>
-                        <div>
-                            <a class="content-evenly" href="{{route('chart')}}">報表</a>
+                        <div class="box">
+                            <a href="{{route('chart')}}">報表</a>
                         </div>
-                        <div>
-                            <a class="content-evenly" href="{{route('info')}}">個人資料</a>
+                        <div class="box">
+                            <a href="{{route('info')}}">個人資料</a>
                         </div>
                     </div>
                         <li class="nav-item">

@@ -47,6 +47,7 @@ class CustomAuthController extends Controller
             'email' => 'required|email|unique:users',
             'phone' => 'required|regex:/09[0-9]{8}/',
             'password' => 'required|min:6',
+            'group' => 'required',
         ]);
             
         $data = $request->all();
@@ -62,7 +63,8 @@ class CustomAuthController extends Controller
         'user_name' => $data['user_name'],
         'email' => $data['email'],
         'phone' => $data['phone'],
-        'hashed_pwd' => Hash::make($data['password'])
+        'password' => Hash::make($data['password']),
+        'fk_group_id' => $data['group']
       ]);
     }    
      
