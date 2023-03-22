@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/sass/app.scss',// bootstrap
                 'resources/css/app.css', // tailwindcss
                 'resources/js/app.js',
+                'resources/css/index.css',
             ],
             refresh: true,
         }),

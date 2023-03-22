@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,33 +16,24 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::get('url', [Controller::class, 'function_name'])->name('view可呼叫的名字'); 
 
-Route::get('index', [CustomAuthController::class, 'dashboard']); 
+Route::get('index', [AuthController::class, 'index'])->name('index'); 
 
-Route::get('login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
+Route::get('login', [AuthController::class, 'loginpage'])->name('login');
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 
-Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 
-Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 
 // function section
-Route::get('info', [InfoController::class, 'index'])->name('info'); 
-Route::get('warn', [WarnController::class, 'index'])->name('warning'); 
-Route::get('realtime', [RealTimeController::class, 'index'])->name('rt'); 
-Route::get('chart', [ChartController::class, 'index'])->name('chart'); 
-
-
+Route::get('info', [InfoController::class, 'index'])->name('info')->middleware('auth');
+Route::get('warning', [WarnController::class, 'index'])->name('warning')->middleware('auth');
+Route::get('realtime', [RealTimeController::class, 'index'])->name('rt');
+Route::get('chart', [ChartController::class, 'index'])->name('chart');
 
 // routes for testing
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
     // return 'hello world';
-});
-
-Route::get('/login2', [UserController::class, 'index']);
-
-Route::get('/users', function()
-{
-    return 'Users!';
 });
