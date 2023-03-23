@@ -1,56 +1,52 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>水汙ICS - 登入</title>
-        <!-- bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
-        @livewireStyles
-        <!-- tailwindcss -->
-        <!-- @vite('resources/css/app.css') -->
-    </head>
-    <body>
-        @guest
-        <livewire:navbar />
-        <main class="login-form">
-            <div class="cotainer">
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <h3 class="card-header text-center">Login</h3>
-                            <div class="card-body">
-                                <form method="POST" action="{{ route('login.post') }}">
-                                    @csrf
-                                    <div class="form-group mb-3">
-                                        <input type="text" placeholder="Email" id="email" class="form-control" name="email" required autofocus>
-                                        @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                        @endif
-                                    </div>
-        
-                                    <div class="form-group mb-3">
-                                        <input type="password" placeholder="Password" id="password" class="form-control" name="password" required>
-                                        @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
-                                        @endif
-                                    </div>
-        
-                                    <div class="d-grid mx-auto">
-                                        <button type="submit" class="btn btn-dark btn-block">Signin</button>
-                                    </div>
-                                </form>
-        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <center>
-            <a href="#">登入</a>
-            <a href="{{route('register-user')}}">註冊</a>
-        </center>
-        @else
-        @endguest
-        @livewireScripts
-    </body>
-</html>
+<x-guest-layout>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+            </label>
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __("Don't have an account?") }}</span>
+            <a href="{{route('register')}}">
+                <span class="underline ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Sign up') }}</span>
+            </a>
+            <x-primary-button class="ml-3">
+                {{ __('Log in') }}
+            </x-primary-button>
+        </div>
+    </form>
+    <div>
+        @if (Route::has('password.request'))
+            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                {{ __('Forgot your password?') }}
+            </a>
+        @endif
+    </div>
+</x-guest-layout>
