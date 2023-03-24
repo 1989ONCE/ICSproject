@@ -90,7 +90,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->bigInteger('fk_user_id')->unsigned();
             $table->foreign('fk_user_id')
-                ->references('user_id')
+                ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
