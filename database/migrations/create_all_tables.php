@@ -52,6 +52,12 @@ return new class extends Migration
         Schema::create('predictions', function (Blueprint $table) {
             $table->id('predict_id');
             $table->string('value');
+            $table->bigInteger('fk_model_id')->unsigned();
+            $table->foreign('fk_model_id')
+                ->references('model_id')
+                ->on('ai_models')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
         Schema::create('groups', function (Blueprint $table) {
             $table->id('group_id');
