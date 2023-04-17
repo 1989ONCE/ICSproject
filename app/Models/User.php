@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -12,6 +13,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function group(): HasOne
+    {
+        // User HasOne Group Method: $this->hasOne(ref的表, '要ref的欄位名稱', '外來鍵名稱');
+        return $this->hasOne(Group::class, 'group_id', 'fk_group_id');
+    }
+    
     /**
      * The attributes that are mass assignable.
      *

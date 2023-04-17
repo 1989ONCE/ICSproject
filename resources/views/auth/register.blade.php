@@ -24,12 +24,12 @@
 
         <div>
             <x-input-label for="group" :value="__('Group')" />
-            <select id="group" name="group">
-                <option value="1">主管</option>
-                <option value="2">維修部門</option>
-                <option value="3">廠商</option>
-                <option value="4">主任</option>
-            </select>
+            <select id="group" name="group" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>選擇你的職位</option>
+                    @foreach($groups as $group)
+                        <option value={{$group->group_id}}>{{$group->group_name}}</option>
+                    @endforeach   
+                </select>
             <x-input-error :messages="$errors->get('group')" class="mt-2" />
         </div>
 

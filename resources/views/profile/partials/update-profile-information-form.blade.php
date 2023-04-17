@@ -29,6 +29,16 @@
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
 
+        <div>
+            <x-input-label for="fk_group_id" :value="__('Group')" />
+            <select id="fk_group_id" name="fk_group_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @foreach($all_groups as $group)
+                    <option value={{$group->group_id}} {{$group->group_id == $user->group->group_id ? 'selected="selected"' : '' }} >{{$group->group_name}}</option>
+                @endforeach            
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('fk_group_id')" />
+        </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />

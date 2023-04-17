@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Models\Group;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +21,10 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $groups = Group::get();
+        return view('auth.register', [
+            'groups' => $groups,
+        ]);
     }
 
     /**
@@ -52,4 +56,5 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
 }
