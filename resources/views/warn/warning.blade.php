@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
 
+    <x-slot name="scripts"></x-slot>
+
     <main class="login-form">
         <div class="cotainer">
             <div class="row justify-content-center">
