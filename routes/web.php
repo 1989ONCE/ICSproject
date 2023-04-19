@@ -33,6 +33,7 @@ Route::get('info', [InfoController::class, 'index'])->name('info')->middleware('
 Route::get('warning', [WarnController::class, 'index'])->name('warning')->middleware('auth');
 Route::get('realtime', [RealTimeController::class, 'index'])->name('rt');
 Route::get('chart', [ChartController::class, 'index'])->name('chart');
+Route::get('chart/export', [ChartController::class, 'export'])->name('export');
 
 // routes for testing
 Route::get('/', function () {

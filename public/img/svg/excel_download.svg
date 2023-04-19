@@ -1,0 +1,33 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+ <g id="SVGRepo_iconCarrier">
+  <defs>
+   <linearGradient y2="1.06545" x2="0.82591" y1="-0.06545" x1="0.17409" id="a">
+    <stop stop-color="#18884f" offset="0"/>
+    <stop stop-color="#117e43" offset="0.5"/>
+    <stop stop-color="#0b6631" offset="1"/>
+   </linearGradient>
+  </defs>
+  <title>file_type_excel</title>
+  <path id="svg_1" fill="#185c37" d="m19.581,15.35l-11.069,-1.95l0,14.409a1.192,1.192 0 0 0 1.193,1.191l19.1,0a1.192,1.192 0 0 0 1.195,-1.191l0,0l0,-5.309l-10.419,-7.15z"/>
+  <path id="svg_2" fill="#21a366" d="m19.581,3l-9.876,0a1.192,1.192 0 0 0 -1.193,1.191l0,0l0,5.309l11.069,6.5l5.861,1.95l4.558,-1.95l0,-6.5l-10.419,-6.5z"/>
+  <path id="svg_3" fill="#107c41" d="m8.512,9.5l11.069,0l0,6.5l-11.069,0l0,-6.5z"/>
+  <path id="svg_4" opacity="0.1" d="m16.434,8.2l-7.922,0l0,16.25l7.922,0a1.2,1.2 0 0 0 1.194,-1.191l0,-13.868a1.2,1.2 0 0 0 -1.194,-1.191z"/>
+  <path id="svg_5" opacity="0.2" d="m15.783,8.85l-7.271,0l0,16.25l7.271,0a1.2,1.2 0 0 0 1.194,-1.191l0,-13.868a1.2,1.2 0 0 0 -1.194,-1.191z"/>
+  <path id="svg_6" opacity="0.2" d="m15.783,8.85l-7.271,0l0,14.95l7.271,0a1.2,1.2 0 0 0 1.194,-1.191l0,-12.568a1.2,1.2 0 0 0 -1.194,-1.191z"/>
+  <path id="svg_7" opacity="0.2" d="m15.132,8.85l-6.62,0l0,14.95l6.62,0a1.2,1.2 0 0 0 1.194,-1.191l0,-12.568a1.2,1.2 0 0 0 -1.194,-1.191z"/>
+  <path id="svg_8" fill="url(#a)" d="m3.194,8.85l11.938,0a1.193,1.193 0 0 1 1.194,1.191l0,11.918a1.193,1.193 0 0 1 -1.194,1.191l-11.938,0a1.192,1.192 0 0 1 -1.194,-1.191l0,-11.918a1.192,1.192 0 0 1 1.194,-1.191z"/>
+  <path id="svg_9" fill="#fff" d="m5.7,19.873l2.511,-3.884l-2.3,-3.862l1.847,0l1.255,2.473c0.116,0.234 0.2,0.408 0.238,0.524l0.017,0c0.082,-0.188 0.169,-0.369 0.26,-0.546l1.342,-2.447l1.7,0l-2.359,3.84l2.419,3.905l-1.809,0l-1.45,-2.711a2.355,2.355 0 0 1 -0.171,-0.365l-0.024,0a1.688,1.688 0 0 1 -0.168,0.351l-1.493,2.722l-1.815,0z"/>
+  <path id="svg_10" fill="#33c481" d="m28.806,3l-9.225,0l0,6.5l10.419,0l0,-5.309a1.192,1.192 0 0 0 -1.194,-1.191z"/>
+  <path id="svg_11" fill="#107c41" d="m19.581,16l10.419,0l0,6.5l-10.419,0l0,-6.5z"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke-width="0" id="SVGRepo_bgCarrier"/>
+  <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"/>
+  <rect id="svg_16" height="7.15611" width="0" y="17.30226" x="26.6877" stroke="#ffffff" fill="#ffffff"/>
+  <rect id="svg_17" height="6.8773" width="0.18587" y="18.4175" x="26.31596" stroke="#ffffff" fill="#ffffff"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_38" y2="25.66666" x2="29.3515" y1="25.66666" x1="23.22071" stroke="#ffffff" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_39" y2="25.12171" x2="26.42234" y1="22.53315" x1="24.03815" stroke="#ffffff" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_40" y2="24.98547" x2="26.6267" y1="22.53315" x1="28.73842" stroke="#ffffff" fill="none"/>
+ </g>
+</svg>
