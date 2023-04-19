@@ -8,7 +8,12 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
             ],
-            refresh: true,
+            refresh: [
+                "./resources/**/*.blade.php",
+                "./resources/**/**/**/**/*.blade.php",
+                "./resources/**/*.js",
+                "./resources/**/*.vue",
+            ],
         }),
     ],
 });
