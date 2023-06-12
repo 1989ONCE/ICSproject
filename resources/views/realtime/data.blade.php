@@ -1,9 +1,5 @@
+@section('title', '即時資料')
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Realtime Data') }}
-        </h2>
-    </x-slot>
 
     <x-slot name="scripts">
         <script src="https://cdn.tailwindcss.com"></script>
@@ -128,5 +124,44 @@
         <div id="realtime-data" class="grid place-items-center mt-4 duration-500">
             <img class="w-5/6 pb-4" src="{{ asset('img/flow-chart.png') }}" alt="flow chart" />
         </div>
+    </div>
+
+    <div>
+        <h1>即時資料</h1>
+        <table>
+    <thead>
+        <tr>
+            <th>時間戳記</th>
+            <th>Data1</th>
+            <th>Data2</th>
+            <th>Data3</th>
+            <th>Data4</th>
+            <th>Data5</th>
+            <th>Data6</th>
+            <th>Data7</th>
+            <th>Data8</th>
+            <th>Data9</th>
+            <th>Data10</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($rts as $rt)
+            <tr>
+                <td>{{ $rt['Timestamp'] }}</td>
+                <td>{{ $rt['Data1'] }}</td>
+                <td>{{ $rt['Data2'] }}</td>
+                <td>{{ $rt['Data3'] }}</td>
+                <td>{{ $rt['Data4'] }}</td>
+                <td>{{ $rt['Data5'] }}</td>
+                <td>{{ $rt['Data6'] }}</td>
+                <td>{{ $rt['Data7'] }}</td>
+                <td>{{ $rt['Data8'] }}</td>
+                <td>{{ $rt['Data9'] }}</td>
+                <td>{{ $rt['Data10'] }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
     </div>
 </x-app-layout>
