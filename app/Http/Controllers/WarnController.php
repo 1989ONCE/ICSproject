@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use App\Models\User;
+use Illuminate\View\View;
 use App\Models\Group;
 
-=======
 use App\Notifications\Warning;
->>>>>>> 818154f3f17b18cf8f01f82452c3791778102fce
 
 class WarnController extends Controller
 {
