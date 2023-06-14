@@ -10,11 +10,40 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Group;
 use App\Models\User;
+use App\Models\agJoin;
 
 class ProfileController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Get the user's profile.
+     */
+    public function show(Request $request): View
+    {
+        $groups = Group::get();
+        return view('profile.show', [
+            'user' => $request->user(),
+            'all_groups' => $groups,
+        ]);
+    }
+
+    /**
+     * Group Manage.
+     */
+    public function group(Request $request): View
+    {
+        $ags = agJoin::get();
+        $users = User::get();
+        $groups = Group::get();
+        return view('profile.group', [
+            'user' => $request->user(),
+            'all_users' => $users,
+            'groups' => $groups,
+            'all_ags' => $ags,
+        ]);
+    }
+
+    /**
+     * Edit the user's profile form.
      */
     public function edit(Request $request): View
     {
@@ -31,15 +60,16 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        
+        $req = 'required';
         if($request->user()->email == $request->email){
             $request->request->remove('email');
+            $req = null;
         }
 
         $request->user()->fill($request->validate([
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'regex:/09[0-9]{8}/'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => [$req, 'string', 'email', 'max:255', 'unique:'.User::class],
             'fk_group_id' => ['required', 'int'],
         ]));
 
