@@ -1,13 +1,17 @@
 <div>
-    @foreach($all_ags->unique() as $key => $ag)
-        <span class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
-            {{$ag->fk_alarm_id}}
-        </span>
+    @foreach($all_labels as $key => $label)
+        <a href="#{{$label[0]->fk_alarm_id}}"><span class="w-24 inline-flex items-center flex jusitfy-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
+            {{$label[0]->fk_alarm_id}}
+        </span></a>
     @endforeach
 </div>
-<div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-            <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-              <thead class="bg-gray-50">
+
+                @foreach($all_labels as $keys => $label)
+                <span id="{{$label[0]->fk_alarm_id}}" class="w-24 rounded-full bg-blue-50 px-10 py-1 text-xs font-semibold text-blue-600">{{$label[0]->fk_alarm_id}}<span>
+                <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+                <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+                <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+                <thead class="bg-gray-50">
                 <tr>
                   <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
                   <th scope="col" class="px-6 py-4 font-medium text-gray-900">Position</th>
@@ -15,26 +19,24 @@
                   <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-                @foreach($all_ags as $key => $ag)
+                @foreach($label as $key => $l)
                 <tr class="hover:bg-gray-50">
                   <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                    <div class="relative h-10 w-10">
+                    <div class="overflow-y-hidden h-10 w-10">
                       <img
                         class="h-full w-full rounded-full object-cover object-center"
                         src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
-                      <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
                     </div>
                     <div class="text-sm">
-                      <div class="font-medium text-gray-700">{{$ag->fk_user_id}}</div>
-                      <div class="text-gray-400">{{$all_users[$ag->fk_user_id]->name}}</div>
+                      <div class="font-medium text-gray-700">{{$l->fk_user_id}}</div>
+                      <div class="text-gray-400">{{$all_users[$l->fk_user_id-1]->name}}</div>
                     </div>
                   </th>
                   <td class="px-6 py-4">
                     @foreach($groups as $key => $g)
-                        @if($g->group_id == $all_users[$ag->fk_user_id]->fk_group_id)
+                        @if($g->group_id == $all_users[$l->fk_user_id-1]->fk_group_id)
                             {{$g->group_name}}
                         @endif
                     @endforeach
@@ -98,6 +100,8 @@
                   </td>
                 </tr>
                 @endforeach
-              </tbody>
+                </tbody>
             </table>
+            
           </div>
+                @endforeach

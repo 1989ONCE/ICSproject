@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use App\Models\Group;
 use App\Models\User;
 use App\Models\agJoin;
+use App\Models\Alarm;
 
 class ProfileController extends Controller
 {
@@ -32,13 +33,16 @@ class ProfileController extends Controller
     public function group(Request $request): View
     {
         $ags = agJoin::get();
+        $alarms = Alarm::get();
+        $label = $ags->groupBy('fk_alarm_id');
         $users = User::get();
         $groups = Group::get();
         return view('profile.group', [
             'user' => $request->user(),
             'all_users' => $users,
             'groups' => $groups,
-            'all_ags' => $ags,
+            'all_labels' => $label,
+            'all_alarms' => $alarms,
         ]);
     }
 

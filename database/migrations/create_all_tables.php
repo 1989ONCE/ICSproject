@@ -82,6 +82,7 @@ return new class extends Migration
         });
         Schema::create('ag_joins', function (Blueprint $table) {
             $table->id('ag_join_id');
+            $table->string('ag_join_name');
             $table->bigInteger('fk_alarm_id')->unsigned();
             $table->foreign('fk_alarm_id')
                  ->references('alarm_id')
