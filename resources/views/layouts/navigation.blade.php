@@ -13,30 +13,33 @@
 
                 <!-- Navigation Links -->
 
-                <div class="hidden text-center space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
                     <x-nav-link :href="route('rt')" :active="request()->routeIs('rt')">
                         即時資料</br>
                         Realtime Data
                     </x-nav-link>
                 </div>
-                <div class="hidden text-center space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                @guest
+                @else
+                <div class="hidden px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
                     <x-nav-link :href="route('chart')" :active="request()->routeIs('chart')">
                         歷史報表</br>
                         Historical Report
                     </x-nav-link>
                 </div>
-                <div class="hidden text-center space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
                     <x-nav-link :href="route('warning')" :active="request()->routeIs('warning')">
                         告警管理</br>
                         Warning Management
                     </x-nav-link>
                 </div>
-                <div class="hidden text-center space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                <div class="hidden px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
+                    <x-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show') || request()->routeIs('profile.edit') || request()->routeIs('profile.group')">
                         個人中心</br>
                         Personal Info
                     </x-nav-link>
                 </div>
+                @endguest
             </div>
 
             <!-- Right Navbar -->
@@ -71,6 +74,8 @@
                 </script>
 
                 <!-- Settings dropdown -->
+                @guest
+                @else
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -97,6 +102,7 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                @endguest
             </div>
         </div>
     </div>

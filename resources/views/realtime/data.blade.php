@@ -7,11 +7,12 @@
         const switchToggle = document.querySelector('#switch-toggle');
         const modeText = document.querySelector('#mode-btn-text');
         const graph = document.querySelector('#realtime-data');
+        const buttonBorder = document.querySelector('#button-border');
         let isExcel = false
 
         const ExcelIcon = `<img class="w-full pb-4" src="{{ asset('img/svg/excel.svg') }}" alt="ExcelIcon" />`
         const ExcelText = `<p id="mode-btn-text" class="duration-700">表格形式<p>`;
-        const Excel = `<table class="border-collapse w-full">
+        const Excel = ` <table class="border-collapse">
                             <thead>
                                 <tr>
                                     <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">data_id</th>
@@ -73,9 +74,10 @@
             }, 250);
             switchToggle.classList.remove('bg-sky-700','-translate-x-2')
             modeText.classList.remove('text-right')
-            switchToggle.classList.add('border-solid','border','bg-gray-200','translate-x-20')
+            switchToggle.classList.add('bg-green-100','translate-x-20')
             modeText.classList.add('text-left', '-translate-x-9')
-            graph.classList.add('px-12')
+            graph.classList.add('px-20')
+            buttonBorder.classList.add('border-2','border-green-800')
             setTimeout(() => {
             switchToggle.innerHTML = ExcelIcon
             graph.innerHTML = Excel
@@ -87,9 +89,10 @@
             }, 250);
             switchToggle.classList.add('bg-sky-700','-translate-x-2')
             modeText.classList.add('text-right')
-            switchToggle.classList.remove('border-solid','border','bg-gray-200','translate-x-20')
+            switchToggle.classList.remove('bg-green-100','translate-x-20')
             modeText.classList.remove('text-left', '-translate-x-9')
-            graph.classList.remove('px-12')
+            graph.classList.remove('px-20')
+            buttonBorder.classList.remove('border-2', 'border-green-800')
             setTimeout(() => {
             switchToggle.innerHTML = GuiIcon
             graph.innerHTML = Gui
@@ -102,13 +105,13 @@
         </script>
     </x-slot>
     
-    <div class="flex flex-row">
-        <div class="w-1/6 pt-5 pl-12 flex-column">
-                <div class="w-full">
-                    <p>點擊切換顯示方式<p><br>
-                </div>
+    <div class="flex flex-row h-screen -mt-8">
+        <div class="w-48 min-w-fit max-w-3xl ml-8 mt-4 grid content-center">
+            <div class="w-48 h-32 bg-indigo-300 grid place-items-center rounded-md hover:bg-indigo-400">
+                <span class="font-semibold text-lg text-white tracking-tight hover:text-white">點擊按鈕切換顯示方式</span>
                 <button 
-                    class="border-solid border w-32 h-10 rounded-full bg-white flex items-center transition duration-300 focus:outline-none shadow"
+                    id="button-border"
+                    class="flex items-center border-solid border w-32 rounded-full bg-white transition duration-300 focus:outline-none shadow"
                     onclick="toggleTheme()">
                     <div
                         id="switch-toggle"
@@ -118,10 +121,10 @@
                         <p id="mode-btn-text" class="text-right duration-700">流程形式<p>
                     </div>
                 </button>
-
+            </div>
         </div>
 
-        <div id="realtime-data" class="grid place-items-center mt-4 duration-500">
+        <div id="realtime-data" class="grid content-start justify-items-center mt-16 duration-500">
             <img class="w-5/6 pb-4" src="{{ asset('img/flow-chart.png') }}" alt="flow chart" />
         </div>
     </div>
