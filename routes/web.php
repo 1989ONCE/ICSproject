@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RealTimeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -25,9 +26,12 @@ Route::get('/', function () { return view('index'); });
 //  ======== function section =============
 // warning management
 Route::get('warning', [WarnController::class, 'index'])->name('warning')->middleware('auth');
+Route::get('/send-warning', [WarnController::class, 'sendWarningNotification']);
 
 // realtime data
-Route::get('realtime', [RealTimeController::class, 'index'])->name('rt');
+Route::get('/realtime', [RealTimeController::class, 'index'])->name('rt');
+Route::post('/realtime', [RealTimeController::class, 'rtdata'])->name('rtdata');
+
 // Route::get('realtime/csv', [RealTimeController::class, 'readCsv'])->name('csv');
 
 // historical chart
@@ -64,4 +68,3 @@ Route::get('excel',function(){
     return view('excel');
 });
 
-Route::get('/send-warning', [WarnController::class, 'sendWarningNotification']);
