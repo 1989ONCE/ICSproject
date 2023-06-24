@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="sticky top-0 z-10 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -13,7 +13,7 @@
 
                 <!-- Navigation Links -->
 
-                <div class="hidden px-2 text-center space-x-8 sm:-my-px sm:ml-4 sm:flex hover:bg-indigo-50">
+                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-4 sm:flex hover:bg-indigo-50">
                     <x-nav-link :href="route('rt')" :active="request()->routeIs('rt')">
                         即時資料</br>
                         Realtime Data
@@ -21,19 +21,19 @@
                 </div>
                 @guest
                 @else
-                <div class="hidden px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
+                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
                     <x-nav-link :href="route('chart')" :active="request()->routeIs('chart')">
                         歷史報表</br>
                         Historical Report
                     </x-nav-link>
                 </div>
-                <div class="hidden px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
+                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
                     <x-nav-link :href="route('warning')" :active="request()->routeIs('warning')">
                         告警管理</br>
                         Warning Management
                     </x-nav-link>
                 </div>
-                <div class="hidden px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
+                <div class="relative hidden lg:flex px-2 mr-10 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
                     <x-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show') || request()->routeIs('profile.edit') || request()->routeIs('profile.group')">
                         個人中心</br>
                         Personal Info
@@ -43,9 +43,9 @@
             </div>
 
             <!-- Right Navbar -->
-            <div class="hidden justify-items-start sm:flex sm:items-center sm:ml-6">
+            <div class="justify-items-start sm:flex sm:items-center sm:ml-6">
                 <!-- current time -->
-                <div class="flex items-center justify-center bg-white text-black font-bold rounded-md">
+                <div class="relative hidden lg:flex items-center ml-auto flex items-center justify-center bg-white text-black font-bold rounded-md">
                     <span id="clock" class="text-sm text-gray-500">現在時間: </span>
                 </div>
                 <script>
@@ -90,6 +90,18 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link class="relative visible sm:hidden" :href="route('rt')">
+                                {{ __('即時資料 Realtime Data') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link class="relative visible sm:hidden" :href="route('chart')">
+                                {{ __('歷史報表 Historical Chart') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link class="relative visible sm:hidden" :href="route('warning')">
+                                {{ __('告警管理 Warning Management') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link class="relative visible sm:hidden" :href="route('profile.show')">
+                                {{ __('個人中心 Personal Info') }}
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
