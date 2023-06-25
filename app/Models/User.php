@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     public function agJoin(): BelongsToMany
     {
@@ -33,8 +34,10 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'id',
+        'Badge_num',
         'name',
         'email',
+        'avatar',
         'phone',
         'password',
         'fk_group_id',

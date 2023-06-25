@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -15,12 +16,13 @@ return new class extends Migration
             $table->id('model_id');
             $table->string('model_name');
         });
-        Schema::create('notifys', function (Blueprint $table) {
+        Schema::create('notifies', function (Blueprint $table) {
             $table->id('notify_id');
             $table->string('method');
         });
         Schema::create('pools', function (Blueprint $table) {
             $table->id('pool_id');
+            $table->string('pool_num');
             $table->string('pool_name');
         });
         Schema::create('datas', function (Blueprint $table) {
@@ -61,7 +63,7 @@ return new class extends Migration
             $table->bigInteger('fk_notify_id')->unsigned();
             $table->foreign('fk_notify_id')
                 ->references('notify_id')
-                ->on('notifys')
+                ->on('notifies')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -81,9 +83,11 @@ return new class extends Migration
         });
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
+            $table->string('Badge_num')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
+            $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger('fk_group_id')->unsigned();
@@ -105,19 +109,21 @@ return new class extends Migration
                  ->on('alarms')
                  ->onUpdate('cascade')
                  ->onDelete('cascade');
-            $table->bigInteger('fk_group_id')->unsigned();
+            $table->bigInteger('fk_group_id')->unsigned()->nullable();
             $table->foreign('fk_group_id')
                 ->references('group_id')
                 ->on('groups')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->bigInteger('fk_user_id')->unsigned();
+            $table->bigInteger('fk_user_id')->unsigned()->nullable();
             $table->foreign('fk_user_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
+
+
     }
 
     /**
