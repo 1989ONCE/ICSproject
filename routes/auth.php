@@ -56,4 +56,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+    // This is a route of logout for GET method(POST method is in auth.php)
+    Route::get('logout', [AuthenticatedSessionController::class, 'redirect']);
 });

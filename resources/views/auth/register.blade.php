@@ -3,6 +3,12 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        <!-- Badge Number -->
+        <div class="mb-4">
+            <x-text-input id="badge_num" class="block mt-1 w-full" type="text" name="Badge_num" placeholder="員工識別號 Badge Number" :value="old('Badge_num')" required autofocus autocomplete="Badge_num" />
+            <x-input-error :messages="$errors->get('Badge_num')" class="mt-2" />
+        </div>
+
         <!-- Name -->
         <div class="mb-4">
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="姓名 Full Name" :value="old('name')" required autofocus autocomplete="name" />

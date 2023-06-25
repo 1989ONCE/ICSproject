@@ -43,28 +43,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/group', [ProfileController::class, 'group'])->name('profile.group');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/change-avatar', [ProfileController::class, 'change'])->name('profile.change');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// This is a route of logout for GET method(POST method is in auth.php)
-Route::get('logout', [AuthController::class, 'redirect']);
-
-require __DIR__.'/auth.php';
-
+// email verification
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
-
-
- 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
  
     return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('excel',function(){
-    return view('excel');
-});
+require __DIR__.'/auth.php';
 

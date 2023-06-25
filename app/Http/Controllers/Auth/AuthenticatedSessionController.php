@@ -45,4 +45,12 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    public function redirect(Request $request): RedirectResponse
+    {
+        if(Auth::check()){
+            Auth::logout();
+        }
+        return Redirect('/');
+    }
 }
