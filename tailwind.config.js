@@ -9,6 +9,7 @@ module.exports = {
         "./resources/**/**/**/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
     ],
 
     theme: {
@@ -19,5 +20,5 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms'), require('postcss-import'), require('tailwindcss'), require('autoprefixer')],
+    plugins: [require('flowbite/plugin'), require('@tailwindcss/forms'), require('postcss-import'), require('tailwindcss'), require('autoprefixer')],
 };
