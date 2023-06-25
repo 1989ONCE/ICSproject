@@ -55,7 +55,9 @@ return new class extends Migration
         Schema::create('alarms', function (Blueprint $table) {
             $table->id('alarm_id');
             $table->string('alarm_name');
+            $table->string('alarm_type');
             $table->char('operator', 1);
+            $table->double('alarm_num', 10, 3);
             $table->bigInteger('fk_notify_id')->unsigned();
             $table->foreign('fk_notify_id')
                 ->references('notify_id')
