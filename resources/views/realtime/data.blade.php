@@ -110,7 +110,7 @@
                      <div id="data9_2" class="absolute underline-offset-2 text-xl text-black bottom-1/4 right-1/2 translate-x-[10rem] translate-y-[36px]"></div>
                      <div id="data10" class="absolute underline-offset-2 text-xl text-black bottom-1/4 left-1/4 translate-x-28 translate-y-[36px]"></div>
                      <div id="data10_2" class="absolute underline-offset-2 text-xl text-black bottom-1/4 left-1/4 translate-x-3 translate-y-[36px]"></div>
-                     <div id="sign" class="absolute w-8 h-8 rounded-full bottom-1/4 left-1/4 -translate-x-[5.4rem] translate-y-[44.5px]"></div>
+                     <div id="sign" class="absolute w-6 h-6 rounded-full bottom-1/4 left-1/4 -translate-x-[5rem] translate-y-[42px]"></div>
                      <div id="ph_gui-1" class="absolute w-4 h-4 rounded-full top-1/2 left-1/4 -translate-x-[2.2rem] -translate-y-[18px]"></div>
                      <div id="ph_1_val" class="absolute text-lg text-black top-1/2 left-1/4 -translate-x-[0.6rem] -translate-y-[24px]"></div>
                      <div id="ph_gui-2" class="absolute w-4 h-4 rounded-full top-1/2 left-1/3 translate-x-[3.8rem] -translate-y-[14px]"></div>
