@@ -71,6 +71,7 @@ class ProfileController extends Controller
         }
 
         $request->user()->fill($request->validate([
+            'Badge_num' => ['required', 'string'],
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'regex:/09[0-9]{8}/'],
             'email' => [$req, 'string', 'email', 'max:255', 'unique:'.User::class],
@@ -106,5 +107,23 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function change(ProfileUpdateRequest $request): RedirectResponse
+    {
+        if($request->user()->avatar !== null){
+            unlink(public_path('avatars\\'. $request->user()->avatar));
+            Auth()->user()->update(['avatar'=>null]);
+        }
+        $request->user()->fill($request->validate([
+            'avatar' => 'required|file|mimes:jpg,jpeg,png,gif,jfif|max:1024',
+        ]));
+  
+        $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+        $request->avatar->move(public_path('avatars'), $avatarName);
+  
+        Auth()->user()->update(['avatar'=>$avatarName]);
+  
+        return back()->with('success', 'Avatar updated successfully.');
     }
 }
