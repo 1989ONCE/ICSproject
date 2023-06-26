@@ -66,7 +66,6 @@
                             </div>
                         </div>
                     </div>
-                    <script src="./js/flowbite.min.js"></script>
                     <span class="-translate-y-10 font-black text-gray-800 text-2xl grid place-self-center inline-block align-top">{{$user->name}}</span>
             </div>
             <div class="-translate-y-8">

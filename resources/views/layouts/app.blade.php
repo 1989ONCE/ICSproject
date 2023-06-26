@@ -23,6 +23,7 @@
         </script>
         <script type="text/javascript" src="{{asset('/js/echarts.min.js')}}"></script>
         <script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
+        <script src="./js/flowbite.min.js"></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white dark:bg-gray-900">
