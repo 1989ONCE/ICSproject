@@ -22,6 +22,7 @@
             }
         </script>
         <script type="text/javascript" src="{{ asset('/js/echarts.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('/js/echarts.min.js')}}"></script>
         <script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/flowbite.min.js') }}"></script>
     </head>
