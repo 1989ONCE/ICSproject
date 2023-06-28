@@ -26,7 +26,16 @@ Route::get('/', function () { return view('index'); });
 //  ======== function section =============
 // warning management
 Route::get('warning', [WarnController::class, 'index'])->name('warning')->middleware('auth');
-Route::get('/send-warning', [WarnController::class, 'sendWarningNotification'])->middleware('auth');
+Route::post('warning', [AlarmsController::class, 'store'])->name('alarms.store')->middleware('auth');
+Route::get('send-warning', [WarnController::class, 'sendWarningNotification'])->middleware('auth');
+
+Route::get('alarm', [AlarmsController::class, 'show'])->middleware('auth');
+//Route::get('/alarm/store', [AlarmsController::class, 'store'])->middleware('auth');
+Route::get('/warn/check', [AlarmsController::class, 'index'])->name('warning.check')->middleware('auth');
+Route::delete('/warn/check', [AlarmsController::class, 'destroy'])->name('warn.destroy')->middleware('auth');
+Route::get('/warn/edit', [AlarmsController::class, 'edit'])->name('warning.edit')->middleware('auth');
+Route::patch('/warn/edit', [AlarmsController::class, 'update'])->name('warn.update')->middleware('auth');
+
 
 // realtime data
 Route::get('/realtime', [RealTimeController::class, 'index'])->name('rt');
@@ -59,4 +68,3 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 require __DIR__.'/auth.php';
-
