@@ -20,26 +20,26 @@ return new class extends Migration
             $table->id('notify_id');
             $table->string('method');
         });
-        Schema::create('pools', function (Blueprint $table) {
-            $table->id('pool_id');
-            $table->string('pool_num');
-            $table->string('pool_name');
-        });
         Schema::create('datas', function (Blueprint $table) {
             $table->id('data_id');
-            $table->integer('ph');
-            $table->double('temp', 6, 2);
-            $table->double('EC', 6, 2);
-            $table->double('COD', 6, 2);
-            $table->double('SS', 6, 2);
+            $table->double('T01_2_drug', 6, 2);
+            $table->double('T01_4_ph', 6, 2);
+            $table->double('T01_4_drug', 6, 2);
+            $table->double('T01_5_ph', 6, 2);
+            $table->double('T01_5_drug1', 6, 2);
+            $table->double('T01_5_drug2', 6, 2);
+            $table->double('T01_6_drug', 6, 2);
+            $table->double('T01_12_ph', 6, 2);
+            $table->double('T01_12_drug1', 6, 2);
+            $table->double('T01_12_drug2', 6, 2);
+            $table->double('T01_13_drug', 6, 2);
+            $table->double('T01_15_ph', 6, 2);
+            $table->double('T01_15_temp', 6, 2);
+            $table->double('T01_15_ec', 6, 2);
+            $table->double('T01_15_cod', 6, 2);
             $table->timestamp('added_on');
-            $table->bigInteger('fk_pool_id')->unsigned();
-            $table->foreign('fk_pool_id')
-                ->references('pool_id')
-                ->on('pools')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
+        // testdatas: ONLY FOR TESTING
         Schema::create('testdatas', function (Blueprint $table) {
             $table->id('testdata_id');
             $table->timestamp('added_on');
