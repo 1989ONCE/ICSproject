@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use ModbusMaster;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,6 +14,16 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+    }
+
+    /**
+     * Define the application's command short schedule.
+     */
+
+    protected function shortSchedule(\Spatie\ShortSchedule\ShortSchedule $shortSchedule): void
+    {
+        // this artisan command will run every second
+        $shortSchedule->command('rtdata')->everySecond();
     }
 
     /**

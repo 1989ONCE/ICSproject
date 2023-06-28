@@ -29,8 +29,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // alert(Auth::user()->name, '歡迎');
-
         return redirect()->intended(RouteServiceProvider::HOME) ->with('alert', Auth::user()->name.', 歡迎回來！' );
     }
 
@@ -46,5 +44,13 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function redirect(Request $request): RedirectResponse
+    {
+        if(Auth::check()){
+            Auth::logout();
+        }
+        return Redirect('/');
     }
 }

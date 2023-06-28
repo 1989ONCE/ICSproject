@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
+            'Badge_num' => ['required', 'string', 'unique:'.User::class],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -43,12 +44,20 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
+            'Badge_num' => $request->Badge_num,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
             'fk_group_id' => $request->group,
         ]);
+
+        if($request->Badge_num == 00000){
+            $user->assignRole('Admin');
+        }
+        else{
+            $user->assignRole('General');
+        }
 
         event(new Registered($user));
 

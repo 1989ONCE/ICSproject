@@ -10,14 +10,23 @@ class Datas extends Model
 {
     use HasFactory;
 
-    public function pool(): HasOne
-    {
-        // Data HasOne pool Method: $this->hasOne(ref的表, '要ref的欄位名稱', '外來鍵名稱');
-        return $this->hasOne(Pool::class, 'pool_id', 'fk_pool_id');
-    }
-
     protected $fillable = [
-        'data_id', 'ph', 'temp', 'EC', 'COD', 'SS', 'add_on', 'fk_pool_id',
+        'T01_2_drug', 
+        'T01_4_ph', 
+        'T01_4_drug',
+        'T01_5_ph',
+        'T01_5_drug1',
+        'T01_5_drug2',
+        'T01_6_drug',
+        'T01_12_ph',
+        'T01_12_drug1',
+        'T01_12_drug2',
+        'T01_13_drug',
+        'T01_15_ph',
+        'T01_15_temp',
+        'T01_15_ec',
+        'T01_15_cod',
+        'added_on',
     ];
     public $timestamps = false; 
 }

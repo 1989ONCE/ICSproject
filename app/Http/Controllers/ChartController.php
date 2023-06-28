@@ -6,44 +6,56 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Datas;
 use App\Exports\DatasExport;
+use App\Exports\DrugsExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ChartController extends Controller
 {
     public function index(): View
     {
-        $ph_1 = Datas::select('ph')->where('data_id', '1')->get()->count();
-        $ph_2 = Datas::select('ph')->where('data_id', '2')->get()->count();
-        $ph_3 = Datas::select('ph')->where('data_id', '3')->get()->count();
-        $ph_4 = Datas::select('ph')->where('data_id', '4')->get()->count();
-        return view('chart.curve', [
-            'ph_1' => $ph_1,
-            'ph_2' => $ph_2,
-            'ph_3' => $ph_3,
-            'ph_4' => $ph_4,
-        ]);
+        return view('chart.curve');
     }  
 
     public function export() 
     {
-        return Excel::download(new DatasExport, 'datas.xlsx');
+        return Excel::download(new DatasExport, 'historical_report.xlsx');
     }
 
-    // public function ph_curve(Request $request)
-    // {
-    //     $datas = Datas::all();
-    //     return ['ph', $datas->ph];
-    // }
+    public function export2() 
+    {
+        return Excel::download(new DrugsExport, 'drug_report.xlsx');
+    }
 
     // generate linechart
-    public function linechart(Request $request)
+    public function linechart(): String
     {
-    	$ph_1 = Datas::all()->groupBy('ph'); 
+        $T01_15_ph = Datas::all(['T01_15_ph'])->toJson();
+        $T01_15_temp = Datas::all(['T01_15_temp'])->toJson();
+        $T01_15_ec = Datas::all(['T01_15_ec'])->toJson();
+        $T01_15_cod = Datas::all(['T01_15_cod'])->toJson();
+        $added_on = Datas::all(['added_on'])->toJson();
 
-    	// $temp = Product::where('product_type','phone')->where('year','2019')->get()->count();
-    	// $EC = Product::where('product_type','phone')->where('year','2020')->get()->count();  
-        // $COD = Product::where('product_type','phone')->where('year','2019')->get()->count(); 	
-    	    	    	
-    	return view('linechart',compact('phone_count_18','phone_count_19','phone_count_20','laptop_count_18','laptop_count_19','laptop_count_20','tablet_count_18','tablet_count_19','tablet_count_20'));
+    	return json_encode(
+            [$T01_15_ph, $T01_15_temp, $T01_15_ec, $T01_15_cod, $added_on]
+        );
+    }
+
+    public function linechart2(): String
+    {
+        $T01_2_drug = Datas::all(['T01_2_drug'])->toJson();
+        $T01_4_drug = Datas::all(['T01_4_drug'])->toJson();
+        $T01_5_drug1 = Datas::all(['T01_5_drug1'])->toJson();
+        $T01_5_drug2 = Datas::all(['T01_5_drug2'])->toJson();
+        $T01_6_drug = Datas::all(['T01_6_drug'])->toJson();
+        $T01_12_drug1 = Datas::all(['T01_12_drug1'])->toJson();
+        $T01_12_drug2 = Datas::all(['T01_12_drug2'])->toJson();
+        $T01_13_drug = Datas::all(['T01_13_drug'])->toJson();
+
+        $added_on = Datas::all(['added_on'])->toJson();
+
+    	return json_encode(
+            [$T01_2_drug, $T01_4_drug, $T01_5_drug1, $T01_5_drug2, $T01_6_drug, 
+             $T01_12_drug1, $T01_12_drug2, $T01_13_drug, $added_on
+            ]);
     }
 }

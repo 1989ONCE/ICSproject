@@ -21,9 +21,12 @@
         "react-dom": "^18.2.0",
         "sass": "^1.56.1",
         "tailwindcss": "^3.3.1",
-        "vite": "^4.1.4"
+        "vite": "^4.3.9"
     },
     "dependencies": {
-        "echarts": "^5.4.2"
+        "@babel/core": "^7.22.5",
+        "echarts": "^5.4.2",
+        "flowbite": "^1.6.6",
+        "semver": "^7.5.3"
     }
 }

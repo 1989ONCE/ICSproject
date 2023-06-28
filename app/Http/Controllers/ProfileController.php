@@ -107,4 +107,22 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function change(ProfileUpdateRequest $request): RedirectResponse
+    {
+        if($request->user()->avatar !== null){
+            unlink(public_path('avatars\\'. $request->user()->avatar));
+            Auth()->user()->update(['avatar'=>null]);
+        }
+        $request->user()->fill($request->validate([
+            'avatar' => 'required|file|mimes:jpg,jpeg,png,gif,jfif|max:1024',
+        ]));
+  
+        $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+        $request->avatar->move(public_path('avatars'), $avatarName);
+  
+        Auth()->user()->update(['avatar'=>$avatarName]);
+  
+        return back()->with('success', 'Avatar updated successfully.');
+    }
 }

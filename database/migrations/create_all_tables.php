@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -15,37 +16,54 @@ return new class extends Migration
             $table->id('model_id');
             $table->string('model_name');
         });
-        Schema::create('notifys', function (Blueprint $table) {
+        Schema::create('notifies', function (Blueprint $table) {
             $table->id('notify_id');
             $table->string('method');
         });
-        Schema::create('pools', function (Blueprint $table) {
-            $table->id('pool_id');
-            $table->string('pool_name');
-        });
         Schema::create('datas', function (Blueprint $table) {
             $table->id('data_id');
-            $table->integer('ph');
-            $table->double('temp', 6, 2);
-            $table->double('EC', 6, 2);
-            $table->double('COD', 6, 2);
-            $table->double('SS', 6, 2);
+            $table->double('T01_2_drug', 6, 2);
+            $table->double('T01_4_ph', 6, 2);
+            $table->double('T01_4_drug', 6, 2);
+            $table->double('T01_5_ph', 6, 2);
+            $table->double('T01_5_drug1', 6, 2);
+            $table->double('T01_5_drug2', 6, 2);
+            $table->double('T01_6_drug', 6, 2);
+            $table->double('T01_12_ph', 6, 2);
+            $table->double('T01_12_drug1', 6, 2);
+            $table->double('T01_12_drug2', 6, 2);
+            $table->double('T01_13_drug', 6, 2);
+            $table->double('T01_15_ph', 6, 2);
+            $table->double('T01_15_temp', 6, 2);
+            $table->double('T01_15_ec', 6, 2);
+            $table->double('T01_15_cod', 6, 2);
             $table->timestamp('added_on');
-            $table->bigInteger('fk_pool_id')->unsigned();
-            $table->foreign('fk_pool_id')
-                ->references('pool_id')
-                ->on('pools')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+        });
+        // testdatas: ONLY FOR TESTING
+        Schema::create('testdatas', function (Blueprint $table) {
+            $table->id('testdata_id');
+            $table->timestamp('added_on');
+            $table->double('data1', 6, 2);
+            $table->double('data2', 6, 2);
+            $table->double('data3', 6, 2);
+            $table->double('data4', 6, 2);
+            $table->double('data5', 6, 2);
+            $table->double('data6', 6, 2);
+            $table->double('data7', 6, 2);
+            $table->double('data8', 6, 2);
+            $table->double('data9', 6, 2);
+            $table->double('data10', 6, 2);
         });
         Schema::create('alarms', function (Blueprint $table) {
             $table->id('alarm_id');
             $table->string('alarm_name');
+            $table->string('alarm_type');
             $table->char('operator', 1);
+            $table->double('alarm_num', 10, 3);
             $table->bigInteger('fk_notify_id')->unsigned();
             $table->foreign('fk_notify_id')
                 ->references('notify_id')
-                ->on('notifys')
+                ->on('notifies')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -65,9 +83,11 @@ return new class extends Migration
         });
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
+            $table->string('Badge_num')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
+            $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger('fk_group_id')->unsigned();
@@ -89,19 +109,21 @@ return new class extends Migration
                  ->on('alarms')
                  ->onUpdate('cascade')
                  ->onDelete('cascade');
-            $table->bigInteger('fk_group_id')->unsigned();
+            $table->bigInteger('fk_group_id')->unsigned()->nullable();
             $table->foreign('fk_group_id')
                 ->references('group_id')
                 ->on('groups')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->bigInteger('fk_user_id')->unsigned();
+            $table->bigInteger('fk_user_id')->unsigned()->nullable();
             $table->foreign('fk_user_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
+
+
     }
 
     /**
