@@ -71,7 +71,6 @@ class ProfileController extends Controller
         }
 
         $request->user()->fill($request->validate([
-            'Badge_num' => ['required', 'string'],
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'regex:/09[0-9]{8}/'],
             'email' => [$req, 'string', 'email', 'max:255', 'unique:'.User::class],

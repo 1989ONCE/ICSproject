@@ -1,6 +1,6 @@
 <x-slot name="scripts"></x-slot>
 <!-- Sidebar -->
-<aside class="h-screen fixed top-16 overflow-y-auto bg-gray-600 text-gray-100 flex flex-col w-[210px] border-gray-100 border-r-2">
+<aside class="h-screen overflow-y-auto pb-16 fixed top-16 overflow-y-auto bg-gray-600 text-gray-100 flex flex-col w-[210px] border-gray-100 border-r-2">
     <!-- Sidebar header -->
         <div class="flex items-center justify-center h-14 border-b border-gray-700">
             <span id="sidebar-header" class="font-semibold text-xl tracking-tight border-b-2 border-gray-200">
@@ -20,7 +20,7 @@
                 <img class="w-20 h-20 rounded-full" src="/avatars/{{ Auth::user()->avatar }}" alt="tailwind logo" class="rounded-xl" />
             @endif  
             <div class="ml-4">
-                <div class="text-xl font-medium text-gray-100 hover:text-sky-500 hover:underline underline-offset-2"><a href="{{route('profile.show')}}">{{$user->name}}</a></div>
+                <div class="w-20 break-words text-lg font-medium text-gray-100 hover:text-sky-500 hover:underline underline-offset-2"><a href="{{route('profile.show')}}">{{$user->name}}</a></div>
                 <div class="text-xs font-medium text-gray-100 hover:text-sky-500 hover:underline underline-offset-2"><a href="{{route('profile.group')}}">Admin</a></div>
             </div>
         </div>
