@@ -7,6 +7,8 @@ use App\Models\Notify;
 use App\Models\Group;
 use App\Models\Datas;
 use App\Models\Testdatas;
+use App\Models\Ai_model;
+use App\Models\Prediction;
 
 return new class extends Migration
 {
@@ -155,6 +157,111 @@ return new class extends Migration
             'data10' => 22.00,
         ]);
         $testdata->save();
+
+        $model1 = Ai_model::create([
+            'model_name' => 'arima',
+        ]);
+        $model2 = Ai_model::create([
+            'model_name' => 'var',
+        ]);
+        $model3 = Ai_model::create([
+            'model_name' => 'lstm',
+        ]);
+        $model4 = Ai_model::create([
+            'model_name' => 'bpann',
+        ]);
+        $model5 = Ai_model::create([
+            'model_name' => 'gru',
+        ]);
+        $model6 = Ai_model::create([
+            'model_name' => 'excel',
+        ]);
+        $model1->save();
+        $model2->save();
+        $model3->save();
+        $model4->save();
+        $model5->save();
+        $model6->save();
+
+        $pre1 = Prediction::create([
+           'added_on' => '2023-06-28 11:38:51',
+           'T01_2_pre_drug' => 9,
+           'T01_4_pre_drug' => 6,
+           'T01_5_pre_drug1' => 100,
+           'T01_5_pre_drug2' => 114,
+           'T01_6_pre_drug' => 4,
+           'T01_12_pre_drug1' => 8,
+           'T01_12_pre_drug2' => 4,
+           'T01_13_pre_drug' => 22,
+            'fk_model_id' => 1,
+        ]);
+        $pre2 = Prediction::create([
+            'added_on' => '2023-06-28 11:38:51',
+            'T01_2_pre_drug' => 3,
+            'T01_4_pre_drug' => 1,
+            'T01_5_pre_drug1' => 90,
+            'T01_5_pre_drug2' => 115,
+            'T01_6_pre_drug' => 3,
+            'T01_12_pre_drug1' => 9,
+            'T01_12_pre_drug2' => 6,
+            'T01_13_pre_drug' => 23,
+             'fk_model_id' => 2,
+         ]);
+         $pre3 = Prediction::create([
+            'added_on' => '2023-06-28 11:38:51',
+            'T01_2_pre_drug' => 10,
+            'T01_4_pre_drug' => 26,
+            'T01_5_pre_drug1' => 110,
+            'T01_5_pre_drug2' => 124,
+            'T01_6_pre_drug' => 7,
+            'T01_12_pre_drug1' => 4,
+            'T01_12_pre_drug2' => 8,
+            'T01_13_pre_drug' => 19,
+             'fk_model_id' => 3,
+         ]);
+         $pre4 = Prediction::create([
+            'added_on' => '2023-06-28 11:38:51',
+            'T01_2_pre_drug' => 3,
+            'T01_4_pre_drug' => 1,
+            'T01_5_pre_drug1' => 50,
+            'T01_5_pre_drug2' => 134,
+            'T01_6_pre_drug' => 7,
+            'T01_12_pre_drug1' => 9,
+            'T01_12_pre_drug2' => 10,
+            'T01_13_pre_drug' => 21,
+             'fk_model_id' => 4,
+         ]);
+         $pre5 = Prediction::create([
+            'added_on' => '2023-06-28 11:38:51',
+            'T01_2_pre_drug' => 9.1,
+            'T01_4_pre_drug' => 7,
+            'T01_5_pre_drug1' => 131,
+            'T01_5_pre_drug2' => 111.3,
+            'T01_6_pre_drug' => 4.9,
+            'T01_12_pre_drug1' => 8.1,
+            'T01_12_pre_drug2' => 4,
+            'T01_13_pre_drug' => 22.2,
+             'fk_model_id' => 5,
+         ]);
+         $pre6 = Prediction::create([
+            'added_on' => '2023-06-28 11:38:51',
+            'T01_2_pre_drug' => 9,
+            'T01_4_pre_drug' => 6,
+            'T01_5_pre_drug1' => 100,
+            'T01_5_pre_drug2' => 118,
+            'T01_6_pre_drug' => 8,
+            'T01_12_pre_drug1' => 7,
+            'T01_12_pre_drug2' => 8,
+            'T01_13_pre_drug' => 20.5,
+             'fk_model_id' => 6,
+         ]);
+        $pre1->save();
+        $pre2->save();
+        $pre3->save();
+        $pre4->save();
+        $pre5->save();
+        $pre6->save();
+
     }
 
     /**

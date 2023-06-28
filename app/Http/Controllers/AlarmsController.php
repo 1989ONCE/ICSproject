@@ -94,7 +94,7 @@ class AlarmsController extends Controller
        
         //$Alarm_id = $Alarm_id + 1;
         DB::table('ag_joins')->insert([
-            
+            'ag_join_name' => $Alarm_Name,
             'fk_alarm_id' => $Alarm_id,
             'fk_group_id' => $request->input('group_id'),
             'fk_user_id' => $request->input('user_id')

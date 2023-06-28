@@ -25,28 +25,31 @@ Route::get('/', function () { return view('index'); });
 
 //  ======== function section =============
 // warning management
-Route::get('warning', [WarnController::class, 'index'])->name('warning')->middleware('auth');
-Route::post('warning', [AlarmsController::class, 'store'])->name('alarms.store')->middleware('auth');
-Route::get('send-warning', [WarnController::class, 'sendWarningNotification'])->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('warning', [WarnController::class, 'index'])->name('warning');
+    Route::post('warning', [AlarmsController::class, 'store'])->name('alarms.store');
+    Route::get('send-warning', [WarnController::class, 'sendWarningNotification']);
 
-Route::get('alarm', [AlarmsController::class, 'show'])->middleware('auth');
-//Route::get('/alarm/store', [AlarmsController::class, 'store'])->middleware('auth');
-Route::get('/warn/check', [AlarmsController::class, 'index'])->name('warning.check')->middleware('auth');
-Route::delete('/warn/check', [AlarmsController::class, 'destroy'])->name('warn.destroy')->middleware('auth');
-Route::get('/warn/edit', [AlarmsController::class, 'edit'])->name('warning.edit')->middleware('auth');
-Route::patch('/warn/edit', [AlarmsController::class, 'update'])->name('warn.update')->middleware('auth');
-
+    Route::get('alarm', [AlarmsController::class, 'show']);
+    //Route::get('/alarm/store', [AlarmsController::class, 'store'])->middleware('auth');
+    Route::get('/warn/check', [AlarmsController::class, 'index'])->name('warning.check');
+    Route::delete('/warn/check', [AlarmsController::class, 'destroy'])->name('warn.destroy');
+    Route::get('/warn/edit', [AlarmsController::class, 'edit'])->name('warning.edit');
+    Route::patch('/warn/edit', [AlarmsController::class, 'update'])->name('warn.update');
+});
 
 // realtime data
 Route::get('/realtime', [RealTimeController::class, 'index'])->name('rt');
 Route::post('/realtime', [RealTimeController::class, 'rtdata'])->name('rtdata');
 
 // historical chart
-Route::get('chart', [ChartController::class, 'index'])->name('chart')->middleware('auth');
-Route::post('chart', [ChartController::class, 'linechart'])->name('linechart')->middleware('auth');
-Route::post('chart2', [ChartController::class, 'linechart2'])->name('linechart2')->middleware('auth');
-Route::get('chart/export', [ChartController::class, 'export'])->name('export')->middleware('auth');
-Route::get('chart/export2', [ChartController::class, 'export2'])->name('export2')->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('chart', [ChartController::class, 'index'])->name('chart');
+    Route::post('chart', [ChartController::class, 'linechart'])->name('linechart');
+    Route::post('chart2', [ChartController::class, 'linechart2'])->name('linechart2');
+    Route::get('chart/export', [ChartController::class, 'export'])->name('export');
+    Route::get('chart/export2', [ChartController::class, 'export2'])->name('export2');
+});
 
 // profile
 Route::middleware('auth')->group(function () {

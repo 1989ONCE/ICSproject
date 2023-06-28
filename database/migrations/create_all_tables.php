@@ -69,7 +69,15 @@ return new class extends Migration
         });
         Schema::create('predictions', function (Blueprint $table) {
             $table->id('predict_id');
-            $table->string('value');
+            $table->double('T01_2_pre_drug', 6, 2);
+            $table->double('T01_4_pre_drug', 6, 2);
+            $table->double('T01_5_pre_drug1', 6, 2);
+            $table->double('T01_5_pre_drug2', 6, 2);
+            $table->double('T01_6_pre_drug', 6, 2);
+            $table->double('T01_12_pre_drug1', 6, 2);
+            $table->double('T01_12_pre_drug2', 6, 2);
+            $table->double('T01_13_pre_drug', 6, 2);
+            $table->timestamp('added_on');
             $table->bigInteger('fk_model_id')->unsigned();
             $table->foreign('fk_model_id')
                 ->references('model_id')
