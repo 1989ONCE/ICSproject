@@ -32,10 +32,15 @@
 						<button class="bg-red-500 text-black font-bold py-1 px-2 border border-white-500 rounded"type="button" onclick="showCheckbox('group')">群組</button>
 					</div>
 
+					<!--
+					<form  method="POST" action="{{ route('alarms.store') }}">
+        			@csrf
+					-->
 
 					<div id="personal-checkbox" style="display:block;">
                     @foreach($all_users as $key => $user)
-						<input type="checkbox" class="form-checkbox h-5 w-5 text-white-600">
+						
+						<input type="checkbox" class="form-checkbox h-5 w-5 text-white-600" name="user_id" value={{$user->id}}>
 						<label class="inline-flex items-center mt-3 text-white" for="personal-1">{{$user->name}}</label>
 						<br>
                     @endforeach
@@ -44,11 +49,19 @@
 
 					  <div id="group-checkbox" style="display:none;">
                     @foreach($all_groups as $key => $group)
-						<input type="checkbox" class="form-checkbox h-5 w-5 text-white-600">
+						
+						<input type="checkbox" class="form-checkbox h-5 w-5 text-white-600" name="group_id" value={{$group->group_id}}>
 						<label class="inline-flex items-center mt-3 text-white"for="group-1">{{$group->group_name}}</label>
 						<br>
                     @endforeach
 					  </div>
+					  <div class="py-1"></div>
+					<!--<div class="action">
+
+            			<button type="submit" class="px-3 py-1 rounded bg-gray-200 text-black font-bold hover:bg-gray-300">新增</button>
+
+        			</div>
+					 </form> -->
 				  </label>
 				</div>
 			  </nav>
