@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use ModbusMaster;
 use App\Models\Testdatas;
+use App\Models\Power;
 
 class rtCommand extends Command
 {
@@ -55,9 +56,26 @@ class rtCommand extends Command
             $testdata->data10 = $values[9];
             
             $testdata->save();
-            
-            // $timestamp . ' ' . implode(' ', $values) . "\n";
+
+            // if power return
+            $first_p = Power::orderBy('onofftime', 'desc')->first();
+            if($first_p->status == 0) {
+                $power = new Power;
+                $power->status = true;
+                $power->onofftime = date('Y-m-d H:i:s');
+                $power->save();
+            }
         } catch (\Exception $e) {
+            // if power has ben cut off
+            $first_p = Power::orderBy('onofftime', 'desc')->first();
+            if(is_null($first_p) == 1 || $first_p->status == 1 ) {
+                $power = new Power;
+                $power->status = false;
+                $power->onofftime = date('Y-m-d H:i:s');
+                $power->save();
+            }
+            
+
             echo 'Modbus Error: ' . $e->getMessage() . "\n";
         }
     }
