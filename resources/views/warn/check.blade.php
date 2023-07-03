@@ -1,5 +1,5 @@
 
-@section('title', '告警管理')
+@section('title', '編輯告警')
 <x-app-layout>
 
 
