@@ -12,6 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('powers', function (Blueprint $table) {
+            $table->id('power_id');
+            $table->boolean('status');
+            $table->timestamp('onofftime');
+        });
         Schema::create('ai_models', function (Blueprint $table) {
             $table->id('model_id');
             $table->string('model_name');
