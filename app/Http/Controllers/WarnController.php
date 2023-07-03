@@ -36,7 +36,7 @@ class WarnController extends Controller
             'all_groups' => $groups,
         ]);
     }  
-  
+
     public function powerStatus(): String
     {
         $status = Power::all();
