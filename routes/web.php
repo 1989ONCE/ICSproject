@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/warn/check', [AlarmsController::class, 'destroy'])->name('warn.destroy');
     Route::get('/warn/edit', [AlarmsController::class, 'edit'])->name('warning.edit');
     Route::patch('/warn/edit', [AlarmsController::class, 'update'])->name('warn.update');
+    Route::get('/warn/check/search',[AlarmsController::class,'search'])->name('warn.search');
 });
 
 // realtime data

@@ -22,8 +22,20 @@ class AlarmsController extends Controller
      */
     public function index()
     {
-        $Alarms = Alarm::all();
+        $Alarms = Alarm::paginate(5);
         return view(('warn.check'), ['alarms'=> $Alarms]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $alarms = Alarm::where(function($query) use($search){
+            $query->where('alarm_name','like',"%$search%");
+
+            
+        })
+        ->paginate(5);
+        return view(('warn.check'),['alarms'=> $alarms,'search'=>$search]);
     }
 
     /**
@@ -118,8 +130,10 @@ class AlarmsController extends Controller
         //$alarm = "SELECT * FROM `alarms` WHERE `alarm_id` = $id limit 1";
         $alarm = DB::table('alarms')->where('alarm_id',$id)->first();
 
+        $all_users = DB::table('users')->get();
+        $all_groups = DB::table('groups')->get();
         
-        return view(('warn.edit'),['alarm' => $alarm]);
+        return view(('warn.edit'),['alarm' => $alarm,'all_users'=>$all_users,'all_groups'=>$all_groups]);
     }
 
     /**
@@ -131,7 +145,8 @@ class AlarmsController extends Controller
         $Alarm_Name = $request->input('type');
         $operator = $request->input('operator');
         $number = $request->input('number');
-
+        
+        /*
         if($Alarm_Name == "ph" ){
             
             if ($operator == ">"){
@@ -177,7 +192,8 @@ class AlarmsController extends Controller
                 $Alarm_Name = "SS為$number";
             }
         }
-
+        */
+        
         $alarm = DB::table('alarms')->where('alarm_id',$id)-> update([
             'alarm_name' => $Alarm_Name,
             'alarm_type' => $request->type,

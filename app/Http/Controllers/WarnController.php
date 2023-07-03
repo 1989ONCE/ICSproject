@@ -47,4 +47,5 @@ class WarnController extends Controller
     {
         return view('warn.status');
     }
+  
 }
