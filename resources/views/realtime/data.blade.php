@@ -38,7 +38,7 @@
         const ExcelIcon = `<img class="w-full pb-4" src="{{ asset('img/svg/excel.svg') }}" alt="ExcelIcon" />`
         const ExcelText = `<p id="mode-btn-text" class="duration-700">表格形式<p>`
         const Excel = ` <div class="mb"><span id="time" class="text-xl flex justify-center"></span></div>
-                        <div class="table w-full lg:w-[64.5rem] duration-500 mb-4 border border-gray-600">
+                        <div class="table w-full lg:w-[64.5rem] duration-500 mb-4 border border-gray-600 inline-block min-w-full overflow-hidden rounded-lg shadow">
                             <div class="table-header-group h-16">
                                 <div class="table-row">
                                     <div class="px-2 font-bold uppercase bg-white text-gray-600 border-b border-r border-gray-600 table-cell text-center align-middle"></div>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="table w-full lg:w-[64.5rem] duration-500 mb-4 border border-gray-600">
+                        <div class="table w-full lg:w-[64.5rem] duration-500 mb-4 border border-gray-600 inline-block min-w-full overflow-hidden rounded-lg shadow">
                             <div class="table-header-group h-16">
                                 <div class="table-row">
                                     <div class="px-2 font-bold uppercase bg-white text-gray-600 border-b border-r border-gray-600 table-cell text-center align-middle"></div>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="table w-full lg:w-[64.5rem] duration-500 mb-4 border border-gray-600">
+                        <div class="table w-full lg:w-[64.5rem] duration-500 mb-4 border border-gray-600 inline-block min-w-full overflow-hidden rounded-lg shadow">
                             <div class="table-header-group h-16">
                                 <div class="table-row">
                                     <div class="px-2 font-bold uppercase bg-white text-gray-600 border-b border-r border-gray-600 table-cell text-center align-middle"></div>

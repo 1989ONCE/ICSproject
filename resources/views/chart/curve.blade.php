@@ -79,10 +79,10 @@
                     }
                     setInterval(update, 1000); //every 1 secs
                 </script>
-                <button class="w-fit h-12 -translate-y-6 justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
+                <a href="{{route('export')}}" class="w-fit h-12 -translate-y-6 justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
                     <img width="30px" height="30px" src="{{ asset('img/svg/excel_download.svg') }}" class="grid items-center"></img>
-                    <a href="{{route('export')}}"><span class="text-md">按此下載放流槽數值歷史資料</span>
-                </button>
+                    <span class="text-md">按此下載放流槽數值歷史資料</span>
+                </a>
             </div>
 
             <div class="w-fit flex justify-center flex-col grid h-[450px] pl-4 pt-8 pb-4">
@@ -189,10 +189,10 @@
                     }
                     setInterval(update2, 1000); //every 1 secs
                 </script>
-                <button class="w-fit h-12 -translate-y-[25px] justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
+                <a href="{{route('export2')}}" class="w-fit h-12 -translate-y-[26px] justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
                     <img width="30px" height="30px" src="{{ asset('img/svg/excel_download.svg') }}" class="grid items-center"></img>
-                    <a href="{{route('export2')}}"><span class="text-md">按此下載各槽體藥劑量報表</span>
-                </button>
+                    <span class="text-md">按此下載各槽體藥劑量報表</span>
+                </a>
             </div>
     </div>
 </x-app-layout>

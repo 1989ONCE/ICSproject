@@ -4,7 +4,7 @@
     <div class="flex flex-row">
         @include('warn.partials.sidebar')
         <!-- Main content -->
-        <main class="mx-[250px] mt-10 w-9/12">
+        <main class="mx-[250px] mt-2 w-9/12">
             <div class="container max-w-4xl px-4 mx-auto sm:px-8">
                 <div class="py-8">
                     <div class="flex flex-row justify-between w-full mb-1 sm:mb-0">

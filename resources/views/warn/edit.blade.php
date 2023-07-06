@@ -34,9 +34,7 @@
 		
 		<form class="max-w-4xl mx-auto bg-gray-700 p-8 rounded-md shadow-md" method="POST" action="{{ route('warn.update',['id'=>$alarm->alarm_id]) }}">
         @csrf
-		@method('patch')
-        <x-slot name="scripts"></x-slot>
-        
+		@method('patch')        
 
         <div class="mb-4">
             <select id="type" name="type" class="bg-white border border-gray-300 text-gray-600 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -67,8 +65,6 @@
             
         </div>
 
-  
-        
         <div class="mb-4">
             <select id="notify" name="notify" class="bg-white border border-gray-300 text-gray-600 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>

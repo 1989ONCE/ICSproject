@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Group;
 use App\Models\Power;
+use App\Exports\PowersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\Notifications\Warning;
 
@@ -46,6 +48,11 @@ class WarnController extends Controller
     public function status(): View
     {
         return view('warn.status');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new PowersExport, 'power_status.xlsx');
     }
   
 }
