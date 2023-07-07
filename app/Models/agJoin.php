@@ -30,7 +30,7 @@ class agJoin extends Model
     }
 
     protected $fillable = [
-        'ag_join_id', 'fk_alarm_id', 'fk_group_id', 'fk_user_id',
+        'ag_join_id', 'ag_join_name', 'fk_alarm_id', 'fk_group_id', 'fk_user_id',
     ];
     public $timestamps = false; 
 }
