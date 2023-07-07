@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Group;
 use App\Models\Power;
+use App\Models\Notify;
 use App\Exports\PowersExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -29,13 +30,15 @@ class WarnController extends Controller
         $user->notify(new Warning($warningData));
     }
     
-    public function index()
+    public function index(): View
     {
         $users = User::get();
         $groups = Group::get();
+        $notify = Notify::get();
         return view('warn.warning', [
             'all_users' => $users,
             'all_groups' => $groups,
+            'all_notify' => $notify,
         ]);
     }  
 

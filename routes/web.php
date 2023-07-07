@@ -27,19 +27,18 @@ Route::get('/', function () { return view('index'); });
 // warning management
 Route::middleware('auth')->group(function () {
     Route::get('warning', [WarnController::class, 'index'])->name('warning');
-    Route::post('warning', [AlarmsController::class, 'store'])->name('alarms.store');
+    Route::post('warning/store', [AlarmsController::class, 'store'])->name('alarms.store');
     Route::get('send-warning', [WarnController::class, 'sendWarningNotification']);
     Route::get('device-status', [WarnController::class, 'status'])->name('status');
     Route::post('status', [WarnController::class, 'powerStatus'])->name('post_status');
     Route::get('warning/export', [WarnController::class, 'export'])->name('power');
 
-    Route::get('alarm', [AlarmsController::class, 'show']);
     //Route::get('/alarm/store', [AlarmsController::class, 'store'])->middleware('auth');
     Route::get('/warn/check', [AlarmsController::class, 'index'])->name('warning.check');
+    Route::get('/warn/check/search',[AlarmsController::class,'search'])->name('warn.search');
     Route::delete('/warn/check', [AlarmsController::class, 'destroy'])->name('warn.destroy');
     Route::get('/warn/edit', [AlarmsController::class, 'edit'])->name('warning.edit');
     Route::patch('/warn/edit', [AlarmsController::class, 'update'])->name('warn.update');
-    Route::get('/warn/check/search',[AlarmsController::class,'search'])->name('warn.search');
 });
 
 // realtime data
