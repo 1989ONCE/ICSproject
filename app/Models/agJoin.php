@@ -26,7 +26,7 @@ class agJoin extends Model
     public function user(): HasOne
     {
         // agJoin HasMany agUser Method: $this->hasOne(ref的表, '要ref的欄位名稱', '外來鍵名稱');
-        return $this->hasOne(User::class, 'user_id', 'fk_user_id');
+        return $this->hasOne(User::class, 'id', 'fk_user_id');
     }
 
     protected $fillable = [

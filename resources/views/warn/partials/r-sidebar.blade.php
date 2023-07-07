@@ -51,20 +51,28 @@
 						<!-- Dropdown menu -->
 						<div id="dropdownDefaultCheckbox_{{$group->group_id}}" class="z-10 hidden overflow-y-auto w-48 bg-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
 							<ul class="p-3 text-base text-gray-700 dark:text-gray-200" aria-labelledby="dropdownCheckboxButton">
-								@foreach($all_users as $key => $user)
-								@if($user->fk_group_id == $group->group_id)
-									<li>
-										<input id="user_{{$group->group_id}}_{{$user->id}}" type="checkbox" name="user_id[]" class="translate-x-4 w-4 h-4 text-[#6da9cf] bg-gray-100 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" value="{{$user->id}}" >
-											<label for="user_{{$group->group_id}}_{{$user->id}}" class="translate-x-4 inline-flex items-center text-black">{{$user->name}}</label>
-											<br>
-									</li>
+								@php $count = 0; @endphp
+								@for($i = 0; $i < count($all_users); $i++)
+									@if($all_users[$i]->fk_group_id == $group->group_id)
+										@php $count = 1; @endphp
+									@endif
+								@endfor
+
+								@if($count == 1)
+									@foreach($all_users as $key => $user)
+										@if($user->fk_group_id == $group->group_id)
+											<li>
+												<input id="user_{{$group->group_id}}_{{$user->id}}" type="checkbox" name="user_id[]" class="translate-x-4 w-4 h-4 text-[#6da9cf] bg-gray-100 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" value="{{$user->id}}" >
+													<label for="user_{{$group->group_id}}_{{$user->id}}" class="translate-x-4 inline-flex items-center text-black">{{$user->name}}</label>
+													<br>
+											</li>
+										@endif
+									@endforeach
 								@else
 									<li>
 									    <span class="text-sm">此職位目前沒有任何員工</span>
-									</li>
-									@break
+									</li>		
 								@endif
-								@endforeach
 							</ul>
 						</div>
 					@endforeach

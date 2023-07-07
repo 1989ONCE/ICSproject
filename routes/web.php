@@ -33,12 +33,16 @@ Route::middleware('auth')->group(function () {
     Route::post('status', [WarnController::class, 'powerStatus'])->name('post_status');
     Route::get('warning/export', [WarnController::class, 'export'])->name('power');
 
-    //Route::get('/alarm/store', [AlarmsController::class, 'store'])->middleware('auth');
-    Route::get('/warn/check', [AlarmsController::class, 'index'])->name('warning.check');
-    Route::get('/warn/check/search',[AlarmsController::class,'search'])->name('warn.search');
-    Route::delete('/warn/check', [AlarmsController::class, 'destroy'])->name('warn.destroy');
-    Route::get('/warn/edit', [AlarmsController::class, 'edit'])->name('warning.edit');
-    Route::patch('/warn/edit', [AlarmsController::class, 'update'])->name('warn.update');
+    Route::get('warning/list', [AlarmsController::class, 'index'])->name('warning.check');
+    Route::get('warning/list/search',[AlarmsController::class,'search'])->name('warn.search');
+    Route::delete('warning/list', [AlarmsController::class, 'destroy'])->name('warn.destroy');
+    Route::get('warning/edit', [AlarmsController::class, 'edit'])->name('warning.edit');
+    Route::patch('warning/edit', [AlarmsController::class, 'update'])->name('warn.update');
+
+    Route::get('warning/people', [WarnController::class, 'group'])->name('warning.group');
+    Route::get('warning/peoplelist', [WarnController::class, 'query'])->name('warning.query');
+    Route::delete('warning/deleteuser', [WarnController::class, 'destroyUser'])->name('warn.destroyUser');
+    Route::delete('warning/deletegroup', [WarnController::class, 'destroyGroup'])->name('warn.destroyGroup');
 });
 
 // realtime data

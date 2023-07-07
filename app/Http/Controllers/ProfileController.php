@@ -28,26 +28,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Group Manage.
-     */
-    public function group(Request $request): View
-    {
-        $ags = agJoin::get();
-        $alarms = Alarm::get();
-        $label = $ags->groupBy('fk_alarm_id');
-        $users = User::get();
-        $groups = Group::get();
-        return view('profile.group', [
-            'user' => $request->user(),
-            'all_users' => $users,
-            'groups' => $groups,
-            'all_labels' => $label,
-            'all_alarms' => $alarms,
-        ]);
-    }
-
-    /**
-     * Edit the user's profile form.
+     * Show edit view for the user's profile form.
      */
     public function edit(Request $request): View
     {
