@@ -7,7 +7,7 @@
     <div class="flex">
         @include('warn.partials.sidebar')
         <!-- Main content -->
-        <main class="mx-[250px] mt-10 w-9/12">
+        <main class="mx-[250px] mt-2 w-9/12">
             @include('warn.partials.group-mgt')
         </main>
     </div>

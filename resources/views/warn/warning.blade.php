@@ -7,10 +7,10 @@
       @include('warn.partials.sidebar')
       
       <!-- Main content -->
-      <main class="mx-[250px] mt-2 w-9/12">
-        <div class="container px-4">
+      <main class="ml-[250px] mt-2 w-[900px] flex flex-row">
+        <div class="container max-w-4xl px-4 mx-auto sm:px-8">
 			    <h1 class="text-3xl font-bold pt-2 pb-4">新增告警</h1>
-          <form class="max-w-4xl mx-auto px-8 pt-8 pb-4 rounded-md shadow-md bg-sky-100" method="POST" action="{{ route('alarms.store') }}">
+          <form class="w-[600px] px-8 pt-8 pb-4 rounded-md shadow-md bg-sky-100" method="POST" action="{{ route('alarms.store') }}">
             @csrf
 
             <!-- alarm_type -->
@@ -79,17 +79,16 @@
 
             <!-- submit btn -->
             <div class="action grid">
-                <button type="submit" class="justify-self-end px-3 py-1 rounded bg-cyan-200 hover:shadow">新增告警</button>
+                <button type="submit" class="justify-self-end px-3 py-1 rounded bg-sky-500 text-white font-bold hover:shadow hover:bg-sky-400">新增告警</button>
             </div>
 
         </div>
-      </main>
-
-      <!-- right sidebar - people selection -->
-        <div class="flex justify-end">
-            @include('warn.partials.r-sidebar')
-        </div>
-      </form>
-    </div>
+        <!-- right sidebar - people selection -->
+          <div class="flex justify-end pl-24">
+              @include('warn.partials.r-sidebar')
+          </div>
+        </form>
+     </main>
+   </div>
 
 </x-app-layout>

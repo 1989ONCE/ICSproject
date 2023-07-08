@@ -5,7 +5,7 @@
         @include('warn.partials.sidebar')
         <!-- Main content -->
         <main class="mx-[250px] mt-2 w-9/12">
-            <div class="container max-w-4xl px-4 mx-auto sm:px-8">
+            <div class="container max-w-4xl px-4 mx-auto sm:px-8 grid content-center">
                 <div class="pt-2">
                     <div class="flex flex-row justify-between w-full mb-1 sm:mb-0">
                         <h2 class="text-3xl font-bold leading-tight">
@@ -111,29 +111,34 @@
                                             @if($alarm->fk_notify_id==1)
                                                 @foreach($notifys as $notify)
                                                     @if($notify->notify_id != 1)
-                                                        <span class="inline-block w-fit font-semibold leading-tight text-orange-900 px-1">
-                                                            <span class="text-base inset-0 px-2 py bg-orange-200 rounded-full opacity-50">
+                                                        @if($notify->notify_id == 2)
+                                                            <span class="inline-block w-fit font-semibold leading-tight text-black pr-2">
+                                                                <span class="text-base inset-0 px-2 py bg-sky-300/40 rounded-full opacity-50">
+                                                        @elseif($notify->notify_id == 3)
+                                                        <span class="inline-block w-fit font-semibold leading-tight text-green-900 pr-2">
+                                                            <span class="text-base inset-0 px-2 py bg-green-400/40 rounded-full opacity-50">
+                                                        @endif 
                                                                 {{$notify->method}}     
+                                                                </span>
                                                             </span>
-                                                        </span>
                                                     @endif
                                                 @endforeach
                                             @elseif($alarm->fk_notify_id==2)
                                                 <span class="inline-block w-fit font-semibold leading-tight text-black">
-                                                    <span class="text-base inset-0 px-2 py bg-sky-200 rounded-full opacity-50">
+                                                    <span class="text-base inset-0 px-2 py bg-sky-300/40 rounded-full opacity-50">
                                                         Email    
                                                     </span>
                                                 </span>
                                             @else
                                             <span class="inline-block w-fit font-semibold leading-tight text-green-900">
-                                                <span class="text-base inset-0 px-2 py bg-green-200 rounded-full opacity-50">
+                                                <span class="text-base inset-0 px-2 py bg-green-400/40 rounded-full opacity-50">
                                                     LINE   
                                                 </span>
                                             </span>
                                             @endif
                                         </td>
                                         <td class="px-5 py-5 text-base border-b border-gray-200">
-                                            <a href="{{ route('warning.edit',['id'=>$alarm->alarm_id])}}" class="text-indigo-600 hover:text-indigo-900">
+                                            <a href="{{ route('warning.edit',['id'=>$alarm->alarm_id])}}" class="text-blue-700 hover:text-blue-500">
                                                 編輯
                                             </a>
                                         </td>

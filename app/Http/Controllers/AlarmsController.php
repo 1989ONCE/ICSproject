@@ -90,7 +90,7 @@ class AlarmsController extends Controller
                 $agJoin->save();
             }
         }
-        if($request->user_id != null){
+        if($request->group_id != null){
             for($i = 0; $i < count($request->group_id); $i++){
                 $agJoin = agJoin::create([
                     'ag_join_name' => $Alarm_Name,

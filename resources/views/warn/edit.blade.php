@@ -10,7 +10,7 @@
         <main class="mx-[250px] mt-2 w-9/12">
             <div class="container px-4">
                 <h1 class="text-3xl font-bold pt-2 pb-4">修改告警</h1>
-                <form class="max-w-4xl mx-auto px-8 pt-8 pb-4 rounded-md shadow-md bg-sky-100" method="POST" action="{{ route('warn.update',['id'=>$alarm->alarm_id]) }}">
+                <form class="w-[600px] px-8 px-8 pt-8 pb-4 rounded-md shadow-md bg-sky-100" method="POST" action="{{ route('warn.update',['id'=>$alarm->alarm_id]) }}">
                     @csrf
                     @method('patch')        
 
@@ -76,7 +76,7 @@
 
                     <!-- submit btn -->
                     <div class="action grid">
-                        <button type="submit" class="justify-self-end px-3 py-1 rounded bg-cyan-200 hover:shadow">修改告警</button>
+                        <button type="submit" class="justify-self-end px-3 py-1 rounded bg-sky-500 text-white font-bold hover:shadow hover:bg-sky-400">修改告警</button>
                     </div>
                 </div>
             </main>

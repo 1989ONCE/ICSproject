@@ -41,9 +41,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('warning/people', [WarnController::class, 'group'])->name('warning.group');
     Route::get('warning/peoplelist', [WarnController::class, 'query'])->name('warning.query');
-    Route::delete('warning/deleteuser', [WarnController::class, 'destroyUser'])->name('warn.destroyUser');
-    Route::delete('warning/deletegroup', [WarnController::class, 'destroyGroup'])->name('warn.destroyGroup');
-});
+    Route::get('warning/addpeople', [WarnController::class, 'add'])->name('add');
+    Route::get('warning/storeuser', [WarnController::class, 'storeUser'])->name('storeUser');
+    Route::get('warning/storegroup', [WarnController::class, 'storeGroup'])->name('storeGroup');
+    Route::get('warning/delete', [WarnController::class, 'destroyUser'])->name('destroyUser');
+    Route::get('warning/deleteGroup', [WarnController::class, 'destroyGroup'])->name('destroyGroup');
+}
+);
 
 // realtime data
 Route::get('/realtime', [RealTimeController::class, 'index'])->name('rt');

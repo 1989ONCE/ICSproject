@@ -18,7 +18,7 @@ class Group extends Model
     public function user(): BelongsTo
     {
         // Group BelongsTo User Method: $this->belongsTo(連結的表, '外來鍵名稱');
-        return $this->belongsTo(User::class, 'fk_group_id', 'group_id');
+        return $this->belongsTo(User::class, 'fk_group_id');
     }
 
     protected $fillable = [

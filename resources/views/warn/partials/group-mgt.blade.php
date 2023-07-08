@@ -1,6 +1,8 @@
-<div class="flex flex-col pb-10">
-  <div class="flex flex-row justify-between pb-4">
-    <span class="text-3xl underline underline-offet-4 text-gray-700">各告警群組人員列表</span>
+<div class="container max-w-4xl px-4 pt-2 sm:px-8 grid content-center w-full">
+  <div class="w-full flex flex-row justify-start pb-4 gap-10">
+  <h2 class="text-3xl font-bold leading-tight">
+      各告警群組人員列表
+  </h2>
     <div class="flex flex-row justify-end">
       <div class="place-self-end">
         <a href="{{ route('warning.group')}}" class="bg-white w-[80px] flex flex-row font-semibold text-gray-800 rounded-lg hover:underline underline-offset-4">
@@ -13,7 +15,7 @@
       <form method="get" action="{{ route('warning.query')}}" class="place-self-end px max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
           <div class="relative ">
             <select id="text" name="search" onchange='this.form.submit()' class="w-[200px] bg-white border border-gray-300 text-gray-600 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option value="" {{$search == "" ? 'selected="selected"' : '' }}>選擇目標</option>
+              <option value="*" {{($search == "" || $search == "*") ? 'selected="selected"' : '' }}>選擇目標</option>
               @foreach($all_alarms as $alarm)
                 <option value="{{$alarm->alarm_id}}" {{$search == $alarm->alarm_id ? 'selected="selected"' : '' }}>{{$alarm->alarm_id}} - {{$alarm->alarm_name}}</option>
               @endforeach  
@@ -22,22 +24,41 @@
       </form>
     </div>
   </div>
-    <div>
+  <div class="overflow-y-visible pt-4 w-full">
         @if(count($all_labels) == 0)
+          @if($search != "" || $search != "*")
+          <div class="flex flex-row gap-2">
+            <div id="{{$all_alarms[0]->alarm_name}}" class="center relative inline-block select-none whitespace-nowrap rounded-lg bg-teal-500 py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
+                @foreach($all_alarms as $alarm)
+                  @if($alarm->alarm_id == $search)
+                    <div class="mt-px">{{$alarm->alarm_id}} - {{$alarm->alarm_name}}</div>
+                  @endif
+                @endforeach
+            </div>
+            <a href="addpeople?id={{$alarm->alarm_id}}">
+                <button
+                  type="button" 
+                  class="grid place-self-center flex justify-center w-8 h-8 rounded-lg py-1 font-medium text-gray-500 shadow-md transition duration-150 ease-in-out hover:shadow-lg hover:bg-gray-600 hover:text-white active:shadow-lg focus:ring-sky-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                  </svg>
+                </button>
+            </a>
+          </div>
+          @endif
         <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-            <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-              <thead class="bg-gray-50">
+            <table class="w-full border-collapse text-left text-sm text-gray-500">
+              <thead class="bg-[#c3e3f1]">
                 <tr>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Position</th>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Operations</th>
-                </tr>
+                  <th class="bg-[#c3e3f7] px-6 py-4 font-medium text-gray-900">Name</th>
+                  <th class="bg-[#c3e3f7] px-6 py-4 font-medium text-gray-900">Position</th>
+                </tr>  
               </thead>
               <tbody>
                 <td class="px-5 py-5 text-base border-b border-gray-200"><div class="flex items-center">
                   <div class="ml-3">
                     <p class="text-gray-900 whitespace-no-wrap">
-                      查無資料
+                      目前無設定通知對象
                     </p>
                   </div>
                 </div></td>
@@ -45,21 +66,35 @@
         </div>
         @else
         @foreach($all_labels as $keys => $label)
-          <span id="{{$label[0]->aj_join_name}}" class="w-24 rounded-full bg-blue-50 px-8 py-2 text-base font-semibold text-blue-600">{{$label[0]->fk_alarm_id}} - {{$label[0]->ag_join_name}}</span>
+          <div class="flex flex-row gap-2">
+            <div id="{{$label[0]->aj_join_name}}" class="center relative inline-block select-none whitespace-nowrap rounded-lg bg-teal-500 py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
+              <div class="mt-px">{{$label[0]->fk_alarm_id}} - {{$label[0]->ag_join_name}}</div>
+            </div>
+            <a href="addpeople?id={{$label[0]->fk_alarm_id}}">
+              <button
+                type="button" 
+                class="grid place-self-center flex justify-center w-8 h-8 rounded-lg py-1 font-medium text-gray-500 shadow-md transition duration-150 ease-in-out hover:shadow-lg hover:bg-gray-600 hover:text-white active:shadow-lg focus:ring-sky-400">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                  <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                </svg>
+              </button>
+            </a>
+          </div>
           <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-            <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-              <thead class="bg-gray-50">
+            <table class="w-full border-collapse text-left text-sm text-gray-500">
+              <thead class="bg-[#c3e3f1]">
                 <tr>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Position</th>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Operations</th>
-                </tr>
+                  <th class="bg-[#c3e3f7] px-6 py-4 font-medium text-gray-900">Name</th>
+                  <th class="bg-[#c3e3f7] px-6 py-4 font-medium text-gray-900">Position</th>
+                </tr>  
               </thead>
 
               <tbody>
+                <tr class="w-full text-base"><td><span class="pl-2"># 個別員工</span></td><td></td></tr>
+                <tr class="h-2"><td></td></tr>
                 @for ($i = 0; $i < count($label); $i++)
                   @if($label[$i]->fk_user_id)
-                  <tr>
+                  <tr class="hover:bg-gray-100 w-1/4">
                     <td class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                       <div class="overflow-y-hidden h-10 w-10">
                         @if($label[$i]->user->avatar == null)
@@ -82,25 +117,21 @@
                           @endif
                       @endforeach
                     </td>
-                    <td class="px-6 py-4">
-                      <div class="flex justify-start gap-4">
-                        <form action="{{ route('warn.destroyUser', ['user_id'=> $label[$i]->fk_user_id, 'alarm_id' => $label[$i]->fk_alarm_id])}}" method="post">
-                          @csrf
-                          @method('delete')
-                          <button type="submit" class="flex flex-row text-rose-400 hover:text-rose-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                              <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="grid place-self-center">刪除個別員工</span>
-                          </button>
-                        </form>
-                      </div>
-                    </td>
                   </tr>
-                  @elseif($label[$i]->fk_group_id)
+                  @endif
+                @endfor
+                @for ($i = 0; $i < count($label); $i++)
+                  @if($label[$i]->fk_group_id)
+                  <tr class="w-full text-base">
+                    <td class="flex flex-row">
+                      <span class="pl-2"># {{$label[$i]->group->group_name}}</span>
+                    </td>
+                    <td></td>
+                  </tr>
+                    <tr class="h-4"><td></td><tr>
                     @foreach($all_users as $groupuser)
                       @if($groupuser->fk_group_id == $label[$i]->fk_group_id)
-                      <tr>
+                      <tr class="hover:bg-gray-100 w-1/4">
                         <td class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                           <div class="overflow-y-hidden h-10 w-10">
                             @if($groupuser->avatar == null)
@@ -119,20 +150,6 @@
                         <td class="px-6 py-4">
                           {{$groupuser->group->group_name}}
                         </td>
-                        <td class="px-6 py-4">
-                          <div class="flex justify-start gap-4">
-                            <form action="{{ route('warn.destroyGroup', ['group_id'=> $label[$i]->fk_group_id, 'alarm_id' => $label[$i]->fk_alarm_id])}}" method="post">
-                              @csrf
-                              @method('delete')
-                              <button type="submit" class="flex flex-row text-rose-400 hover:text-rose-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                  <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="grid place-self-center">移除職位群組</span>
-                              </button>
-                            </form>
-                          </div>
-                        </td>
                       </tr>
                       @endif
                     @endforeach
@@ -142,7 +159,58 @@
             </table>
           </div>
         @endforeach
-        @endif
-    </div>
+        @if($search == "" || $search == "*")
+          <div class="py-2">
+            <span class="center relative inline-block select-none whitespace-nowrap rounded-lg bg-rose-700 py-2 px-3.5 align-baseline font-sans text-sm font-bold uppercase leading-none text-white">以下告警尚未設定通知對象</span>
+          </div>
+
+          @foreach($all_alarms as $alarm)
+            @php $exist = 0; @endphp
+            @foreach($no_label as $label)
+              @if($alarm->alarm_id == $label[0]->fk_alarm_id)
+                @php $exist = 1;  @endphp
+              @endif
+            @endforeach
+            @php
+              if($exist == 0)
+                echo '<div class="flex flex-row gap-2">
+                        <div class="center relative inline-block select-none whitespace-nowrap rounded-lg bg-gray-500 py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
+                          <div class="mt-px">'.$alarm->alarm_id. ' - ' .$alarm->alarm_name. '</div>
+                        </div>
+                        <a href="addpeople?id='.$alarm->alarm_id.'">
+                          <button
+                            type="button" 
+                            class="grid place-self-center flex justify-center w-8 h-8 rounded-lg py-1 font-medium text-gray-500 shadow-md transition duration-150 ease-in-out hover:shadow-lg hover:bg-gray-600 hover:text-white active:shadow-lg focus:ring-sky-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                              <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                            </svg>
+                          </button>
+                        </a>
+                      </div>
+
+                      <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+                        <table class="w-full border-collapse text-left text-sm text-gray-500">
+                          <thead class="bg-gray-100">
+                            <tr>
+                              <th class="px-6 py-4 font-medium text-gray-900">Name</th>
+                              <th class="px-6 py-4 font-medium text-gray-900">Position</th>
+                            </tr>  
+                          </thead>
+                          <tbody>
+                            <td class="px-5 py-5 text-base border-b border-gray-200"><div class="flex items-center">
+                              <div class="ml-3">
+                                <p class="text-gray-900 whitespace-no-wrap">
+                                  目前無設定通知對象
+                                </p>
+                              </div>
+                            </div></td>
+                          </tbody>
+                        </table>
+                      </div>';
+            @endphp
+          @endforeach
+        @endif  
+      @endif
+  </div>
 </div>
 
