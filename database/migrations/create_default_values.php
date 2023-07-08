@@ -18,13 +18,17 @@ return new class extends Migration
     public function up(): void
     {
         $notify_1 = Notify::create([
-            'method' => 'Email',
+            'method' => '全選',
         ]);
         $notify_2 = Notify::create([
+            'method' => 'Email',
+        ]);
+        $notify_3 = Notify::create([
             'method' => 'LINE',
         ]);
         $notify_1->save();
         $notify_2->save();
+        $notify_3->save();
 
         $group_1 = Group::create([
             'group_name' => '高級主管',
