@@ -135,7 +135,7 @@ class WarnController extends Controller
         $alarm_id = $request->alarm_id;
         agJoin::where('fk_user_id', '=', $id)->where('fk_alarm_id', '=', $alarm_id)->delete();
   
-        return Redirect::route('add', ['id' => $alarm_id])->with('alert', '已成功移除');
+        return Redirect::route('add', ['id' => $alarm_id])->with('success', '已成功移除員工');
     }
 
      /**
@@ -150,7 +150,7 @@ class WarnController extends Controller
 
         agJoin::where('fk_group_id', '=', $id)->where('fk_alarm_id', '=', $alarm_id)->delete();
   
-        return Redirect::route('add', ['id' => $alarm_id])->with('alert', '已成功移除');
+        return Redirect::route('add', ['id' => $alarm_id])->with('success', '已成功移除職位群組');
     }
 
     /**
@@ -211,7 +211,7 @@ class WarnController extends Controller
         ]);
         $agJoin->save();
         
-        return Redirect::route('add', ['id' => $alarm_id])->with('alert', '已成功新增');
+        return Redirect::route('add', ['id' => $alarm_id])->with('success', '已成功加入員工');
     }
 
     /**
@@ -236,7 +236,7 @@ class WarnController extends Controller
             agJoin::where('fk_user_id', '=', $user[$i]->id)->where('fk_alarm_id', '=', $alarm_id)->delete();
         }
         
-        return Redirect::route('add', ['id' => $alarm_id])->with('alert', '已成功新增');
+        return Redirect::route('add', ['id' => $alarm_id])->with('success', '已成功加入職位群組');
     }
   
 }
