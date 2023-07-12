@@ -416,10 +416,10 @@
                         ph_1.classList.remove('bg-[#4cb631]');
                         ph_1.classList.remove('bg-[#ffa100]');
                         ph_1.classList.remove('bg-[#ff1616]');
-                        if(parseInt(current.T01_4_ph) >= 9){
+                        if(parseInt(current.T01_4_ph) >= 8){
                             ph_1.classList.add('bg-[#4cb631]');
                         }
-                        else if(parseInt(current.T01_4_ph) < 9 && parseInt(current.T01_4_ph) > 6){
+                        else if(parseInt(current.T01_4_ph) < 8 && parseInt(current.T01_4_ph) > 6){
                             ph_1.classList.add('bg-[#ffa100]');
                         }
                         else {
@@ -431,10 +431,10 @@
                         ph_2.classList.remove('bg-[#4cb631]');
                         ph_2.classList.remove('bg-[#ffa100]');
                         ph_2.classList.remove('bg-[#ff1616]');
-                        if(parseInt(current.T01_5_ph) >= 85){
+                        if(parseInt(current.T01_5_ph) >= 8){
                             ph_2.classList.add('bg-[#4cb631]');
                         }
-                        else if(parseInt(current.T01_5_ph) < 85 && parseInt(current.T01_5_ph) > 83){
+                        else if(parseInt(current.T01_5_ph) < 8 && parseInt(current.T01_5_ph) > 6){
                             ph_2.classList.add('bg-[#ffa100]');
                         }
                         else {
@@ -446,10 +446,10 @@
                         ph_3.classList.remove('bg-[#4cb631]');
                         ph_3.classList.remove('bg-[#ffa100]');
                         ph_3.classList.remove('bg-[#ff1616]');
-                        if(parseInt(current.T01_12_ph) >= 9){
+                        if(parseInt(current.T01_12_ph) >= 8){
                             ph_3.classList.add('bg-[#4cb631]');
                         }
-                        else if(parseInt(current.T01_12_ph) < 9 && parseInt(current.T01_12_ph) > 6){
+                        else if(parseInt(current.T01_12_ph) < 8 && parseInt(current.T01_12_ph) > 6){
                             ph_3.classList.add('bg-[#ffa100]');
                         }
                         else {
