@@ -343,7 +343,7 @@
                         if(parseInt(current.T01_15_cod) >= 18){
                             complete.classList.add('bg-[#4cb631]');
                         }
-                        else if(parseInt(current.T01_15_cod) < 18 && parseInt(current.data3) > 15){
+                        else if(parseInt(current.T01_15_cod) < 18 && parseInt(current.T01_15_cod) > 15){
                             complete.classList.add('bg-[#ffa100]');
                         }
                         else {
