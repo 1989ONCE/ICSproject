@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Notify;
 use App\Models\Group;
 use App\Models\Datas;
-use App\Models\Testdatas;
 use App\Models\Ai_model;
 use App\Models\Prediction;
 
@@ -145,22 +144,6 @@ return new class extends Migration
         $data3->save();
         $data4->save();
         $data5->save();
-        
-        // defualt value only for testing
-        $testdata = Testdatas::create([
-            'added_on' => '2023-06-28 11:38:51',
-            'data1' => 9.00,
-            'data2' => 6.00,
-            'data3' => 88.00,
-            'data4' => 122.00,
-            'data5' => 5.00,
-            'data6' => 7.00,
-            'data7' => 4.00,
-            'data8' => 21.00,
-            'data9' => 7.00,
-            'data10' => 22.00,
-        ]);
-        $testdata->save();
 
         $model1 = Ai_model::create([
             'model_name' => 'arima',

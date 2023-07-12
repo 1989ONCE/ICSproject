@@ -44,21 +44,7 @@ return new class extends Migration
             $table->double('T01_15_cod', 6, 2);
             $table->timestamp('added_on');
         });
-        // testdatas: ONLY FOR TESTING
-        Schema::create('testdatas', function (Blueprint $table) {
-            $table->id('testdata_id');
-            $table->timestamp('added_on');
-            $table->double('data1', 6, 2);
-            $table->double('data2', 6, 2);
-            $table->double('data3', 6, 2);
-            $table->double('data4', 6, 2);
-            $table->double('data5', 6, 2);
-            $table->double('data6', 6, 2);
-            $table->double('data7', 6, 2);
-            $table->double('data8', 6, 2);
-            $table->double('data9', 6, 2);
-            $table->double('data10', 6, 2);
-        });
+       
         Schema::create('alarms', function (Blueprint $table) {
             $table->id('alarm_id');
             $table->string('alarm_name');
