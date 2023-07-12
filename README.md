@@ -13,6 +13,7 @@ https://hackmd.io/@ONCE1989/SJ9EKloJ3
 
 Note:
 The PHP extension zip, sockets, and gd should be enabled(php.ini file in your server)
+You also need to change the ip and socket_protocol to your own settings in vendor/adduc/phpmodbus/Phpmodbus/ModbusMaster.php
 
 ## How to start this project in your dev env after initailization...
     In command Line, run these three commands simultaneously: 
