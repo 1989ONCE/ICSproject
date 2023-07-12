@@ -14,7 +14,7 @@
                 <!-- Navigation Links -->
 
                 <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-4 sm:flex hover:bg-indigo-50">
-                    <x-nav-link :href="route('rt')" :active="request()->routeIs('rt')">
+                    <x-nav-link :href="route('rt')" :active="request()->routeIs('rt') || request()->routeIs('predData')">
                         即時資料</br>
                         Realtime Data
                     </x-nav-link>

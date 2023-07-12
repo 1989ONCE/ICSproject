@@ -51,7 +51,10 @@ Route::middleware('auth')->group(function () {
 
 // realtime data
 Route::get('/realtime', [RealTimeController::class, 'index'])->name('rt');
-Route::post('/realtime', [RealTimeController::class, 'rtdata'])->name('rtdata');
+Route::get('/realtimePred', [RealTimeController::class, 'predictData'])->name('predData');
+    // ajax
+Route::get('/realtimeData', [RealTimeController::class, 'rtdata'])->name('rtdata');
+Route::post('/realtimeOption', [RealTimeController::class, 'option'])->name('option'); 
 
 // historical chart
 Route::middleware('auth')->group(function () {
