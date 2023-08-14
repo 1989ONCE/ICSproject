@@ -20,6 +20,8 @@ return new class extends Migration
         Schema::create('ai_models', function (Blueprint $table) {
             $table->id('model_id');
             $table->string('model_name');
+            $table->string('model_loc')->nullable();
+            $table->double('accuracy')->nullable();
         });
         Schema::create('notifies', function (Blueprint $table) {
             $table->id('notify_id');
@@ -87,6 +89,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('avatar')->nullable();
+            $table->string('line_token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger('fk_group_id')->unsigned();
