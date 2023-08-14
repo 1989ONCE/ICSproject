@@ -128,7 +128,7 @@ class AlarmsController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $id = $request->id;
-
+        
         $request->validate([
             'type' => ['string'],
             'opertor' => ['string'],
