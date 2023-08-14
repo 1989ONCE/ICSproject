@@ -128,6 +128,7 @@ class AlarmsController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $id = $request->id;
+        
         $request->validate([
             'type' => ['string'],
             'opertor' => ['string'],
@@ -143,7 +144,6 @@ class AlarmsController extends Controller
             'alarm_num' => $request->number,
             'fk_notify_id' => $request->notify,
         ]);
-
         return Redirect::route('warning.check')->with('alert', '編輯成功！');
     }
 
