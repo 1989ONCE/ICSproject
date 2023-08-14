@@ -73,7 +73,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/change-avatar', [ProfileController::class, 'change'])->name('profile.change');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/linetest1', [LineController::class, 'show'])->name('profile.linetest');
+    Route::any('/profile/linetest', [LineController::class, 'lineNotifyCallback'])->name('profile.lineconnect');
 });
+
+
 
 // email verification
 Route::get('/email/verify', function () {

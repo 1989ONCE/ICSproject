@@ -15,6 +15,11 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('prediction')->everyMinute();
+        $schedule->call(function(){
+            info('call');
+        })->everyMinute();
+
+        $schedule->command('alarm_send')->everyMinute();
     }
 
     /**
