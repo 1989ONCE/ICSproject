@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a382f534e592d70f115779fbb6db7cb5",
+    "content-hash": "16de01a0c191faab22e4ed05d841f1ea",
     "packages": [
         {
             "name": "adduc/phpmodbus",

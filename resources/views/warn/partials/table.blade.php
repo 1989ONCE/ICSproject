@@ -51,12 +51,12 @@
         setInterval(status, 1000); //every 1 secs
     </script>
 </x-slot>
-    <div class="table w-full lg:w-[60.5rem] duration-500 mb-4 border border-gray-600">
+    <div class="table w-full duration-500 mb-4 border border-gray-200 inline-block min-w-full overflow-hidden rounded-lg shadow">
         <div class="table-header-group h-16">
             <div class="table-row">
-                <div class="px-2 font-bold uppercase bg-[#dedbff] text-gray-600 border-b border-r border-gray-600 table-cell text-center align-middle">紀錄ID</div>
-                <div class="px-2 font-bold uppercase bg-[#dedbff] text-gray-600 border-b border-r border-gray-600 table-cell text-center align-middle">設備狀態</div>
-                <div class="px-2 font-bold uppercase bg-[#dedbff] text-gray-600 border-b border-r border-gray-600 table-cell text-center align-middle">斷訊/恢復時間</div>
+                <div class="px-2 font-bold uppercase bg-[#dedbff] text-gray-600 border-b border-gray-600 table-cell text-center align-middle">紀錄ID</div>
+                <div class="px-2 font-bold uppercase bg-[#dedbff] text-gray-600 border-b border-gray-600 table-cell text-center align-middle">設備狀態</div>
+                <div class="px-2 font-bold uppercase bg-[#dedbff] text-gray-600 border-b border-gray-600 table-cell text-center align-middle">斷訊/恢復時間</div>
             </div>
         </div>
         <div id="power" class="table-row-group">

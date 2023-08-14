@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use ModbusMaster;
-use App\Models\Testdatas;
+use App\Models\Datas;
 use App\Models\Power;
 
 class rtCommand extends Command
@@ -21,7 +21,7 @@ class rtCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Connect to Modbus';
 
     /**
      * Execute the console command.
@@ -39,31 +39,40 @@ class rtCommand extends Command
         try {
             $timestamp = date('Y-m-d H:i:s');
             $data = $modbus->readMultipleRegisters(1, $startAddress, $registerCount);
-            $values = array_values($data);
+            if($data){
+                $values = array_values($data);
+                $row = $timestamp . ',' . implode(',', $values) . "\n";
+                $data = new Datas;
+                $data->added_on = $timestamp;
+                $data->T01_2_drug = $values[3];
+                $data->T01_4_ph = $values[2];
+                $data->T01_4_drug = $values[7];
+                $data->T01_5_ph = $values[2];
+                $data->T01_5_drug1 = $values[6];
+                $data->T01_5_drug2 = $values[3];
+                $data->T01_6_drug = $values[6];
+                $data->T01_12_ph = $values[2];
+                $data->T01_12_drug1 = $values[3];
+                $data->T01_12_drug2 = $values[7];
+                $data->T01_13_drug = $values[17];
+                $data->T01_15_ph = $values[2];
+                $data->T01_15_temp = $values[15];
+                $data->T01_15_ec = $values[19];
+                $data->T01_15_cod = $values[19];
 
-            $row = $timestamp . ',' . implode(',', $values) . "\n";
-            $testdata = new Testdatas;
-            $testdata->added_on = $timestamp;
-            $testdata->data1 = $values[0];
-            $testdata->data2 = $values[1];
-            $testdata->data3 = $values[2];
-            $testdata->data4 = $values[3];
-            $testdata->data5 = $values[4];
-            $testdata->data6 = $values[5];
-            $testdata->data7 = $values[6];
-            $testdata->data8 = $values[7];
-            $testdata->data9 = $values[8];
-            $testdata->data10 = $values[9];
-            
-            $testdata->save();
+                $data->save();
 
-            // if power return
-            $first_p = Power::orderBy('onofftime', 'desc')->first();
-            if($first_p->status == 0) {
-                $power = new Power;
-                $power->status = true;
-                $power->onofftime = date('Y-m-d H:i:s');
-                $power->save();
+                // if power return
+                $first_p = Power::orderBy('onofftime', 'desc')->first();
+                if($first_p->status == 0) {
+                    $power = new Power;
+                    $power->status = true;
+                    $power->onofftime = date('Y-m-d H:i:s');
+                    $power->save();
+                }
+            }
+            else {
+                throw new Exception("設備斷訊");
             }
         } catch (\Exception $e) {
             // if power has ben cut off
@@ -74,8 +83,6 @@ class rtCommand extends Command
                 $power->onofftime = date('Y-m-d H:i:s');
                 $power->save();
             }
-            
-
             echo 'Modbus Error: ' . $e->getMessage() . "\n";
         }
     }
