@@ -25,7 +25,3 @@ class RealTimeController extends Controller
     }
 }
 
-if(isset($_POST['action']) && $_POST['action'] == 'rtdata') {
-    return rtdata();
-}
-

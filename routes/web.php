@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('warning', [WarnController::class, 'index'])->name('warning');
     Route::post('warning', [AlarmsController::class, 'store'])->name('alarms.store');
     Route::get('send-warning', [WarnController::class, 'sendWarningNotification']);
+    Route::get('device-status', [WarnController::class, 'status'])->name('status');
+    Route::post('status', [WarnController::class, 'powerStatus'])->name('post_status');
 
     Route::get('alarm', [AlarmsController::class, 'show']);
     //Route::get('/alarm/store', [AlarmsController::class, 'store'])->middleware('auth');

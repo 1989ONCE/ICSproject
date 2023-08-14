@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Group;
+use App\Models\Power;
 
 use App\Notifications\Warning;
 
@@ -36,5 +37,15 @@ class WarnController extends Controller
         ]);
     }  
 
-    
+    public function powerStatus(): String
+    {
+        $status = Power::all();
+        return json_encode($status);
+    }
+
+    public function status(): View
+    {
+        return view('warn.status');
+    }
+  
 }
