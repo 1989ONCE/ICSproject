@@ -104,6 +104,23 @@ class AlarmsController extends Controller
         
         $Alarm_id =  DB::table('alarms')->latest('alarm_id')->value('alarm_id');
        
+        foreach ($request->input('group_id') as $key =>$group_id){
+            DB::table('ag_joins')->insert([
+                'ag_join_name' => $Alarm_Name,
+                'fk_alarm_id' => $Alarm_id,
+                'fk_group_id' => $group_id
+            ]);
+        };
+
+        foreach ($request->input('user_id') as $key =>$user_id){
+            DB::table('ag_joins')->insert([
+                'ag_join_name' => $Alarm_Name,
+                'fk_alarm_id' => $Alarm_id,
+                'fk_user_id' => $user_id
+            ]);
+        };
+
+        /*
         //$Alarm_id = $Alarm_id + 1;
         DB::table('ag_joins')->insert([
             'ag_join_name' => $Alarm_Name,
@@ -111,6 +128,8 @@ class AlarmsController extends Controller
             'fk_group_id' => $request->input('group_id'),
             'fk_user_id' => $request->input('user_id')
         ]);
+        */
+
         return redirect(route('warning'))->with('alert', ' 新增成功！' );
     }
 
@@ -132,8 +151,10 @@ class AlarmsController extends Controller
 
         $all_users = DB::table('users')->get();
         $all_groups = DB::table('groups')->get();
+
+        $selecteds = DB::table('ag_joins')->where('fk_alarm_id',$id)->get();
         
-        return view(('warn.edit'),['alarm' => $alarm,'all_users'=>$all_users,'all_groups'=>$all_groups]);
+        return view(('warn.edit'),['alarm' => $alarm,'all_users'=>$all_users,'all_groups'=>$all_groups,'selecteds'=>$selecteds]);
     }
 
     /**
@@ -146,53 +167,6 @@ class AlarmsController extends Controller
         $operator = $request->input('operator');
         $number = $request->input('number');
         
-        /*
-        if($Alarm_Name == "ph" ){
-            
-            if ($operator == ">"){
-                $Alarm_Name = "ph值過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "ph值過低";
-            }else{
-                $Alarm_Name = "ph為$number";
-            }
-            
-        }elseif($Alarm_Name == "溫度"){
-            if ($operator == ">"){
-                $Alarm_Name = "溫度過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "溫度過低";
-            }else{
-                $Alarm_Name = "溫度為$number";
-            }
-
-        }elseif($Alarm_Name == "導電度"){
-            if ($operator == ">"){
-                $Alarm_Name = "導電度過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "導電度過低";
-            }else{
-                $Alarm_Name = "導電度為$number";
-            }
-        }elseif($Alarm_Name == "COD"){
-            if ($operator == ">"){
-                $Alarm_Name = "COD過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "COD過低";
-            }else{
-                $Alarm_Name = "COD為$number";
-            }
-        }
-        elseif($Alarm_Name == "SS"){
-            if ($operator == ">"){
-                $Alarm_Name = "SS過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "SS過低";
-            }else{
-                $Alarm_Name = "SS為$number";
-            }
-        }
-        */
         
         $alarm = DB::table('alarms')->where('alarm_id',$id)-> update([
             'alarm_name' => $Alarm_Name,
@@ -202,6 +176,26 @@ class AlarmsController extends Controller
             'fk_notify_id' => $request->notify
         ]);
         
+       
+
+        $ag = DB::table('ag_joins')->where('fk_alarm_id',$id)->delete();
+        foreach ($request->input('group_id') as $key =>$group_id){
+            DB::table('ag_joins')->insert([
+                'ag_join_name' => $Alarm_Name,
+                'fk_alarm_id' => $id,
+                'fk_group_id' => $group_id
+            ]);
+        };
+
+        foreach ($request->input('user_id') as $key =>$user_id){
+            DB::table('ag_joins')->insert([
+                'ag_join_name' => $Alarm_Name,
+                'fk_alarm_id' => $id,
+                'fk_user_id' => $user_id
+            ]);
+        };
+
+
         //$alarm -> update($request);
         return redirect(route('warning.check'))->with('alert', ' 編輯成功！' );
     }
