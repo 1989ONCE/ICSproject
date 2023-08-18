@@ -9,7 +9,7 @@ Package Manager: npm</br>
 Dependency Manager: Composer
 
 ## Intialization
-[https://hackmd.io/@ONCE1989/SJ9EKloJ3](https://hackmd.io/@1989ONCE/SJ9EKloJ3)
+https://hackmd.io/@1989ONCE/SJ9EKloJ3
 
 Note:
 The PHP extension zip, sockets, and gd should be enabled(php.ini file in your server)
