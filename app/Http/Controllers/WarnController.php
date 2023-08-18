@@ -68,7 +68,12 @@ class WarnController extends Controller
     public function group(Request $request): View
     {
         $ags = agJoin::get();
-        $alarms = Alarm::get();
+        if(Alarm::get()){
+            $alarms = Alarm::get();
+        }
+        else{
+            $alarms = null;
+        }
         $label = $ags->groupBy('fk_alarm_id');
         $users = User::get();
         $groups = Group::get();
