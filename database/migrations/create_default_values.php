@@ -180,6 +180,7 @@ return new class extends Migration
            'T01_12_pre_drug1' => 8,
            'T01_12_pre_drug2' => 4,
            'T01_13_pre_drug' => 22,
+           'T01_15_pre_cod' => 96,
             'fk_model_id' => 1,
         ]);
         $pre2 = Prediction::create([
@@ -192,6 +193,7 @@ return new class extends Migration
             'T01_12_pre_drug1' => 9,
             'T01_12_pre_drug2' => 6,
             'T01_13_pre_drug' => 23,
+            'T01_15_pre_cod' => 97,
              'fk_model_id' => 2,
          ]);
          $pre3 = Prediction::create([
@@ -204,6 +206,7 @@ return new class extends Migration
             'T01_12_pre_drug1' => 4,
             'T01_12_pre_drug2' => 8,
             'T01_13_pre_drug' => 19,
+            'T01_15_pre_cod' => 94,
              'fk_model_id' => 3,
          ]);
          $pre4 = Prediction::create([
@@ -216,6 +219,7 @@ return new class extends Migration
             'T01_12_pre_drug1' => 9,
             'T01_12_pre_drug2' => 10,
             'T01_13_pre_drug' => 21,
+            'T01_15_pre_cod' => 93,
              'fk_model_id' => 4,
          ]);
          $pre5 = Prediction::create([
@@ -228,6 +232,7 @@ return new class extends Migration
             'T01_12_pre_drug1' => 8.1,
             'T01_12_pre_drug2' => 4,
             'T01_13_pre_drug' => 22.2,
+            'T01_15_pre_cod' => 94,
              'fk_model_id' => 5,
          ]);
          $pre6 = Prediction::create([
@@ -240,6 +245,7 @@ return new class extends Migration
             'T01_12_pre_drug1' => 7,
             'T01_12_pre_drug2' => 8,
             'T01_13_pre_drug' => 20.5,
+            'T01_15_pre_cod' => 96,
              'fk_model_id' => 6,
          ]);
         $pre1->save();
