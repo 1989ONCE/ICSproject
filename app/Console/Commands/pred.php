@@ -51,8 +51,6 @@ class pred extends Command
             // $this->gru_pred($datas);            
             // $this->excel_pred($datas);
 
-
-
         } catch (\Exception $e) {
              $this->info('Predict Command Error: ' . $e->getMessage() . "\n");
         }

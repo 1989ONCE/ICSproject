@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
             info('call');
         })->everyMinute();
 
-        // $schedule->command('alarm_send')->everyMinute();
+        $schedule->command('alarm_send')->everyMinute();
     }
 
     /**
