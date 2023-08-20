@@ -28,6 +28,7 @@
                             @endforeach  
                         </select>
                     </form>
+                    預測之放流槽COD: <span id="gui_t01_15_pre_cod"></span>
                 </div>
                 <img class="w-36 place-items-bottom translate-x-[1.2rem] pt-20" src="{{ asset('img/sign.png') }}" alt="sign" />  
         </div>
@@ -575,6 +576,7 @@
                 document.getElementById("gui_t01_12_pre_drug1").innerHTML = pred.T01_12_pre_drug1;
                 document.getElementById("gui_t01_12_pre_drug2").innerHTML = pred.T01_12_pre_drug2;
                 document.getElementById("gui_t01_13_pre_drug").innerHTML = pred.T01_13_pre_drug;
+                document.getElementById("gui_t01_15_pre_cod").innerHTML = pred.T01_15_pre_cod;
             }
             setInterval(getPredData, 1000); //every 1 secs
         </script>

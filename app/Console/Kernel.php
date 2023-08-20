@@ -14,12 +14,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('prediction')->everyMinute();
+        $schedule->command('pred')->everyMinute();
         $schedule->call(function(){
             info('call');
         })->everyMinute();
 
-        $schedule->command('alarm_send')->everyMinute();
+        // $schedule->command('alarm_send')->everyMinute();
     }
 
     /**

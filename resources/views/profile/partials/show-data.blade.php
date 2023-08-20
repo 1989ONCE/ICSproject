@@ -54,7 +54,7 @@
                                 <form method="POST" action="{{ route('profile.change') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="grid align-center p-3">            
-                                        <input id="avatar" type="file" class="border rounded form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" required autocomplete="avatar">
+                                        <input id="avatar" type="file" accept=".jpg, .jpeg, .png, .gif, .jfif" class="border rounded form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" required autocomplete="avatar">
                                     </div>
                                 
                                     <!-- Modal footer -->
@@ -70,12 +70,12 @@
             </div>
             <div class="-translate-y-8">
                     @if (session('success'))
-                        <div class="bg-emerald-200 p-3 rounded-lg underline underline-offset-4" role="alert">
+                        <div class="bg-emerald-200 p-3 rounded-lg underline underline-offset-4 text-xs" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif 
                     @error('avatar')
-                        <div class="bg-rose-100 p-3 rounded-lg break-normal underline underline-offset-4" role="alert">
+                        <div class="bg-rose-100 p-2 rounded-lg break-normal underline underline-offset-4 text-xs" role="alert">
                             <strong>{{ $message }}</strong>
                         </div>
                     @enderror
@@ -116,45 +116,3 @@
         </div>
     </div>
 </div>
-<!-- <div class="h-screen -mt-20 w-96">        
-
-            <c2 class="flex flex-col justify-between">
-                <h5 class="mb-2 text-xl font-bold text-neutral-800 dark:text-neutral-50">
-                    地址: 
-                </h5>
-
-                <h5 class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-                    臺北市信義區西村里8鄰信義路五段7號
-                </h5>
-            </c2>
-            <c2 class="flex flex-col justify-between">
-                <h5 class="mb-2 text-xl font-bold text-neutral-800 dark:text-neutral-50 ">
-                    手機號碼: 
-                </h5>
-
-                <h5 class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-                    0949861352
-
-                </h5>
-            </c2>
-            <c2 class="flex flex-col justify-between">
-                <h5 class="mb-2 text-xl font-bold text-neutral-800 dark:text-neutral-50">
-                    職位: 
-                </h5>
-
-                <h5 class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-                    網頁設計人員
-                </h5>
-            </c2>
-            <c2 class="flex flex-col justify-between">
-                <h5 class="mb-2 text-xl font-bold text-neutral-800 dark:text-neutral-50">
-                    權限: 
-                </h5>
-
-                <h5 class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-                    Admin
-                </h5>
-            </c2>
-        </div>
-    </div>
-</div> -->
