@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }" class="sticky top-0 z-10 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="sticky top-0 z-10 bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <!-- Left Navbar -->
             <div class="flex pr-4">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="w-[60px] shrink-0 flex items-center">
                     <a href="/" class="flex justify-center">
                         <img src="{{ asset('img/logo.png') }}" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
@@ -14,7 +14,7 @@
                 <!-- Navigation Links -->
 
                 <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-4 sm:flex hover:bg-indigo-50">
-                    <x-nav-link :href="route('rt')" :active="request()->routeIs('rt')">
+                    <x-nav-link :href="route('rt')" :active="request()->routeIs('rt') || request()->routeIs('predData')">
                         即時資料</br>
                         Realtime Data
                     </x-nav-link>
@@ -28,7 +28,7 @@
                     </x-nav-link>
                 </div>
                 <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
-                    <x-nav-link :href="route('warning')" :active="request()->routeIs('warning')">
+                    <x-nav-link :href="route('warning')" :active="request()->routeIs('warning') || request()->routeIs('status') || request()->routeIs('power') || request()->routeIs('warning.check') || request()->routeIs('warn.search') ||request()->routeIs('warning.edit') || request()->routeIs('warning.group') || request()->routeIs('warning.query') || request()->routeIs('add')">
                         告警管理</br>
                         Warning Management
                     </x-nav-link>
@@ -45,8 +45,8 @@
             <!-- Right Navbar -->
             <div class="justify-items-start sm:flex sm:items-center sm:ml-6">
                 <!-- current time -->
-                <div class="relative hidden lg:flex items-center ml-auto flex items-center justify-center bg-white text-black font-bold rounded-md">
-                    <span id="clock" class="text-sm text-gray-500">現在時間: </span>
+                <div class="w-[360px] relative hidden lg:flex items-center ml-auto flex items-center justify-end bg-white text-black font-bold rounded-md">
+                    <span id="clock" class="text-sm text-gray-500">現在時間:</span>
                 </div>
                 <script>
                     // 這裡是JavaScript代碼，用來顯示現在的時間

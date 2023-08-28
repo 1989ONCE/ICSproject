@@ -12,7 +12,13 @@ class Alarm extends Model
     public function agJoin(): BelongsTo
     {
         // Alarm BelongsTo agJoin Method: $this->belongsTo(連結的表, '外來鍵名稱');
-        return $this->belongsTo(agJoin::class, 'fk_group_id');
+        return $this->belongsTo(agJoin::class, 'fk_alarm_id');
+    }
+
+    public function notify(): HasOne
+    {
+        // Alarm HasOne notify Method: $this->hasOne(ref的表, '要ref的欄位名稱', '外來鍵名稱');
+        return $this->hasOne(Notify::class, 'notify_id', 'fk_notify_id');
     }
 
     protected $fillable = [

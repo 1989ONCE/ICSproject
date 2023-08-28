@@ -4,200 +4,147 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
-
-//use Illuminate\Support\Facades\Auth;
-//use Illuminate\Support\Facades\Redirect;
-//use Illuminate\View\View;
-
-use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+use App\Models\User;
+use App\Models\Group;
 use App\Models\Alarm;
-use App\Http\Controllers\Auth;
+use App\Models\agJoin;
+use App\Models\Notify;
 
 class AlarmsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
+        $notify = Notify::get();
         $Alarms = Alarm::paginate(5);
-        return view(('warn.check'), ['alarms'=> $Alarms]);
+        return view(('warn.check'), [
+            'alarms'=> $Alarms,
+            'notifys' => $notify,
+            'search' => "",
+        ]);
     }
 
-    public function search(Request $request)
+    /**
+     * Query alarm list.
+     */
+    public function search(Request $request): View
     {
+        $notify = Notify::get();
         $search = $request->search;
-        $alarms = Alarm::where(function($query) use($search){
-            $query->where('alarm_name','like',"%$search%");
+        if($search == null){
+            $alarms = Alarm::paginate(5);
+        }
+        else{
+            $alarms = Alarm::query()
+                ->where('alarm_type', 'LIKE', "%{$search}%") 
+                ->paginate(5);
+        }
+        return view(('warn.check'), [
+            'alarms'=> $alarms,
+            'notifys' => $notify,
+            'search' => $search,
+        ]);
 
-            
-        })
-        ->paginate(5);
-        return view(('warn.check'),['alarms'=> $alarms,'search'=>$search]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $Alarm_Name = $request->input('type');
-        $operator = $request->input('operator');
-        $number = $request->input('number');
+        // validate request value
+        $request->validate([
+            'type' => ['required', 'string'],
+            'operator' => ['required', 'string'],
+            'number' => ['required', 'numeric'],
+            'notify' => ['required', 'numeric'],
+            'group_id' => ['array'],
+            'user_id' => ['array'],
+        ]);
 
-        if($Alarm_Name == "ph" ){
-            
-            if ($operator == ">"){
-                $Alarm_Name = "ph值過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "ph值過低";
-            }else{
-                $Alarm_Name = "ph為$number";
-            }
-            
-        }elseif($Alarm_Name == "溫度"){
-            if ($operator == ">"){
-                $Alarm_Name = "溫度過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "溫度過低";
-            }else{
-                $Alarm_Name = "溫度為$number";
-            }
-
-        }elseif($Alarm_Name == "導電度"){
-            if ($operator == ">"){
-                $Alarm_Name = "導電度過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "導電度過低";
-            }else{
-                $Alarm_Name = "導電度為$number";
-            }
-        }elseif($Alarm_Name == "COD"){
-            if ($operator == ">"){
-                $Alarm_Name = "COD過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "COD過低";
-            }else{
-                $Alarm_Name = "COD為$number";
-            }
-        }
-        elseif($Alarm_Name == "SS"){
-            if ($operator == ">"){
-                $Alarm_Name = "SS過高";
-            }elseif($operator == "<"){
-                $Alarm_Name = "SS過低";
-            }else{
-                $Alarm_Name = "SS為$number";
-            }
-        }
-
-        DB::table('Alarms')->insert([
+        // alarm create
+        $Alarm_Name = $request->type." ".$request->operator." ".$request->number;
+        $alarm = Alarm::create([
             'alarm_name' => $Alarm_Name,
-            'alarm_type' => $request->input('type'),
-            'operator' => $request->input('operator'),
-            'alarm_num' => $request->input('number'),
-            'fk_notify_id' => $request->input('notify')
+            'alarm_type' => $request->type,
+            'operator' => $request->operator,
+            'alarm_num' => $request->number,
+            'fk_notify_id' => $request->notify,
         ]);
+        $alarm->save();
 
-        
-        $Alarm_id =  DB::table('alarms')->latest('alarm_id')->value('alarm_id');
-       
-        foreach ($request->input('group_id') as $key =>$group_id){
-            DB::table('ag_joins')->insert([
-                'ag_join_name' => $Alarm_Name,
-                'fk_alarm_id' => $Alarm_id,
-                'fk_group_id' => $group_id
-            ]);
-        };
-
-        foreach ($request->input('user_id') as $key =>$user_id){
-            DB::table('ag_joins')->insert([
-                'ag_join_name' => $Alarm_Name,
-                'fk_alarm_id' => $Alarm_id,
-                'fk_user_id' => $user_id
-            ]);
-        };
-
-        /*
-        //$Alarm_id = $Alarm_id + 1;
-        DB::table('ag_joins')->insert([
-            'ag_join_name' => $Alarm_Name,
-            'fk_alarm_id' => $Alarm_id,
-            'fk_group_id' => $request->input('group_id'),
-            'fk_user_id' => $request->input('user_id')
-        ]);
-        */
-
-        return redirect(route('warning'))->with('alert', ' 新增成功！' );
+        // ajJoin create
+        $Alarm_id =  Alarm::latest('alarm_id')->value('alarm_id');
+        if($request->user_id != null){
+            for($i = 0; $i < count($request->user_id); $i++){
+                $agJoin = agJoin::create([
+                    'ag_join_name' => $Alarm_Name,
+                    'fk_alarm_id' => $Alarm_id,
+                    'fk_user_id' => $request->user_id[$i],
+                ]);
+                $agJoin->save();
+            }
+        }
+        if($request->group_id != null){
+            for($i = 0; $i < count($request->group_id); $i++){
+                $agJoin = agJoin::create([
+                    'ag_join_name' => $Alarm_Name,
+                    'fk_alarm_id' => $Alarm_id,
+                    'fk_group_id' => $request->group_id[$i],
+                ]);
+                $agJoin->save();
+            }
+        }
+        return Redirect::route('warning')->with('alert', ' 新增成功！' );
     }
 
     /**
-     * Display the specified resource.
+     * Show edit view for the alarm form.
      */
-    //string $id
-    public function show()
+    public function edit(Request $request): View
     {
-        return view('warn.alarm');
-    }
-
-
-    public function edit(Request $request){
-        //$alarm = Alarm::where('alarm_id')->find($id);
         $id = $request->id;
-        //$alarm = "SELECT * FROM `alarms` WHERE `alarm_id` = $id limit 1";
-        $alarm = DB::table('alarms')->where('alarm_id',$id)->first();
+        $alarm = Alarm::where('alarm_id', '=', $id)->first();
+        $users = User::get();
+        $groups = Group::get();
+        $notify = Notify::get();
 
-        $all_users = DB::table('users')->get();
-        $all_groups = DB::table('groups')->get();
-
-        $selecteds = DB::table('ag_joins')->where('fk_alarm_id',$id)->get();
-        
-        return view(('warn.edit'),['alarm' => $alarm,'all_users'=>$all_users,'all_groups'=>$all_groups,'selecteds'=>$selecteds]);
+        return view('warn.edit', [
+            'alarm' => $alarm,
+            'all_users' => $users,
+            'all_groups' => $groups,
+            'all_notify' => $notify,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         $id = $request->id;
-        $Alarm_Name = $request->input('type');
-        $operator = $request->input('operator');
-        $number = $request->input('number');
         
-        
-        $alarm = DB::table('alarms')->where('alarm_id',$id)-> update([
+        $request->validate([
+            'type' => ['string'],
+            'opertor' => ['string'],
+            'number' => ['numeric'],
+            'notify' => ['numeric'],
+        ]);
+        $Alarm_Name = $request->type." ".$request->operator." ".$request->number;
+
+        Alarm::where('alarm_id', '=', $id)->update([
             'alarm_name' => $Alarm_Name,
             'alarm_type' => $request->type,
             'operator' => $request->operator,
             'alarm_num' => $request->number,
-            'fk_notify_id' => $request->notify
+            'fk_notify_id' => $request->notify,
         ]);
-        
-       
-
-        $ag = DB::table('ag_joins')->where('fk_alarm_id',$id)->delete();
-        foreach ($request->input('group_id') as $key =>$group_id){
-            DB::table('ag_joins')->insert([
-                'ag_join_name' => $Alarm_Name,
-                'fk_alarm_id' => $id,
-                'fk_group_id' => $group_id
-            ]);
-        };
-
-        foreach ($request->input('user_id') as $key =>$user_id){
-            DB::table('ag_joins')->insert([
-                'ag_join_name' => $Alarm_Name,
-                'fk_alarm_id' => $id,
-                'fk_user_id' => $user_id
-            ]);
-        };
-
-
-        //$alarm -> update($request);
-        return redirect(route('warning.check'))->with('alert', ' 編輯成功！' );
+        return Redirect::route('warning.check')->with('alert', '編輯成功！');
     }
 
     /**
@@ -207,13 +154,8 @@ class AlarmsController extends Controller
     {
 
         $id = $request->id;
-        $alarm = DB::table('alarms')->where('alarm_id',$id)->delete();
+        Alarm::where('alarm_id', '=', $id)->delete();
   
         return redirect(route('warning.check'))->with('alert', ' 已刪除！' );
     }
-
-
-
-
-
 }
