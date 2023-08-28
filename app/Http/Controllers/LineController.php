@@ -101,7 +101,6 @@ class LineController extends Controller
 
     private function getNotifyAccessToken($username, $code, $redirect_uri) {
         
-
     
         // 獲取 access_token
         $responseData = Http::asForm()->post('https://notify-bot.line.me/oauth/token', [

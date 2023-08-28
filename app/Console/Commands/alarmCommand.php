@@ -142,7 +142,6 @@ class alarmCommand extends Command
             }
         }
 
-    
 
     }
 }
