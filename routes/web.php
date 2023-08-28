@@ -62,7 +62,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/change-avatar', [ProfileController::class, 'change'])->name('profile.change');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    //Route::get('/profile/edit', [LineController::class, 'show'])->name('profile.linetest');
     Route::get('/profile/linetest1', [LineController::class, 'show'])->name('profile.linetest');
     //Route::post('/profile/linetest', [LineController::class, 'lineNotifyCallback'])->name('profile.lineconnect');
     //Route::get('/profile/linetest', [LineController::class, 'getNotifyAccessToken']);
