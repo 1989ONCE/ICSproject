@@ -12,6 +12,7 @@ use App\Models\Group;
 use App\Models\User;
 use App\Models\agJoin;
 use App\Models\Alarm;
+use App\Models\Ai_model;
 
 class ProfileController extends Controller
 {
@@ -37,6 +38,49 @@ class ProfileController extends Controller
             'user' => $request->user(),
             'all_groups' => $groups,
         ]);
+    }
+
+    /**
+     * Show model setting view.
+     */
+    public function model(Request $request): View
+    {
+        $model = Ai_model::get();
+        $groups = Group::get();
+        return view('profile.model', [
+            'user' => $request->user(),
+            'model' => $model,
+            'all_groups' => $groups,
+        ]);
+    }
+
+    public function upload(ProfileUpdateRequest $request): RedirectResponse
+    {
+        $model_id = $request->id;
+        $model = Ai_model::where('model_id', $model_id)->first();
+
+        if($model->model_loc !== null){
+            unlink(public_path('models\\'. $model->model_loc));
+            Ai_model::where('model_id', $model_id)->update(['model_loc'=> null]);
+        }
+        $request->validate([
+            'loc' => 'required|file'
+        ]);
+
+        // get file name
+        $loc = $request->file('loc')->getClientOriginalName();
+
+        // validate file extension
+        $ext = pathinfo($loc);
+        $accepted_ext = Array('pkl','pickle');
+        if(in_array($ext['extension'], $accepted_ext)){
+            $request->loc->move(public_path('models'), $loc);
+            Ai_model::where('model_id', $model_id)->update(['model_loc'=>$loc]);
+            return back()->with('success', strtoupper($model->model_name). ' Model updated successfully.');
+        }
+        else{
+            return back()->with('error', 'Previous action Failed.');
+        }
     }
 
 

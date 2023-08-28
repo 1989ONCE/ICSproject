@@ -1,10 +1,10 @@
 <div class="container max-w-4xl px-4 pt-2 sm:px-8 grid content-center w-full">
-  <div class="w-full flex flex-row justify-start pb-4 gap-10">
-  <h2 class="text-3xl font-bold leading-tight">
-      各告警群組人員列表
-  </h2>
+  <div class="w-full flex flex-row justify-between pb-4 gap-10">
+    <h2 class="text-3xl font-bold leading-tight">
+        各告警群組人員列表
+    </h2>
     <div class="flex flex-row justify-end">
-      <div class="place-self-end">
+      <div class="right-0 place-self-end">
         <a href="{{ route('warning.group')}}" class="bg-white w-[80px] flex flex-row font-semibold text-gray-800 rounded-lg hover:underline underline-offset-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -16,9 +16,11 @@
           <div class="relative ">
             <select id="text" name="search" onchange='this.form.submit()' class="w-[200px] bg-white border border-gray-300 text-gray-600 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="*" {{($search == "" || $search == "*") ? 'selected="selected"' : '' }}>選擇目標</option>
-              @foreach($all_alarms as $alarm)
-                <option value="{{$alarm->alarm_id}}" {{$search == $alarm->alarm_id ? 'selected="selected"' : '' }}>{{$alarm->alarm_id}} - {{$alarm->alarm_name}}</option>
-              @endforeach  
+              @if($all_alarms)
+                @foreach($all_alarms as $alarm)
+                  <option value="{{$alarm->alarm_id}}" {{$search == $alarm->alarm_id ? 'selected="selected"' : '' }}>{{$alarm->alarm_id}} - {{$alarm->alarm_name}}</option>
+                @endforeach
+              @endif 
             </select>
           </div>
       </form>
@@ -27,24 +29,30 @@
   <div class="overflow-y-visible pt-4 w-full">
         @if(count($all_labels) == 0)
           @if($search != "" || $search != "*")
-          <div class="flex flex-row gap-2">
-            <div id="{{$all_alarms[0]->alarm_name}}" class="center relative inline-block select-none whitespace-nowrap rounded-lg bg-teal-500 py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
-                @foreach($all_alarms as $alarm)
-                  @if($alarm->alarm_id == $search)
-                    <div class="mt-px">{{$alarm->alarm_id}} - {{$alarm->alarm_name}}</div>
-                  @endif
-                @endforeach
+            <div class="flex flex-row gap-2">
+              @if(count($all_alarms) == 0)
+                <div class="center relative inline-block select-none whitespace-nowrap rounded-lg bg-teal-500 py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
+                    目前尚無任何告警設定!
+                </div>
+              @else
+                <div id="{{$all_alarms[0]->alarm_name}}" class="center relative inline-block select-none whitespace-nowrap rounded-lg bg-teal-500 py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
+                    @foreach($all_alarms as $alarm)
+                      @if($alarm->alarm_id == $search)
+                        <div class="mt-px">{{$alarm->alarm_id}} - {{$alarm->alarm_name}}</div>
+                      @endif
+                    @endforeach
+                </div>
+                <a href="addpeople?id={{$alarm->alarm_id}}">
+                    <button
+                      type="button" 
+                      class="grid place-self-center flex justify-center w-8 h-8 rounded-lg py-1 font-medium text-gray-500 shadow-md transition duration-150 ease-in-out hover:shadow-lg hover:bg-gray-600 hover:text-white active:shadow-lg focus:ring-sky-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                      </svg>
+                    </button>
+                </a>
+                @endif
             </div>
-            <a href="addpeople?id={{$alarm->alarm_id}}">
-                <button
-                  type="button" 
-                  class="grid place-self-center flex justify-center w-8 h-8 rounded-lg py-1 font-medium text-gray-500 shadow-md transition duration-150 ease-in-out hover:shadow-lg hover:bg-gray-600 hover:text-white active:shadow-lg focus:ring-sky-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
-                  </svg>
-                </button>
-            </a>
-          </div>
           @endif
         <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
             <table class="w-full border-collapse text-left text-sm text-gray-500">

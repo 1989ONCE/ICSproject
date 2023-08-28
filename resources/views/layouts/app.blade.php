@@ -36,5 +36,5 @@
             </main>
         </div>
     </body>
-    <footer>@include('layouts.footer')</footer>
+    <footer class="fixed bottom-0 right-0">@include('layouts.footer')</footer>
 </html>

@@ -34,7 +34,7 @@
                     </x-nav-link>
                 </div>
                 <div class="w-fit min-w-fit relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
-                    <x-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show') || request()->routeIs('profile.edit') || request()->routeIs('profile.group')">
+                    <x-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show') || request()->routeIs('profile.edit') || request()->routeIs('profile.group') || request()->routeIs('profile.model')">
                         個人中心</br>
                         Personal Info
                     </x-nav-link>

@@ -20,6 +20,7 @@ class Prediction extends Model
         'T01_12_pre_drug1',
         'T01_12_pre_drug2',
         'T01_13_pre_drug',
+        'T01_15_pre_cod',
         'fk_model_id',
     ];
     
