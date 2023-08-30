@@ -41,13 +41,13 @@ class alarmCommand extends Command
             'thankyou' => 'Go to check out'
         ];
         
-        $data1 =  DB::table('testdatas')->latest('added_on')->value('T01_4_ph');
-        $data2 =  DB::table('testdatas')->latest('added_on')->value('T01_5_ph');
-        $data3 =  DB::table('testdatas')->latest('added_on')->value('T01_12_ph');
-        $data4 =  DB::table('testdatas')->latest('added_on')->value('T01_15_ph');
-        $data5 =  DB::table('testdatas')->latest('added_on')->value('T01_15_temp');
-        $data6 =  DB::table('testdatas')->latest('added_on')->value('T01_15_ec');
-        $data7 =  DB::table('testdatas')->latest('added_on')->value('T01_15_cod');
+        $data1 =  DB::table('datas')->latest('added_on')->value('T01_4_ph');
+        $data2 =  DB::table('datas')->latest('added_on')->value('T01_5_ph');
+        $data3 =  DB::table('datas')->latest('added_on')->value('T01_12_ph');
+        $data4 =  DB::table('datas')->latest('added_on')->value('T01_15_ph');
+        $data5 =  DB::table('datas')->latest('added_on')->value('T01_15_temp');
+        $data6 =  DB::table('datas')->latest('added_on')->value('T01_15_ec');
+        $data7 =  DB::table('datas')->latest('added_on')->value('T01_15_cod');
 
         $check_type = array("冷卻塔_ph值","快混槽1_ph值","快混槽2_ph值","放流槽_ph值","放流槽_水溫","放流槽_導電度","放流槽_COD");
         $datas = array($data1,$data2,$data3,$data4,$data5,$data6,$data7); 
