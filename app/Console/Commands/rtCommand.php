@@ -7,6 +7,7 @@ use ModbusMaster;
 use App\Models\Datas;
 use App\Models\Power;
 
+
 class rtCommand extends Command
 {
     /**
@@ -72,7 +73,7 @@ class rtCommand extends Command
                 }
             }
             else {
-                throw new Exception("設備斷訊");
+                throw new \Exception("設備斷訊");
             }
         } catch (\Exception $e) {
             // if power has ben cut off
