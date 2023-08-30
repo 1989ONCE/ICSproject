@@ -5,11 +5,9 @@
         </h2>
     </header>
     <script>
-        
 
         function oAuth2() {
         
-            
             var URL = 'https://notify-bot.line.me/oauth/authorize?';
             URL += 'response_type=code';
             URL += '&client_id=	Fmqcpg21ohTgNGSU6xo499';

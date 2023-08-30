@@ -9,12 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Group;
 use App\Models\User;
-//use Illuminate\Support\Facades\Auth;
-//use Illuminate\Support\Facades\Redirect;
-//use Illuminate\View\View;
-
 use Illuminate\Support\Facades\DB;
-
 use App\Http\Controllers\Auth;
 
 
@@ -30,15 +25,11 @@ class LineController extends Controller
     }  
 
     public function lineNotifyCallback(Request $request) {
-        //$username = request()->get('username');
+        
         $username = $request->input('name');
         $code = request()->get('code');
         $callbackUrl = "http://localhost/ICSproject/public/profile/linetest";
 
-        //\DB::statement("update admin_users set line_notify_auth_code='{$code}' where username='{$username}'");
-
-        //LINE Access Token
-        //$this->getNotifyAccessToken1($username, $code, $callbackUrl);
         
         $responseData = Http::asForm()->post('https://notify-bot.line.me/oauth/token', [
             'code' => $code,
@@ -67,19 +58,17 @@ class LineController extends Controller
         ]);
 
         
-
-        //return redirect(route('profile.linetest'))->with('alert', ' 連動成功！' );
+        
         $groups = Group::get();
         return redirect(route('profile.edit',[
             'user' => $request->user(),
             'all_groups' => $groups,
         ]))->with('alert', ' 連動成功！' );
-        //session()->flash('status', '連動完成!');
-        //return redirect()->route('supervisor.setting');
+        
     }
 
     private function getNotifyAccessToken1($username, $code, $redirect_uri) {
-        // $admin = Administrator::where(['username'=>$username])->first();
+        
 
 
         $apiUrl = "https://notify-bot.line.me/oauth/token";
@@ -98,29 +87,20 @@ class LineController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
         $output = curl_exec($ch);
         curl_close($ch);
-        /**
-         * {
-         *      "status": 200,
-         *      "message": "access_token is issued",
-         *      "access_token": "7giNDfFWoAO1trYBA34YyfA6IZmazQoF4rmWSqrTtb3"
-         *  }
-         */
+        
         $result = json_decode($output, true);
         $token = $result['access_token'];
-        //\DB::statement("update users set line_notify_token='{$token}' where username='{$username}'");
+        
 
         $alarm = DB::table('users')->where('name',$username)-> update([
             'line_token' => $token
         ]);
 
 
-
-
     }
 
     private function getNotifyAccessToken($username, $code, $redirect_uri) {
-        // $admin = Administrator::where(['username'=>$username])->first();
-
+        
     
         // 獲取 access_token
         $responseData = Http::asForm()->post('https://notify-bot.line.me/oauth/token', [
