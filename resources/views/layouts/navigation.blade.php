@@ -1,13 +1,13 @@
-<nav x-data="{ open: false }" class="sticky top-0 z-10 bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="w-full max-w-fit sticky top-0 z-10 bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+    <div class="w-screen max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="w-full flex justify-between h-16">
             <!-- Left Navbar -->
-            <div class="flex pr-4">
+            <div class="flex">
                 <!-- Logo -->
                 <div class="w-[60px] shrink-0 flex items-center">
                     <a href="/" class="flex justify-center">
-                        <img src="{{ asset('img/logo.png') }}" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <img src="{{ asset('img/logo.png') }}"/>
                     </a>
                 </div>
 
@@ -33,7 +33,7 @@
                         Warning Management
                     </x-nav-link>
                 </div>
-                <div class="w-fit min-w-fit relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
+                <div class="min-w-fit relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
                     <x-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show') || request()->routeIs('profile.edit') || request()->routeIs('profile.group') || request()->routeIs('profile.model')">
                         個人中心</br>
                         Personal Info
@@ -78,7 +78,7 @@
                 @else
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="h-16 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                        <button class="h-16 inline-flex items-center pl-3 pr-6 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">

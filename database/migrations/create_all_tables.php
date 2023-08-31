@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('model_name');
             $table->string('model_loc')->nullable();
             $table->double('accuracy')->nullable();
+            $table->double('added_on')->nullable();
         });
         Schema::create('notifies', function (Blueprint $table) {
             $table->id('notify_id');

@@ -25,12 +25,13 @@
         <script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/flowbite.min.js') }}"></script>
     </head>
-    <body class="font-sans antialiased flex justify-center">
+    <body class="w-fit font-sans antialiased flex justify-center">
         <div class="min-h-screen bg-white dark:bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Content -->
             <main class="border-x border-gray-100 rounded">
+            
                 {{ $slot }}
                 {{ $scripts }}
             </main>

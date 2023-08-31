@@ -10,7 +10,7 @@ class Ai_model extends Model
     use HasFactory;
 
     protected $fillable = [
-        'model_id', 'model_name', 'model_loc', 'accuracy'
+        'model_id', 'model_name', 'model_loc', 'accuracy', 'added_on'
     ];
     public $timestamps = false; 
     // laravel database migration has default columns called “updated_at” and “created_at”, if we don’t want such data column, set public $timestamp in Models to false would work.

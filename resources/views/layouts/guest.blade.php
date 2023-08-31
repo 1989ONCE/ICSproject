@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white dark:bg-gray-900">
+        <div class="min-h-screen flex flex-col justify-center items-center bg-white dark:bg-gray-900">
             <div class="w-48">
                 <a href="/" class="flex justify-center">
                     <img src="{{ asset('img/logo.png') }}" class="w-full" />
@@ -27,5 +27,5 @@
             </div>
         </div>
     </body>
-    <footer>@include('layouts.footer')</footer>
+    <footer class="fixed bottom-0 right-0">@include('layouts.footer')</footer>
 </html>
