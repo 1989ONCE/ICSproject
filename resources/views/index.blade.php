@@ -7,56 +7,58 @@
         <meta charset="UTF-8">
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        <div class="h-screen grid content-center scrollbar-hide"> 
-            <div class="flex bg-white justify-center">
-                <a href="/" class="link">
-                    <img class="object-scale-down h-60 w-120 mb-16" src="{{ asset('img/biglogo.png') }}" alt="Logo">
+    <body class="h-screen overflow-x-hidden bg-white grid content-center my-auto">
+        <div class="flex flex-col h-full max-w-full my-auto"> 
+            <div class="flex justify-center items-center bg-white py-5">
+                <a href="/" class="link relative mt-auto">
+                    <img class="object-scale-down h-60" src="{{ asset('img/biglogo.png') }}" alt="Logo">
                 </a>
             </div>
             
-            <div class="flex flex-row h-44 outline-none">
-                <div style="background-image: url({{ asset('img/warning.png') }})" class="box flex-1 relative cursor-pointer text-white text-2xl font-bold text-center focus:outline-none transform transition-all duration-300 hover:scale-110 z-10">
+            <div class="flex flex-col md:flex-row h-44 outline-none">
+                <div style="background-image: url({{ asset('img/warning.png') }})" class="flex-1 relative cursor-pointer text-white text-2xl font-bold text-center focus:outline-none transform transition-all duration-300 hover:scale-110 hover:z-10 z-0">
                     <div class="overlay relative top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center backdrop-blur-md">
                         <a href="{{route('warning')}}" class="w-full h-full flex justify-center items-center hover:text-sky-300">告警管理</a>
                     </div>
                 </div>
 
-                <div style="background-image: url({{ asset('img/realtime.png') }})" class="box flex-1 relative cursor-pointer text-white text-2xl font-bold text-center focus:outline-none transform transition-all duration-300 hover:scale-110">
+                <div style="background-image: url({{ asset('img/realtime.png') }})" class="flex-1 relative cursor-pointer text-white text-2xl font-bold text-center focus:outline-none transform transition-all duration-300 hover:scale-110 hover:z-10 z-0">
                     <div class="overlay relative top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center backdrop-blur-md">
                         <a href="{{route('rt')}}" class="link w-full h-full flex justify-center items-center hover:text-sky-300">即時資料</a>
                     </div>
                 </div>
 
-                <div style="background-image: url({{ asset('img/chart.png') }})" class="box flex-1 relative cursor-pointer text-white text-2xl font-bold text-center focus:outline-none transform transition-all duration-300 hover:scale-110 z-10">
+                <div style="background-image: url({{ asset('img/chart.png') }})" class="flex-1 relative cursor-pointer text-white text-2xl font-bold text-center focus:outline-none transform transition-all duration-300 hover:scale-110 hover:z-10 z-0">
                     <div class="overlay relative top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center backdrop-blur-md">
                         <a href="{{route('chart')}}" class="link w-full h-full flex justify-center items-center hover:text-sky-300">歷史報表</a>
                     </div>
                 </div>
                 @guest
-                <div style="background-image: url({{ asset('img/login.png') }})" class="box flex-1 relative cursor-pointer text-white text-2xl font-bold text-center transform-none focus:outline-none transform transition-all duration-300 hover:scale-110 -translate-x-4">
+                <div style="background-image: url({{ asset('img/login.png') }})" class="flex-1 relative cursor-pointer text-white text-2xl font-bold text-center transform-none focus:outline-none transform transition-all duration-300 hover:scale-110 hover:z-10 z-0">
                     <div class="overlay relative top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center backdrop-blur-md">
                         <a href="{{route('login')}}" class="link w-full h-full flex justify-center items-center hover:text-sky-300">登入/註冊</a>
                     </div>
                 </div>
                 @else
-                <div style="background-image: url({{ asset('img/info.png') }})" class="box flex-1 relative cursor-pointer text-white text-2xl font-bold text-center transform-none focus:outline-none transform transition-all duration-300 hover:scale-110">
+                <div style="background-image: url({{ asset('img/info.png') }})" class="flex-1 relative cursor-pointer text-white text-2xl font-bold text-center transform-none focus:outline-none transform transition-all duration-300 hover:scale-110 hover:z-10 z-0">
                     <div class="overlay relative top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center backdrop-blur-md">
                         <a href="{{route('profile.edit')}}" class="link w-full h-full flex justify-center items-center hover:text-sky-300">個人中心</a>
                     </div>
                 </div>
-                <div style="background-image: url({{ asset('img/login.png') }})" class="box flex-1 relative cursor-pointer text-white text-2xl font-bold text-center  transform-none focus:outline-none transform transition-all duration-300 hover:scale-110 -translate-x-4">
+                <div style="background-image: url({{ asset('img/login.png') }})" class="flex-1 relative cursor-pointer text-white text-2xl font-bold text-center  transform-none focus:outline-none transform transition-all duration-300 hover:scale-110 hover:z-10 z-0">
                     <div class="overlay relative top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center backdrop-blur-md">
                         <a href="{{route('logout')}}" class="link w-full h-full flex justify-center items-center hover:text-sky-300">登出</a>
                     </div>
                 </div>
                 @endguest
             </div>
+            
+            <footer class="relative lg:absolute bottom-0 place-self-center bg-white z-10 w-full">
+                <div class="flex justify-center">
+                    <span class="font-serif text-xs text-gray-400">© 2023 NCU MIS ICS Team All Rights Reserved</span>
+                </div>
+            </footer>
         </div>
     </body>
-    <footer class="flex justify-center">
-        <div class="absolute bottom-0 px-2">
-            <span class="font-serif text-xs text-gray-400">© 2023 NCU MIS ICS Team All Rights Reserved</span>
-        </div>
-    </footer>
+    
 </html>
