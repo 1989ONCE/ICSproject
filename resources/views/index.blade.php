@@ -8,12 +8,13 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="h-screen overflow-x-hidden bg-white grid content-center my-auto">
-        <div class="flex flex-col h-full max-w-full my-auto"> 
-            <div class="flex justify-center items-center bg-white py-5">
+        <div class="flex flex-col h-full max-w-full my-auto">
+            <div class="flex justify-center items-start lg:items-center bg-white py-5">
                 <a href="/" class="link relative mt-auto">
                     <img class="object-scale-down h-60" src="{{ asset('img/biglogo.png') }}" alt="Logo">
                 </a>
             </div>
+
             
             <div class="flex flex-col md:flex-row h-44 outline-none">
                 <div style="background-image: url({{ asset('img/warning.png') }})" class="flex-1 relative cursor-pointer text-white text-2xl font-bold text-center focus:outline-none transform transition-all duration-300 hover:scale-110 hover:z-10 z-0">
