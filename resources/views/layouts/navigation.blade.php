@@ -1,19 +1,19 @@
-<nav x-data="{ open: false }" class="w-full max-w-fit sticky top-0 z-10 bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700">
+<nav class="flex justify-between lg:justify-self-stretch mb-10 sticky top-0 z-20 dark:bg-gray-800 border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="w-screen max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="w-full flex justify-between h-16">
+    <div class="w-full">
+        <div class="w-full min-w-screen flex justify-between h-16">
             <!-- Left Navbar -->
-            <div class="flex">
+            <div class="flex min-w-fit">
                 <!-- Logo -->
-                <div class="w-[60px] shrink-0 flex items-center">
-                    <a href="/" class="flex justify-center">
-                        <img src="{{ asset('img/logo.png') }}"/>
+                <div class="flex pr-2">
+                    <a href="/" class="flex">
+                        <img class="object-cover" src="{{ asset('img/logo.png') }}"/>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
 
-                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-4 sm:flex hover:bg-indigo-50">
+                <div class="relative hidden lg:flex pr-2 text-center sm:-my-px sm:ml-4 hover:bg-indigo-50">
                     <x-nav-link :href="route('rt')" :active="request()->routeIs('rt') || request()->routeIs('predData')">
                         即時資料</br>
                         Realtime Data
@@ -21,19 +21,19 @@
                 </div>
                 @guest
                 @else
-                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
+                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 hover:bg-indigo-50">
                     <x-nav-link :href="route('chart')" :active="request()->routeIs('chart')">
                         歷史報表</br>
                         Historical Report
                     </x-nav-link>
                 </div>
-                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
+                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 hover:bg-indigo-50">
                     <x-nav-link :href="route('warning')" :active="request()->routeIs('warning') || request()->routeIs('status') || request()->routeIs('power') || request()->routeIs('warning.check') || request()->routeIs('warn.search') ||request()->routeIs('warning.edit') || request()->routeIs('warning.group') || request()->routeIs('warning.query') || request()->routeIs('add')">
                         告警管理</br>
                         Warning Management
                     </x-nav-link>
                 </div>
-                <div class="min-w-fit relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 sm:flex hover:bg-indigo-50">
+                <div class="relative hidden lg:flex px-2 text-center space-x-8 sm:-my-px sm:ml-10 hover:bg-indigo-50">
                     <x-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show') || request()->routeIs('profile.edit') || request()->routeIs('profile.group') || request()->routeIs('profile.model')">
                         個人中心</br>
                         Personal Info
@@ -45,7 +45,7 @@
             <!-- Right Navbar -->
             <div class="justify-items-start sm:flex sm:items-center sm:ml-6">
                 <!-- current time -->
-                <div class="w-[360px] relative hidden lg:flex items-center ml-auto flex items-center justify-end bg-white text-black font-bold rounded-md">
+                <div class="min-w-fit relative hidden lg:flex items-center ml-auto flex items-center justify-end bg-white text-black font-bold rounded-md">
                     <span id="clock" class="text-sm text-gray-500">現在時間:</span>
                 </div>
                 <script>

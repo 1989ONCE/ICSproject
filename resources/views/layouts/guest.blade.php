@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="w-screen min-h-screen overflow-x-hidden bg-white grid content-center my-auto font-sans text-gray-900 antialiased">
-        <div class="h-full flex flex-col justify-center items-center bg-white dark:bg-gray-900 h-full overflow-x-hidden overflow-y-auto">
+        <div class="h-full flex flex-col justify-center items-center bg-white dark:bg-gray-900 overflow-x-hidden overflow-y-auto">
             <div class="w-72">
                 <a href="/" class="flex justify-center">
                     <img src="{{ asset('img/logo.png') }}" class="w-full" />

@@ -25,20 +25,18 @@
         <script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/flowbite.min.js') }}"></script>
     </head>
-    <body class="w-fit h-screen font-sans antialiased flex flex-col justify-center">
-        <div class="flex flex-col h-screen justify-between w-full bg-white dark:bg-gray-900">
-            <div class="h-full grid content-start">
-	    	@include('layouts.navigation')
-
-            	<!-- Page Content -->
-            	<main class="border-x border-gray-100 rounded">
-            
-                	{{ $slot }}
-                	{{ $scripts }}
-            	</main>
+    <body class="w-screen min-h-screen overflow-x-hidden bg-white grid content-start my-auto font-sans text-gray-900 antialiased">
+        <div class="w-full h-full flex flex-col items-center dark:bg-gray-900 overflow-x-auto overflow-y-auto">
+            <div class="min-w-fit grid content-center place-items-center">
+                @include('layouts.navigation')
+                <!-- Page Content -->
+                <main class="w-full">
+                    {{ $slot }}
+                    {{ $scripts }}
+                </main>
             </div>
         </div>
-        <footer class="sticky bottom-0 right-0">@include('layouts.footer')</footer>
+        <footer class="sticky top-[100vh] z-10 w-full">@include('layouts.footer')</footer>
     </body>
 
 </html>

@@ -54,7 +54,7 @@
                 </div>
                 @endguest
             </div>
-       	    </div>
+       	  </div>
      
             <footer class="sticky top-[100vh] z-10 w-full">
                 <div class="flex justify-center">
