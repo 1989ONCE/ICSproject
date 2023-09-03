@@ -9,7 +9,7 @@
     </head>
     <body class="w-screen min-h-screen overflow-x-hidden bg-white grid content-start md:content-center my-auto">
         <div class="flex flex-col h-screen justify-between w-full">
-          <div class="h-full grid content-centent overflow-x-hidden overflow-y-scroll">
+          <div class="h-full grid content-centent overflow-x-hidden overflow-y-auto">
             <div class="flex justify-center items-start lg:items-center bg-white">
                 <a href="/" class="link relative mt-auto">
                     <img class="object-scale-down" src="{{ asset('img/biglogo.png') }}" alt="Logo">
@@ -17,7 +17,7 @@
             </div>
 
              
-            <div class="flex flex-col md:flex-row h-full md:h-44 max-h-screen outline-none">
+            <div class="flex flex-col md:flex-row h-full md:h-48 max-h-screen outline-none">
                 <div style="background-image: url({{ asset('img/warning.png') }})" class="h-auto flex-1 relative cursor-pointer text-white text-2xl font-bold text-center focus:outline-none transform transition-all duration-300 hover:scale-110 hover:z-10 z-0">
                     <div class="overlay relative top-0 left-0 w-full h-full bg-black bg-opacity-25 flex justify-center items-center backdrop-blur-md">
                         <a href="{{route('warning')}}" class="w-full h-full flex justify-center items-center hover:text-sky-300">告警管理</a>
@@ -58,7 +58,7 @@
      
             <footer class="sticky top-[100vh] z-10 w-full">
                 <div class="flex justify-center">
-                    <span class="font-serif text-xs text-gray-400">© 2023 NCU MIS ICS Team All Rights Reserved</span>
+                    <span class="font-serif text-sm text-gray-400">© 2023 NCU MIS ICS Team All Rights Reserved</span>
                 </div>
             </footer>
         </div>

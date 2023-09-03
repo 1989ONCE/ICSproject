@@ -14,18 +14,18 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col justify-center items-center bg-white dark:bg-gray-900">
-            <div class="w-48">
+    <body class="w-screen min-h-screen overflow-x-hidden bg-white grid content-center my-auto font-sans text-gray-900 antialiased">
+        <div class="h-full flex flex-col justify-center items-center bg-white dark:bg-gray-900 h-full overflow-x-hidden overflow-y-auto">
+            <div class="w-72">
                 <a href="/" class="flex justify-center">
                     <img src="{{ asset('img/logo.png') }}" class="w-full" />
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-indigo-100 dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-6 py-4 px-6 bg-indigo-100 dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>
+        <footer class="sticky top-[100vh] z-10 w-full">@include('layouts.footer')</footer>
     </body>
-    <footer class="fixed bottom-0 right-0">@include('layouts.footer')</footer>
 </html>
