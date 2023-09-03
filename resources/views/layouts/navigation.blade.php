@@ -1,4 +1,4 @@
-<nav class="flex justify-between lg:justify-self-stretch mb-10 sticky top-0 z-20 dark:bg-gray-800 border-gray-100 dark:border-gray-700">
+<nav class="flex justify-between xl:justify-self-stretch mb-10 sticky top-0 z-20 dark:bg-gray-800 border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="w-full">
         <div class="w-full min-w-screen flex justify-between h-16">
@@ -45,7 +45,7 @@
             <!-- Right Navbar -->
             <div class="justify-items-start sm:flex sm:items-center sm:ml-6">
                 <!-- current time -->
-                <div class="min-w-fit relative hidden lg:flex items-center ml-auto flex items-center justify-end bg-white text-black font-bold rounded-md">
+                <div class="min-w-fit relative hidden xl:flex items-center ml-auto flex items-center justify-end bg-white text-black font-bold rounded-md">
                     <span id="clock" class="text-sm text-gray-500">現在時間:</span>
                 </div>
                 <script>
@@ -90,16 +90,16 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link class="relative visible sm:hidden" :href="route('rt')">
+                        <x-dropdown-link class="relative visible lg:hidden" :href="route('rt')">
                                 {{ __('即時資料 Realtime Data') }}
                         </x-dropdown-link>
-                        <x-dropdown-link class="relative visible sm:hidden" :href="route('chart')">
+                        <x-dropdown-link class="relative visible lg:hidden" :href="route('chart')">
                                 {{ __('歷史報表 Historical Chart') }}
                         </x-dropdown-link>
-                        <x-dropdown-link class="relative visible sm:hidden" :href="route('warning')">
+                        <x-dropdown-link class="relative visible lg:hidden" :href="route('warning')">
                                 {{ __('告警管理 Warning Management') }}
                         </x-dropdown-link>
-                        <x-dropdown-link class="relative visible sm:hidden" :href="route('profile.show')">
+                        <x-dropdown-link class="relative visible lg:hidden" :href="route('profile.show')">
                                 {{ __('個人中心 Personal Info') }}
                         </x-dropdown-link>
                         <!-- Authentication -->

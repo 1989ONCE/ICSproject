@@ -26,7 +26,7 @@
 	</script>
 </x-slot>
 <!-- Sidebar -->
-<aside class="h-screen pt-16 fixed overflow-y-auto overflow-x-hidden text-gray-900 pl-24">
+<aside class="xl:h-screen xl:pt-16 xl:fixed overflow-y-auto overflow-x-hidden text-gray-900 pl-0 xl:pl-24">
 	<div class="flex flex-col">
 		<nav class="flex w-full rounded-lg border border-gray-300 shadow overflow-x-hidden">
 			<div class="flex flex-col pb-4">

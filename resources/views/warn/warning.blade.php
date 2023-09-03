@@ -3,14 +3,14 @@
 
   <x-slot name="scripts"><x-slot>
 
-  <div class="flex flex-row ">
+  <div class="grid justify-items-center xl:flex xl:flex-row">
       @include('warn.partials.sidebar')
       
       <!-- Main content -->
-      <main class="ml-[250px] mt-2 w-[900px] flex flex-row">
-        <div class="container max-w-4xl px-4 mx-auto sm:px-8">
+      <main class="pl-4 pr-2 ml-0 xl:ml-[250px] mt-2 w-fit min-w-48 xl:w-[900px] flex flex-row overflow-x-auto items-center">
+        <div class="container w-fit max-w-4xl">
 			    <h1 class="text-3xl font-bold pt-2 pb-4">新增告警</h1>
-          <form class="w-[600px] px-8 pt-8 pb-4 rounded-md shadow-md bg-sky-100" method="POST" action="{{ route('alarms.store') }}">
+          <form class="w-fit xl:w-[600px] px-8 pt-8 pb-1 rounded-md shadow-md bg-sky-100" method="POST" action="{{ route('alarms.store') }}">
             @csrf
 
             <!-- alarm_type -->
@@ -84,7 +84,7 @@
 
         </div>
         <!-- right sidebar - people selection -->
-          <div class="flex justify-end pl-24">
+          <div class="flex jusity-start xl:justify-end ml-3 xl:pl-56">
               @include('warn.partials.r-sidebar')
           </div>
         </form>
