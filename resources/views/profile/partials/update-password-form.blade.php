@@ -37,7 +37,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
+                >{{ __('密碼修改成功！') }}</p>
             @endif
         </div>
     </form>

@@ -1,6 +1,6 @@
 <!-- component -->
-<div class="w-full h-96 p-4 sm:p-8 dark:bg-gray-800 shadow sm:rounded-lg grid place-items-center ">
-    <div class="flex flex-row">
+<div class="w-full h-fit p-4 sm:p-8 dark:bg-gray-800 shadow sm:rounded-lg grid place-items-center ">
+    <div class="flex flex-col xl:flex-row items-center">
         <div class="w-5/12 grid justify-items-center mx-8 flex flex-col">
             <div class="bg-white flex flex-row grid place-content-center">
                 @if($user->avatar == null)
@@ -85,31 +85,31 @@
         <div class="w-8/12 bg-white flex flex-col space-y-2 p-3">
             <div class="flex flex-row flex items-center">
                 <p class="w-40 md:text-lg text-gray-500 text-base">員工識別號</br> Badge Number： </p>
-                <div class="bg-sky-200 w-fit py-1 px-2 m-1 rounded-full">
+                <div class="bg-sky-200 w-28 min-w-fit py-1 px-2 m-1 rounded-full">
                     <span class="font-normal text-sky-900 text-base flex justify-center underline underline-offset-2 hover:text-gray-500"># {{$user->Badge_num}}</span>
                 </div>
             </div>
             <div class="flex flex-row flex items-center">
                 <p class="w-40 md:text-lg text-gray-500 text-base">信箱 Email： </p>
-                <div class="bg-sky-200 w-fit py-1 px-2 m-1 rounded-full">
+                <div class="bg-sky-200 min-w-fit py-1 px-2 m-1 rounded-full">
                     <span class="font-normal text-sky-900 text-base flex justify-center underline underline-offset-2 hover:text-gray-500">{{$user->email}}</span>
                 </div>
             </div>
             <div class="flex flex-row flex items-center">
                 <p class="w-40 md:text-lg text-gray-500 text-base">手機 Phone： </p>
-                <div class="bg-sky-200 w-28 p-1 m-1 rounded-full">
+                <div class="bg-sky-200 w-28 min-w-fit p-1 m-1 rounded-full">
                     <span class="font-normal text-sky-900 text-base flex justify-center underline underline-offset-2 hover:text-gray-500">{{$user->phone}}</span>
                 </div>
             </div>
             <div class="flex flex-row flex items-center">
                 <p class="w-40 md:text-lg text-gray-500 text-base">職位 Position： </p>
-                <div class="bg-sky-200 w-28 p-1 m-1 rounded-full">
+                <div class="bg-sky-200 w-28 min-w-fit p-1 m-1 rounded-full">
                     <span class="font-normal text-sky-900 text-base flex justify-center underline underline-offset-2 hover:text-gray-500">{{$user->group->group_name}}</span>
                 </div>
             </div>
             <div class="flex flex-row flex items-center">
                 <p class="w-40 md:text-lg text-gray-500 text-base">權限 Authority: </p>
-                <div class="bg-sky-200 w-28 p-1 m-1 rounded-full">
+                <div class="bg-sky-200 w-28 min-w-fit p-1 m-1 rounded-full">
                     <span class="font-normal text-sky-900 text-base flex justify-center underline underline-offset-2 hover:text-gray-500">Admin</span>
                 </div>
             </div>

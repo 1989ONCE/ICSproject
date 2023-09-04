@@ -1,9 +1,10 @@
 <x-slot name="scripts"></x-slot>
 <!-- Sidebar -->
-<aside class="h-screen fixed top-16 overflow-y-auto text-gray-900 flex flex-col w-[210px]">
-    <div class="py-2" />
+<aside class="min-w-fit border-b-4 border-sky-600 top-0 xl:top-16 xl:border-b-0 mx-2 h-fit xl:h-screen xl:fixed overflow-y-auto text-gray-900 flex flex-col items-center xl:items-start w-fit xl:w-[210px]">
+    <div class="py-2"></div>
+    <div>
     <!-- User profile -->
-        <div class="flex items-center my-8 px-4">
+        <div class="flex items-center mb-8 px-4">
             @if($user->avatar == null)
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -16,7 +17,8 @@
                 <div class="text-xs font-medium text-gray-800 hover:text-sky-500 hover:underline underline-offset-2"><a href="#">Admin</a></div>
             </div>
         </div>
-
+    </div>
+    <div class="flex flex-row xl:flex-col">
     <!-- Navigation links -->
         <a href="{{route('profile.show')}}" class="flex items-center py-2 px-4 font-normal text-gray-900 text-xl hover:bg-gray-100 hover:border-l-4 hover:border-sky-400 hover:rounded-r-lg @if(request()->routeIs('profile.show')) active text-indigo-950 font-medium bg-gray-200 rounded-r-lg else '' @endif ">              
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
@@ -43,4 +45,5 @@
         </svg>
         登出
         </a>
+    </div>
 </aside>

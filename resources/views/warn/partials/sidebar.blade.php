@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <aside class="border-b-4 border-sky-600 top-0 xl:top-16 xl:border-b-0 mx-2 h-24 xl:h-screen xl:fixed overflow-y-auto text-gray-900 flex flex-row xl:flex-col w-fit xl:w-[210px]">
-    <div class="py-8"></div>
+    <div class="py-2"></div>
     <!-- Navigation links -->
         <a href="{{route('warning')}}" class="flex items-center py-2 px-4 font-normal text-gray-900 text-sm hover:bg-gray-100 hover:border-b-4 xl:hover:border-b-0 xl:hover:border-l-4 hover:border-sky-400 hover:rounded-r-lg @if(request()->routeIs('warning'))) active text-indigo-950 font-medium bg-gray-200 rounded-r-lg border-b-4 xl:border-b-0 xl:border-l-4 border-sky-600 else '' @endif ">              
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
