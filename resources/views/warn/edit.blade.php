@@ -3,14 +3,14 @@
 
     <x-slot name="scripts"></x-slot>
 
-    <div class="flex flex-row">
+    <div class="grid justify-items-center xl:flex xl:flex-row">
         @include('warn.partials.sidebar')
       
         <!-- Main content -->
-        <main class="mx-[250px] mt-2 w-9/12">
-            <div class="container px-4">
+        <main class="pl-4 pr-2 ml-0 xl:ml-[250px] mt-2 w-fit min-w-48 xl:w-[900px] flex flex-row overflow-x-auto items-center">
+            <div class="container w-fit max-w-4xl">
                 <h1 class="text-3xl font-bold pt-2 pb-4">修改告警</h1>
-                <form class="w-[600px] px-8 px-8 pt-8 pb-4 rounded-md shadow-md bg-sky-100" method="POST" action="{{ route('warn.update',['id'=>$alarm->alarm_id]) }}">
+                <form class="w-fit xl:w-[600px] px-8 pt-8 pb-1 rounded-md shadow-md bg-sky-100" method="POST" action="{{ route('warn.update',['id'=>$alarm->alarm_id]) }}">
                     @csrf
                     @method('patch')        
 

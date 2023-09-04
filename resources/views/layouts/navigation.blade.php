@@ -13,7 +13,7 @@
 
                 <!-- Navigation Links -->
 
-                <div class="relative hidden lg:flex pr-2 text-center sm:-my-px sm:ml-4 hover:bg-indigo-50">
+                <div class="relative hidden lg:flex px-2 text-center sm:-my-px sm:ml-4 hover:bg-indigo-50">
                     <x-nav-link :href="route('rt')" :active="request()->routeIs('rt') || request()->routeIs('predData')">
                         即時資料</br>
                         Realtime Data

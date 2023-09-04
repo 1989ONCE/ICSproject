@@ -4,11 +4,11 @@
     
     <x-slot name="scripts"></x-slot>
 
-    <div class="flex">
+    <div class="grid justify-items-center xl:flex xl:flex-row overflow-y-auto">
         @include('warn.partials.sidebar')
         <!-- Main content -->
-        <main class="mx-[250px] mt-8 w-9/12">
-            <div class="flex flex-row gap-6">
+        <main class="pl-8 pr-2 ml-0 xl:ml-[250px] mt-2 w-fit min-w-48 xl:w-[900px] flex flex-col overflow-x-auto place-items-start">
+            <div class="flex flex-row gap-0 xl:gap-6">
                 <a href="{{route('warning.group')}}">
                     <button type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -17,17 +17,17 @@
                     </button>
                 </a>
                 @if (session('success'))
-                    <div class="px-2 h-8 bg-emerald-500 text-white leading-tight rounded-lg grid place-items-center text-sm" role="alert">
+                    <div class="ml-2 px-2 h-8 bg-emerald-500 text-white leading-tight rounded-lg grid place-items-center text-sm" role="alert">
                         {{ session('success') }}
                     </div>
                 @endif 
                 @error('avatar')
-                    <div class="h-24 bg-rose-100 p-3 rounded-lg break-normal grid place-items-center text-s" role="alert">
+                    <div class="ml-2 h-24 bg-rose-100 p-3 rounded-lg break-normal grid place-items-center text-s" role="alert">
                         <strong>{{ $message }}</strong>
                     </div>
                  @enderror
             </div>
-            <div class="flex flex-row mt-4 fixed gap-10 h-[600px]">
+            <div class="flex flex-col xl:flex-row mt-4 gap-10 h-[600px]">
                 <div class="w-[400px] flex flex-col px-4">
                     <h2 class="text-xl font-bold leading-tight pb-4">
                         已有人員

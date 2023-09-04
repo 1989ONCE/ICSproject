@@ -1,12 +1,12 @@
 
 @section('title', '告警列表')
 <x-app-layout>
-    <div class="flex flex-row">
+    <div class="grid justify-items-center xl:flex xl:flex-row">
         @include('warn.partials.sidebar')
         <!-- Main content -->
-        <main class="mx-[250px] mt-2 w-9/12">
-            <div class="container max-w-4xl px-4 mx-auto sm:px-8 grid content-center">
-                <div class="pt-2">
+        <main class="ml-10 xl:ml-[250px] mt-2 w-fit min-w-48 xl:w-[900px] flex flex-row overflow-x-auto items-center">
+            <div class="container w-fit max-w-4xl">
+                <div class="w-full min-w-fit pt-2">
                     <div class="flex flex-row justify-between w-full mb-1 sm:mb-0">
                         <h2 class="text-3xl font-bold leading-tight">
                             告警列表
