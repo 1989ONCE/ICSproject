@@ -59,7 +59,8 @@ class WarnController extends Controller
 
     public function export() 
     {
-        return Excel::download(new PowersExport, 'power_status.xlsx');
+        $currentDate = date('Y-m-d');
+        return Excel::download(new PowersExport, 'power_status_'.$currentDate.'.xlsx');
     }
 
     /**

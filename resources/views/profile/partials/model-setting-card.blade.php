@@ -8,11 +8,11 @@
     <ul class="flex flex-col gap-4">
             <li class="flex items-center gap-4">
                 <p class="block text-base font-normal leading-relaxed text-black antialiased ml-4">
-                    模型：    
+                    模型：
                     @if($m->model_loc == null)
                         <span class="text-sky-800 text-sm font-bold">無設定模型</span>
                     @elseif($m->model_loc)
-                        <h5 class="text-sky-700 font-bold">{{$m->model_loc}}</h5>
+                        <span class="block text-sky-700 font-bold">{{$m->model_loc}}</sapi_windows_cp_conv>
                     @endif    
                 </p>
                                 
@@ -29,6 +29,17 @@
                         <h5 class="text-red-600 font-bold">{{$m->accuracy}}</h5>
                     @else
                         <h5 class="text-green-600 font-bold">{{$m->accuracy}}</h5>
+                    @endif
+                </p>
+            </li>
+
+            <li class="flex items-center gap-4">
+                <p class="block text-base font-normal leading-relaxed text-black antialiased ml-4">
+                    上傳日期：
+                    @if($m->added_on == null)
+                        <span class="text-cyan-800 text-sm font-bold">———</span>
+                    @else
+                        <h5 class="text-green-600 font-bold">{{$m->added_on}}</h5>
                     @endif
                 </p>
             </li>

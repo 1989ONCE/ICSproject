@@ -18,12 +18,14 @@ class ChartController extends Controller
 
     public function export() 
     {
-        return Excel::download(new DatasExport, 'historical_report.xlsx');
+        $currentDate = date('Y-m-d');
+        return Excel::download(new DatasExport, 'historical_report_'.$currentDate.'.xlsx');
     }
 
     public function export2() 
     {
-        return Excel::download(new DrugsExport, 'drug_report.xlsx');
+        $currentDate = date('Y-m-d');
+        return Excel::download(new DrugsExport, 'drug_report_'.$currentDate.'.xlsx');
     }
 
     // generate linechart

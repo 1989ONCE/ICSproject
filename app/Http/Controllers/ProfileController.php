@@ -56,6 +56,7 @@ class ProfileController extends Controller
 
     public function upload(ProfileUpdateRequest $request): RedirectResponse
     {
+        $currentDate = date('Y-m-d');
         $model_id = $request->id;
         $model = Ai_model::where('model_id', $model_id)->first();
 
@@ -69,14 +70,14 @@ class ProfileController extends Controller
         ]);
 
         // get file name
-        $loc = $request->file('loc')->getClientOriginalName();
+        $loc = $currentDate.'_'.$request->file('loc')->getClientOriginalName();
 
         // validate file extension
         $ext = pathinfo($loc);
         $accepted_ext = Array('pkl','pickle');
         if(in_array($ext['extension'], $accepted_ext)){
             $request->loc->move(public_path('models'), $loc);
-            Ai_model::where('model_id', $model_id)->update(['model_loc'=>$loc]);
+            Ai_model::where('model_id', $model_id)->update(['model_loc'=>$loc, 'added_on'=>$currentDate]);
             return back()->with('success', strtoupper($model->model_name). ' Model updated successfully.');
         }
         else{
