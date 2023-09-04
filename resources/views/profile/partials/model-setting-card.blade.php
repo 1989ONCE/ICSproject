@@ -1,4 +1,4 @@
-<div class="relative h-fit flex w-full max-w-[20rem] flex-col mb-4 mx-10 rounded-xl text-white shadow-md shadow-teal-500/40">
+<div class="relative h-fit flex w-full max-w-[20rem] flex-col mb-4 ml-10 rounded-xl text-white shadow-md shadow-teal-500/40">
   <div class="relative -translate-x-4 m-0 mb-4 rounded-none bg-clip-border border-b border-white/10 text-gray-700 shadow-none">
     <h2 class="inline-block select-none whitespace-nowrap rounded-lg bg-sky-500 py-2 px-3.5 font-sans text-lg font-bold uppercase leading-none text-white">
         {{$m->model_name}}

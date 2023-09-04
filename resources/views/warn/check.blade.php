@@ -107,7 +107,7 @@
                                                 {{$alarm->alarm_num}}
                                             </p>
                                         </td>
-                                        <td class="px-5 py-5 text-sm border-b border-gray-200 flex justify-center">
+                                        <td class="px-5 py-5 text-sm border-b border-gray-200 justify-center">
                                             @if($alarm->fk_notify_id==1)
                                                 @foreach($notifys as $notify)
                                                     @if($notify->notify_id != 1)
