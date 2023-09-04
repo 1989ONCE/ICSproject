@@ -73,6 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/model', [ProfileController::class, 'model'])->name('profile.model');
     Route::post('/profile/upload-model', [ProfileController::class, 'upload'])->name('profile.upload');
     Route::post('/profile/change-avatar', [ProfileController::class, 'change'])->name('profile.change');
+    Route::get('/profile/remove-avatar', [ProfileController::class, 'remove'])->name('profile.remove');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/linetest1', [LineController::class, 'show'])->name('profile.linetest');

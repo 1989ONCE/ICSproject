@@ -35,7 +35,7 @@
                                     legend: {
                                         top: 2,
                                         left: 200,
-                                        data: ['ph', 'temp', 'EC', 'COD']
+                                        data: ['pH', 'temp', 'EC', 'COD']
                                     },
                                     xAxis: {
                                         data: added_on
@@ -45,7 +45,7 @@
                                     },
                                     series: [
                                         {
-                                            name: 'ph',
+                                            name: 'pH',
                                             type: 'line',
                                             data: T01_15_ph
                                         },

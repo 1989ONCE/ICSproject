@@ -60,7 +60,8 @@ class ProfileController extends Controller
         $model = Ai_model::where('model_id', $model_id)->first();
 
         if($model->model_loc !== null){
-            unlink(public_path('models\\'. $model->model_loc));
+            $deleteModel =  public_path('models/') .$model->model_loc;
+            unlink($deleteModel);
             Ai_model::where('model_id', $model_id)->update(['model_loc'=> null]);
         }
         $request->validate([
@@ -136,7 +137,8 @@ class ProfileController extends Controller
     public function change(ProfileUpdateRequest $request): RedirectResponse
     {
         if($request->user()->avatar !== null){
-            unlink(public_path('avatars\\'. $request->user()->avatar));
+            $deleteImage =  public_path('avatars/') .$request->user()->avatar;
+            unlink($deleteImage);
             Auth()->user()->update(['avatar'=>null]);
         }
         $request->user()->fill($request->validate([
@@ -149,5 +151,19 @@ class ProfileController extends Controller
         Auth()->user()->update(['avatar'=>$avatarName]);
   
         return back()->with('success', 'Avatar updated successfully.');
+    }
+
+    public function remove(ProfileUpdateRequest $request): RedirectResponse
+    {
+        if($request->user()->avatar !== null){
+            $deleteImage =  public_path('avatars/') .$request->user()->avatar;
+            unlink($deleteImage);
+            Auth()->user()->update(['avatar'=>null]);
+            return back()->with('success', 'Avatar remove successfully.');
+        }
+        else{
+            return back()->with('success', "You haven't set up your avatar.");
+        }
+        
     }
 }
