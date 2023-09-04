@@ -13,30 +13,32 @@
                         current = data;
                         string = "";
                         string += 
-                        '<div class="grid grid-cols-3 table-row bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">' + 
-                            '<div class="table-cell h-full"><div class="border grid">' +
-                            '<div class="justify-self-center p-3 w-full lg:w-auto text-gray-800 text-center block relative lg:static">' + 
-                                current[i].power_id + '</div>' +
-                            '</div></div>';
+                        '<div class="table-row bg-white lg:hover:bg-gray-100 w-full lg:flex-no-wrap mb-10 lg:mb-0">' + 
+                            '<div class="table-cell">' +
+                                '<div class="justify-self-center p-3 w-full lg:w-auto text-gray-800 text-center block relative lg:static">' + 
+                                    current[i].power_id + 
+                                '</div>' +
+                            '</div>';
                             if(current[i].status == 1){
                                 string += 
-                                '<div class="table-cell h-full"><div class="border grid">' +
+                                '<div class="table-cell">' +
                                     '<div class="justify-self-center p-3 w-full lg:w-auto text-center text-emerald-700 font-medium block relative lg:static">' + 
                                     '訊號恢復</div>' +
-                                '</div></div>';
+                                '</div>';
                             }
                             else{
                                 string +=
-                                '<div class="table-cell h-full"><div class="border grid">' +
+                                '<div class="table-cell">' +
                                     '<div class="justify-self-center p-3 w-full lg:w-auto text-center text-red-600 font-semibold block relative lg:static">' + 
                                     '設備斷訊</div>' +
-                                '</div></div>';
+                                '</div>';
                             }
                             string += 
-                            '<div class="table-cell h-full"><div class="border grid">' +
+                            '<div class="table-cell">' +
                                 '<div class="justify-self-center p-3 w-full lg:w-auto text-gray-800 text-center block relative lg:static">' + 
-                                current[i].onofftime + '</div>' +
-                            '</div></div>' +
+                                current[i].onofftime + 
+                                '</div>' +
+                            '</div>' +
                         '</div>'  ;
                         document.getElementById("power").innerHTML += string;
                     }
@@ -59,6 +61,6 @@
                 <div class="px-2 font-bold uppercase bg-[#dedbff] text-gray-600 border-b border-gray-600 table-cell text-center align-middle">斷訊/恢復時間</div>
             </div>
         </div>
-        <div id="power" class="table-row-group">
+        <div id="power" class="table-row-group bg-blue-300">
         </div>
     </div>

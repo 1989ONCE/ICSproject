@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/linetest1', [LineController::class, 'show'])->name('profile.linetest');
     Route::any('/profile/linetest', [LineController::class, 'lineNotifyCallback'])->name('profile.lineconnect');
+    Route::delete('/profile/line', [LineController::class, 'lineDestroy'])->name('profile.lineDestroy');
 });
 
 

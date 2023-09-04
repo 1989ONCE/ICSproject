@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Group;
 use App\Models\User;
@@ -140,5 +141,17 @@ class LineController extends Controller
 
     }
 
+    /**
+     * Unlink Line Notify of the user's account.
+     */
+    public function lineDestroy(Request $request): RedirectResponse
+    {
+        $user = $request->user();
 
+        $user->line_token = null;
+
+        $user->save();
+
+        return Redirect::to('/profile/edit');
+    }
 }
