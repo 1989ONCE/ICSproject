@@ -8,18 +8,30 @@ use ModbusMaster;
 
 class Kernel extends ConsoleKernel
 {
+
+    /**
+     * The Artisan commands provided by your application.
+     *
+     * @var array
+     */
+    protected $commands = [
+        Commands\rtCommand::class,
+        Commands\pred::class,
+        Commands\alarmCommand::class,
+    ];
+
     /**
      * Define the application's command schedule.
      */
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('pred')->everyMinute();
+        $schedule->command('cron:pred')->everyMinute();
         $schedule->call(function(){
             info('call');
         })->everyMinute();
 
-        $schedule->command('alarm_send')->everyMinute();
+        $schedule->command('cron:alarm_send')->everyMinute();
     }
 
     /**
@@ -29,7 +41,7 @@ class Kernel extends ConsoleKernel
     protected function shortSchedule(\Spatie\ShortSchedule\ShortSchedule $shortSchedule): void
     {
         // this artisan command will run every second
-        $shortSchedule->command('rtdata')->everySecond();
+        $shortSchedule->command('cron:rtdata')->everySecond();
     }
 
     /**

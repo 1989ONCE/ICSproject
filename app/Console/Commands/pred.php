@@ -14,14 +14,14 @@ class pred extends Command
      *
      * @var string
      */
-    protected $signature = 'pred';
+    protected $signature = 'cron:pred';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Predict Data';
+    protected $description = 'Predict water quality per hour';
 
     /**
      * Execute the console command.

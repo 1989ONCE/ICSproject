@@ -20,14 +20,14 @@ class alarmCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'alarm_send';
+    protected $signature = 'cron:alarm_send';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Check whether water quality meets set standards, and send warning to users if it exceeds the limit(per minute).';
 
     /**
      * Execute the console command.

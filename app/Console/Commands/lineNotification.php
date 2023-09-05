@@ -12,14 +12,14 @@ class lineNotification extends Command
      *
      * @var string
      */
-    //protected $signature = 'app:line-notification';
-    protected $signature = 'line:notification';
+     protected $signature = 'line:notification';
+
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Warning';
+    protected $description = 'Respectively send notifications to specific users via Line App.';
 
     /**
      * Execute the console command.

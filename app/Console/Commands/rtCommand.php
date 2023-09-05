@@ -15,14 +15,14 @@ class rtCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'rtdata';
+    protected $signature = 'cron:rtdata';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Connect to Modbus';
+    protected $description = 'Connect to Modbus, and receive realtime data per second.';
 
     /**
      * Execute the console command.
