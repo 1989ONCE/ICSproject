@@ -78,11 +78,37 @@ class ProfileController extends Controller
         if(in_array($ext['extension'], $accepted_ext)){
             $request->loc->move(public_path('models'), $loc);
             Ai_model::where('model_id', $model_id)->update(['model_loc'=>$loc, 'added_on'=>$currentDate]);
-            return back()->with('success', strtoupper($model->model_name). ' Model updated successfully.');
+            return back()->with('success', strtoupper($model->model_name). ' 模型更新成功！');
         }
         else{
-            return back()->with('error', 'Previous action Failed.');
+            return back()->with('error', '模型更新失敗！請再試一遍。');
         }
+    }
+
+    /**
+     * Create new predicting model.
+     */
+    public function createModel(Request $request): RedirectResponse
+    {
+
+        $model = new Ai_model();
+        $model->model_name = $request->name;
+
+        $model->save();
+        return back()->with('success', '模型新增成功！');
+        
+    }
+
+    /**
+     * Delete the selected predicting model.
+     */
+    public function deleteModel(Request $request): RedirectResponse
+    {
+        $model_id = $request->query('id');
+        Ai_model::where('model_id', $model_id)->delete();
+
+        return back()->with('success', '模型刪除成功！');
+        
     }
 
 
@@ -111,7 +137,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('status', '個人資料已更新！');
     }
 
     /**
@@ -151,7 +177,7 @@ class ProfileController extends Controller
   
         Auth()->user()->update(['avatar'=>$avatarName]);
   
-        return back()->with('success', 'Avatar updated successfully.');
+        return back()->with('success', '頭像上傳成功！');
     }
 
     public function remove(ProfileUpdateRequest $request): RedirectResponse
@@ -160,10 +186,10 @@ class ProfileController extends Controller
             $deleteImage =  public_path('avatars/') .$request->user()->avatar;
             unlink($deleteImage);
             Auth()->user()->update(['avatar'=>null]);
-            return back()->with('success', 'Avatar remove successfully.');
+            return back()->with('success', '頭像移除成功！');
         }
         else{
-            return back()->with('success', "You haven't set up your avatar.");
+            return back()->with('success', "您尚未設定任何頭像！");
         }
         
     }

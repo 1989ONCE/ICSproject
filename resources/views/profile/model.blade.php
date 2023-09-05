@@ -19,6 +19,10 @@
                     </div>
                 @endif
             </div>
+            
+            <div class="w-full flex justify-end">
+                @include('profile.partials.model-create-form')
+            </div>
             <div class="w-11/12 flex flex-row mt-4">
                 <div class="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 pr-4 gap-10">
                     @foreach($model as $m)

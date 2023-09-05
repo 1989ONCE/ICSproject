@@ -71,6 +71,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/group', [ProfileController::class, 'group'])->name('profile.group');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profile/model', [ProfileController::class, 'model'])->name('profile.model');
+    Route::delete('/profile/delete-model', [ProfileController::class, 'deleteModel'])->name('profile.deleteModel');
+    Route::post('/profile/create-model', [ProfileController::class, 'createModel'])->name('profile.createModel');
     Route::post('/profile/upload-model', [ProfileController::class, 'upload'])->name('profile.upload');
     Route::post('/profile/change-avatar', [ProfileController::class, 'change'])->name('profile.change');
     Route::get('/profile/remove-avatar', [ProfileController::class, 'remove'])->name('profile.remove');
