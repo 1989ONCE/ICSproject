@@ -44,22 +44,15 @@ class rtCommand extends Command
                 $values = array_values($data);
                 $row = $timestamp . ',' . implode(',', $values) . "\n";
                 $data = new Datas;
+
                 $data->added_on = $timestamp;
-                $data->T01_2_drug = $values[3];
-                $data->T01_4_ph = $values[2];
-                $data->T01_4_drug = $values[7];
-                $data->T01_5_ph = $values[2];
-                $data->T01_5_drug1 = $values[6];
-                $data->T01_5_drug2 = $values[3];
-                $data->T01_6_drug = $values[6];
-                $data->T01_12_ph = $values[2];
-                $data->T01_12_drug1 = $values[3];
-                $data->T01_12_drug2 = $values[7];
-                $data->T01_13_drug = $values[17];
-                $data->T01_15_ph = $values[2];
-                $data->T01_15_temp = $values[15];
-                $data->T01_15_ec = $values[19];
-                $data->T01_15_cod = $values[19];
+                $data->T01_6_ph = $values[3];
+                $data->T01_6_ss = $values[2];
+                $data->T01_12_ph = $values[7];
+                $data->T01_12_ss = $values[2];
+                $data->T01_12_drug_current = $values[6];
+                $data->T01_12_drug_daily = $values[3];
+                $data->T01_14_ph = $values[6];
 
                 $data->save();
 

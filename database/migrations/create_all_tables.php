@@ -30,21 +30,13 @@ return new class extends Migration
         });
         Schema::create('datas', function (Blueprint $table) {
             $table->id('data_id');
-            $table->double('T01_2_drug', 6, 2);
-            $table->double('T01_4_ph', 6, 2);
-            $table->double('T01_4_drug', 6, 2);
-            $table->double('T01_5_ph', 6, 2);
-            $table->double('T01_5_drug1', 6, 2);
-            $table->double('T01_5_drug2', 6, 2);
-            $table->double('T01_6_drug', 6, 2);
-            $table->double('T01_12_ph', 6, 2);
-            $table->double('T01_12_drug1', 6, 2);
-            $table->double('T01_12_drug2', 6, 2);
-            $table->double('T01_13_drug', 6, 2);
-            $table->double('T01_15_ph', 6, 2);
-            $table->double('T01_15_temp', 6, 2);
-            $table->double('T01_15_ec', 6, 2);
-            $table->double('T01_15_cod', 6, 2);
+            $table->double('T01_6_ph', 3, 1);
+            $table->double('T01_6_ss', 7, 2);
+            $table->double('T01_12_ph', 3, 1);
+            $table->double('T01_12_ss', 7, 2);
+            $table->double('T01_12_drug_current', 8, 2);
+            $table->double('T01_12_drug_daily', 8, 2);
+            $table->double('T01_14_ph', 3, 1);
             $table->timestamp('added_on');
         });
        
@@ -63,15 +55,7 @@ return new class extends Migration
         });
         Schema::create('predictions', function (Blueprint $table) {
             $table->id('predict_id');
-            $table->double('T01_2_pre_drug', 6, 2)->nullable();
-            $table->double('T01_4_pre_drug', 6, 2)->nullable();
-            $table->double('T01_5_pre_drug1', 6, 2)->nullable();
-            $table->double('T01_5_pre_drug2', 6, 2)->nullable();
-            $table->double('T01_6_pre_drug', 6, 2)->nullable();
-            $table->double('T01_12_pre_drug1', 6, 2)->nullable();
-            $table->double('T01_12_pre_drug2', 6, 2)->nullable();
-            $table->double('T01_13_pre_drug', 6, 2)->nullable();
-            $table->double('T01_15_pre_cod', 6, 2);
+            $table->double('pred_ss', 7, 2)->nullable();
             $table->timestamp('added_on');
             $table->bigInteger('fk_model_id')->unsigned();
             $table->foreign('fk_model_id')

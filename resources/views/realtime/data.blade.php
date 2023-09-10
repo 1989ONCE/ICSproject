@@ -238,33 +238,21 @@
         const GuiIcon = `<img class="w-[100rem] pb-4" src="{{ asset('img/svg/gui_icon.svg') }}" alt="guiIcon" />`
         const guiText = `<p id="mode-btn-text" class="text-right duration-700">流程形式<p>`
         const Gui = `<img class="w-[66rem] px-2" src="{{ asset('img/flow-chart.png') }}" alt="flow chart" />
-                     <div id="gui_t01_2_drug" class="absolute text-xl text-black top-1/4 left-1/4 -translate-x-[12.6rem] -translate-y-6"></div>
-                     <div id="gui_t01_2_pre_drug" class="absolute text-xl text-black top-1/4 left-1/4 -translate-x-[11.6rem] translate-y-[36px]"></div>
-                     <div id="gui_t01_4_drug" class="absolute text-xl text-black top-1/4 left-1/4 -translate-x-12 -translate-y-6"></div>
-                     <div id="gui_t01_4_pre_drug" class="absolute text-xl text-black top-1/4 left-1/4 -translate-x-10 translate-y-[36px]"></div>
-                     <div id="gui_t01_5_drug1" class="absolute text-xl text-black top-1/4 left-1/3 translate-x-3 -translate-y-6"></div>
-                     <div id="gui_t01_5_pre_drug1" class="absolute text-xl text-black top-1/4 left-1/3 translate-x-0 translate-y-[36px]"></div>
-                     <div id="gui_t01_5_drug2" class="absolute text-xl text-black top-1/4 left-1/2 -translate-x-16 -translate-y-6"></div>
-                     <div id="gui_t01_5_pre_drug2" class="absolute text-xl text-black top-1/4 left-1/2 -translate-x-16 translate-y-[36px]"></div>
-                     <div id="gui_t01_6_drug" class="absolute text-xl text-black top-1/4 right-1/3 -translate-x-24 -translate-y-6"></div>
-                     <div id="gui_t01_6_pre_drug" class="absolute text-xl text-black top-1/4 right-1/3 -translate-x-24 translate-y-[36px]"></div>
-                     <div id="gui_t01_12_drug1" class="absolute text-xl text-black top-1/4 right-1/3 translate-x-9 -translate-y-6"></div>
-                     <div id="gui_t01_12_pre_drug1" class="absolute text-xl text-black top-1/4 right-1/3 translate-x-9 translate-y-[36px]"></div>
-                     <div id="gui_t01_12_drug2" class="absolute text-xl text-black top-1/4 right-1/4 translate-x-[4rem] -translate-y-6"></div>
-                     <div id="gui_t01_12_pre_drug2" class="absolute text-xl text-black top-1/4 right-1/4 translate-x-[3.4rem] translate-y-[36px]"></div>
-                     <div id="gui_t01_13_drug" class="absolute text-xl text-black top-1/4 right-1/4 translate-x-[12.5rem] -translate-y-6"></div>
-                     <div id="gui_t01_13_pre_drug" class="absolute text-xl text-black top-1/4 right-1/4 translate-x-[12.5rem] translate-y-[36px]"></div>
-                     <div id="gui_t01_15_cod" class="absolute underline-offset-2 text-xl text-black bottom-1/4 right-1/2 translate-x-6 translate-y-[36px]"></div>
-                     <div id="gui_t01_15_ec" class="absolute underline-offset-2 text-xl text-black bottom-1/4 right-1/2 translate-x-[10rem] translate-y-[36px]"></div>
-                     <div id="gui_t01_15_temp" class="absolute underline-offset-2 text-xl text-black bottom-1/4 left-1/4 translate-x-28 translate-y-[36px]"></div>
-                     <div id="gui_t01_15_ph" class="absolute underline-offset-2 text-xl text-black bottom-1/4 left-1/4 translate-x-3 translate-y-[36px]"></div>
-                     <div id="sign" class="absolute w-6 h-6 rounded-full bottom-1/4 left-1/4 -translate-x-[5rem] translate-y-[42px]"></div>
-                     <div id="ph_gui-1" class="absolute w-4 h-4 rounded-full top-1/2 left-1/4 -translate-x-[2.2rem] -translate-y-[18px]"></div>
-                     <div id="ph_1_val" class="absolute text-lg text-black top-1/2 left-1/4 -translate-x-[0.6rem] -translate-y-[24px]"></div>
-                     <div id="ph_gui-2" class="absolute w-4 h-4 rounded-full top-1/2 left-1/3 translate-x-[3.8rem] -translate-y-[14px]"></div>
-                     <div id="ph_2_val" class="absolute text-lg text-black top-1/2 left-1/3 translate-x-[5.4rem] -translate-y-[20px]"></div>
-                     <div id="ph_gui-3" class="absolute w-4 h-4 rounded-full top-1/2 right-1/4 -translate-x-[0.4rem] -translate-y-[16.5px]"></div>
-                     <div id="ph_3_val" class="absolute text-lg text-black top-1/2 right-1/4 translate-x-[0.8rem] -translate-y-[22px]"></div>`
+                     <div id="gui_t01_6_ph" class="absolute text-4xl text-black top-1/4 left-1/4 -translate-x-[6.6rem] -translate-y-8"></div>
+                     <div id="gui_t01_6_ss" class="absolute text-4xl text-black top-1/4 left-1/4 -translate-x-[6.6rem] translate-y-[120px]"></div>
+                     <div id="gui_t01_12_ph" class="absolute text-4xl text-black top-1/4 left-1/2 translate-x-[1.6rem] translate-y-[78px]"></div>
+                     <div id="gui_t01_12_ss" class="absolute text-4xl text-black top-1/4 left-1/2 translate-x-[1.6rem] translate-y-[136px]"></div>
+                     <div id="gui_t01_12_drug" class="absolute text-4xl text-black top-1/4 left-1/2 -translate-x-[1.6rem] -translate-y-20"></div>
+                     <div id="gui_t01_12_daily_drug" class="absolute text-4xl text-black top-1/4 left-1/2 -translate-x-[1.6rem] -translate-y-2"></div>
+                     <div id="gui_t01_14_ph" class="absolute text-4xl text-black top-1/4 right-1/4 translate-x-[5rem] -translate-y-12"></div>
+                     <div id="gui_pred_ss" class="absolute text-4xl text-black top-1/4 right-1/4 translate-x-[7rem] translate-y-12"></div>
+                      <div id="gui_time" class="absolute text-lg text-black bottom-1/4 left-1/4 -translate-x-[8rem] translate-y-32"></div>
+
+                     
+                     <div id="sign" class="absolute w-8 h-8 rounded-full top-1/4 left-3/4 translate-x-3 translate-y-36"></div>
+                     <div id="ph_gui-1" class="absolute w-8 h-8 rounded-full top-1/4 left-1/4 -translate-x-[10rem] -translate-y-[28px]"></div>
+                     <div id="ph_gui-2" class="absolute w-8 h-8 rounded-full top-1/4 left-1/2 -translate-x-[1.6rem] translate-y-[80px]"></div>
+                     <div id="ph_gui-3" class="absolute w-8 h-8 rounded-full top-1/2 right-1/4 translate-x-[2.5rem] -translate-y-[176px]"></div>`
 
         function toggleTheme (){
         isExcel = !isExcel
@@ -463,79 +451,71 @@
                 })
 
                 // GUI realtime
-                document.getElementById("gui_t01_2_drug").innerHTML = current.T01_2_drug;
-                document.getElementById("gui_t01_4_drug").innerHTML = current.T01_4_drug;
-                document.getElementById("ph_1_val").innerHTML = current.T01_4_ph;
-                document.getElementById("gui_t01_5_drug1").innerHTML = current.T01_5_drug1;
-                document.getElementById("gui_t01_5_drug2").innerHTML = current.T01_5_drug2;
-                document.getElementById("ph_2_val").innerHTML = current.T01_5_ph;
-                document.getElementById("gui_t01_6_drug").innerHTML = current.T01_6_drug;
-                document.getElementById("gui_t01_12_drug1").innerHTML = current.T01_12_drug1;
-                document.getElementById("gui_t01_12_drug2").innerHTML = current.T01_12_drug2;
-                document.getElementById("ph_3_val").innerHTML = current.T01_12_ph;
-                document.getElementById("gui_t01_13_drug").innerHTML = current.T01_13_drug;
+                document.getElementById("gui_t01_6_ph").innerHTML = current.T01_6_ph;
+                document.getElementById("gui_t01_6_ss").innerHTML = current.T01_6_ss;
+                document.getElementById("gui_t01_12_ph").innerHTML = current.T01_12_ph;
+                document.getElementById("gui_t01_12_ss").innerHTML = current.T01_12_ss;
+                document.getElementById("gui_t01_12_drug").innerHTML = current.T01_12_drug_current;
+                document.getElementById("gui_t01_12_daily_drug").innerHTML = current.T01_12_drug_daily;
+                document.getElementById("gui_t01_14_ph").innerHTML = current.T01_14_ph;
+                document.getElementById("gui_time").innerHTML = current.added_on;
 
-                // gui放流槽
-                document.getElementById("gui_t01_15_ph").innerHTML = current.T01_15_ph;
-                document.getElementById("gui_t01_15_temp").innerHTML = current.T01_15_temp;
-                document.getElementById("gui_t01_15_ec").innerHTML = current.T01_15_ec;
-                document.getElementById("gui_t01_15_cod").innerHTML = current.T01_15_cod;
 
                 // gui 完整流程燈號
                 const sign = document.querySelector('#sign');
                 sign.classList.remove('bg-[#4cb631]');
                 sign.classList.remove('bg-[#ffa100]');
                 sign.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_15_cod) >= 18){
-                    sign.classList.add('bg-[#4cb631]');
+                if(parseInt(current.T01_14_ph) < 6 && parseInt(current.T01_14_ph) > 9){
+                    sign.classList.add('bg-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(current.T01_15_cod) < 18 && parseInt(current.T01_15_cod) > 16){
-                    sign.classList.add('bg-[#ffa100]');
+                else if(parseInt(current.T01_14_ph) < 7 || parseInt(current.T01_14_ph) > 8){
+                    sign.classList.add('bg-[#ffa100]'); //orange(warning)
                 }
                 else {
-                    sign.classList.add('bg-[#ff1616]');
+                    sign.classList.add('bg-[#4cb631]'); //green(normal)
                 }
 
                 const ph_gui_1 = document.querySelector('#ph_gui-1');
                 ph_gui_1.classList.remove('bg-[#4cb631]');
                 ph_gui_1.classList.remove('bg-[#ffa100]');
                 ph_gui_1.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_4_ph) >= 8){
-                    ph_gui_1.classList.add('bg-[#4cb631]');
+                if(parseInt(current.T01_6_ph) < 6 && parseInt(current.T01_6_ph) > 9){
+                    ph_gui_1.classList.add('bg-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(current.T01_4_ph) < 8 && parseInt(current.T01_4_ph) > 6){
-                    ph_gui_1.classList.add('bg-[#ffa100]');
+                else if(parseInt(current.T01_6_ph) < 7 || parseInt(current.T01_6_ph) > 8){
+                    ph_gui_1.classList.add('bg-[#ffa100]'); //orange(warning)
                 }
                 else {
-                    ph_gui_1.classList.add('bg-[#ff1616]');
+                    ph_gui_1.classList.add('bg-[#4cb631]'); //green(normal)
                 }
 
                 const ph_gui_2 = document.querySelector('#ph_gui-2');
                 ph_gui_2.classList.remove('bg-[#4cb631]');
                 ph_gui_2.classList.remove('bg-[#ffa100]');
                 ph_gui_2.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_5_ph) >= 8){
-                    ph_gui_2.classList.add('bg-[#4cb631]');
+                if(parseInt(current.T01_12_ph) < 6 && parseInt(current.T01_12_ph) > 9){
+                    ph_gui_2.classList.add('bg-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(current.T01_5_ph) < 8 && parseInt(current.T01_5_ph) > 6){
-                    ph_gui_2.classList.add('bg-[#ffa100]');
+                else if(parseInt(current.T01_12_ph) < 7 || parseInt(current.T01_12_ph) > 8){
+                    ph_gui_2classList.add('bg-[#ffa100]'); //orange(warning)
                 }
                 else {
-                    ph_gui_2.classList.add('bg-[#ff1616]');
+                    ph_gui_2.classList.add('bg-[#4cb631]'); //green(normal)
                 }
 
                 const ph_gui_3 = document.querySelector('#ph_gui-3');
                 ph_gui_3.classList.remove('bg-[#4cb631]');
                 ph_gui_3.classList.remove('bg-[#ffa100]');
                 ph_gui_3.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_12_ph) >= 8){
-                    ph_gui_3.classList.add('bg-[#4cb631]');
+                if(parseInt(current.T01_14_ph) < 6 && parseInt(current.T01_14_ph) > 9){
+                    ph_gui_3.classList.add('bg-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(current.T01_12_ph) < 8 && parseInt(current.T01_12_ph) > 6){
-                    ph_gui_3.classList.add('bg-[#ffa100]');
+                else if(parseInt(current.T01_14_ph) < 7 || parseInt(current.T01_14_ph) > 8){
+                    ph_gui_3.classList.add('bg-[#ffa100]'); //orange(warning)
                 }
                 else {
-                    ph_gui_3.classList.add('bg-[#ff1616]');
+                    ph_gui_3.classList.add('bg-[#4cb631]'); //green(normal)
                 }
             }
            
@@ -568,15 +548,7 @@
                     },
                 })
                 // GUI pred
-                document.getElementById("gui_t01_2_pre_drug").innerHTML = pred.T01_2_pre_drug;
-                document.getElementById("gui_t01_4_pre_drug").innerHTML = pred.T01_4_pre_drug;
-                document.getElementById("gui_t01_5_pre_drug1").innerHTML = pred.T01_5_pre_drug1;
-                document.getElementById("gui_t01_5_pre_drug2").innerHTML = pred.T01_5_pre_drug2;
-                document.getElementById("gui_t01_6_pre_drug").innerHTML = pred.T01_6_pre_drug;
-                document.getElementById("gui_t01_12_pre_drug1").innerHTML = pred.T01_12_pre_drug1;
-                document.getElementById("gui_t01_12_pre_drug2").innerHTML = pred.T01_12_pre_drug2;
-                document.getElementById("gui_t01_13_pre_drug").innerHTML = pred.T01_13_pre_drug;
-                document.getElementById("gui_t01_15_pre_cod").innerHTML = pred.T01_15_pre_cod;
+                document.getElementById("gui_pred_ss").innerHTML = pred.pred_ss;
             }
             setInterval(getPredData, 1000); //every 1 secs
         </script>

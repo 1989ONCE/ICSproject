@@ -17,32 +17,16 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'create-users']);
         Permission::create(['name' => 'edit-users']);
         Permission::create(['name' => 'delete-users']);
-
-        Permission::create(['name' => 'create-warning-group']);
-        Permission::create(['name' => 'edit-warning-group']);
-        Permission::create(['name' => 'delete-warning-group']);
+        Permission::create(['name' => 'set-models']);
 
         $adminRole = Role::create(['name' => 'Admin']);
-        $superRole = Role::create(['name' => 'Supervisor']);
         $generalRole = Role::create(['name' => 'General']);
 
         $adminRole->givePermissionTo([
             'create-users',
             'edit-users',
             'delete-users',
-            'create-warning-group',
-            'edit-warning-group',
-            'delete-warning-group',
-        ]);
-
-        $superRole->givePermissionTo([
-            'edit-users',
-            'create-warning-group',
-            'edit-warning-group',
-        ]);
-
-        $generalRole->givePermissionTo([
-            'create-warning-group',
+            'set-models',
         ]);
     }
 

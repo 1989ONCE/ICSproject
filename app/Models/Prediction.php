@@ -12,15 +12,7 @@ class Prediction extends Model
 
     protected $fillable = [
         'added_on',
-        'T01_2_pre_drug', 
-        'T01_4_pre_drug',
-        'T01_5_pre_drug1',
-        'T01_5_pre_drug2',
-        'T01_6_pre_drug',
-        'T01_12_pre_drug1',
-        'T01_12_pre_drug2',
-        'T01_13_pre_drug',
-        'T01_15_pre_cod',
+        'pred_ss',
         'fk_model_id',
     ];
     
