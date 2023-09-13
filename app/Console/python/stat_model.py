@@ -10,7 +10,7 @@ datas = sys.argv[1]
 loc = sys.argv[2]
 
 # rb: 用2位元度入
-path = os.getcwd() + "/public/models/" + loc
+path = os.getcwd() + "/public/models/" + loc.strip()
 with open(path, 'rb') as file:
     model = pickle.load(file)
 
