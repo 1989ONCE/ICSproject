@@ -56,7 +56,6 @@ class rtCommand extends Command
                     $data->T01_12_drug2_current = null;
                     $data->T01_12_drug1_daily = null;
                     $data->T01_12_drug2_daily = null;
-                    echo($data);
                     $data->save();
     
                     // if power return

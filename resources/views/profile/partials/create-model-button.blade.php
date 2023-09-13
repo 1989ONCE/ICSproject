@@ -16,7 +16,7 @@
 
 <!-- Main Model -->
     <div id="createModel" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 max-h-full border-2 border-gray-400">
-        <div class="relative w-96 max-w-2xl max-h-full">
+        <div class="relative w-98 max-w-2xl max-h-full">
             <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
@@ -30,8 +30,12 @@
                             </button>
                         </div>
                     <!-- Modal body -->
-                        <form method="POST" action="{{ route('profile.createModel') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('profile.createModel') }}" enctype="multipart/form-data" class="padding-x-2">
                             @csrf
+                            <h4 class="text-md text-black semibold">&ensp;目前系統所支援之模型輸入種類有兩種,</br>
+                            &ensp;1. VAR、LSTM: </br>&ensp;&ensp;&ensp;1個pH, 1個SS值, 預測下一個時間段之SS值</br>
+                            &ensp;2. ARIMA: </br>&ensp;&ensp;&ensp;5個pH, 1個SS值, 預測下一個時間段之SS值</br>
+                            &ensp;請您確認您的模型輸入也為其中一個種類, 否則可能無法得到預測結果！</h4>
                             <div class="grid align-center p-3 text-black">            
                                 <input id="name" class="h-8 px-2 border rounded form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="請輸入新模型類別：">
                             </div>
