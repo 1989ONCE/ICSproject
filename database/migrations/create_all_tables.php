@@ -30,13 +30,16 @@ return new class extends Migration
         });
         Schema::create('datas', function (Blueprint $table) {
             $table->id('data_id');
-            $table->double('T01_6_ph', 3, 1);
+            $table->double('T01_6_ph_pre', 3, 1);
+            $table->double('T01_6_ph_aft', 3, 1);
             $table->double('T01_6_ss', 7, 2);
-            $table->double('T01_12_ph', 3, 1);
-            $table->double('T01_12_ss', 7, 2);
-            $table->double('T01_12_drug_current', 8, 2);
-            $table->double('T01_12_drug_daily', 8, 2);
+            $table->double('T01_12_ph_pre', 3, 1);
+            $table->double('T01_12_ph_aft', 3, 1);
             $table->double('T01_14_ph', 3, 1);
+            $table->double('T01_12_drug1_current', 8, 2)->nullable();
+            $table->double('T01_12_drug2_current', 8, 2)->nullable();
+            $table->double('T01_12_drug1_daily', 8, 2)->nullable();
+            $table->double('T01_12_drug2_daily', 8, 2)->nullable();
             $table->timestamp('added_on');
         });
        

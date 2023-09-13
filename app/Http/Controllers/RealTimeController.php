@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Commands\rtCommand;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Datas;
 use App\Models\Prediction;
 use App\Models\Ai_model;
+use Illuminate\Support\Facades\Artisan;
 
 class RealTimeController extends Controller
 {
@@ -45,7 +47,7 @@ class RealTimeController extends Controller
         ]);
     }
 
-    public function predictData(Request $request): String
+    public function predictData(Request $request): View
     {
         $model = Ai_model::all();
         $id = $request->option;

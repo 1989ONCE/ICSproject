@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use ModbusMaster;
 use App\Models\Datas;
 use App\Models\Power;
 
@@ -29,45 +28,49 @@ class rtCommand extends Command
      */
     public function handle(): void
     {
-        $ip = '111.70.29.235';
-        $port = 502;
-
-        $startAddress = 169;
-        $registerCount = 10;
-
-        $modbus = new ModbusMaster($ip, "TCP"); 
-
         try {
-            $timestamp = date('Y-m-d H:i:s');
-            $data = $modbus->readMultipleRegisters(1, $startAddress, $registerCount);
-            if($data){
-                $values = array_values($data);
-                $row = $timestamp . ',' . implode(',', $values) . "\n";
-                $data = new Datas;
+                $timestamp = date('Y-m-d H:i:s');
 
-                $data->added_on = $timestamp;
-                $data->T01_6_ph = $values[3];
-                $data->T01_6_ss = $values[2];
-                $data->T01_12_ph = $values[7];
-                $data->T01_12_ss = $values[2];
-                $data->T01_12_drug_current = $values[6];
-                $data->T01_12_drug_daily = $values[3];
-                $data->T01_14_ph = $values[6];
-
-                $data->save();
-
-                // if power return
-                $first_p = Power::orderBy('onofftime', 'desc')->first();
-                if($first_p->status == 0) {
-                    $power = new Power;
-                    $power->status = true;
-                    $power->onofftime = date('Y-m-d H:i:s');
-                    $power->save();
+                $input = escapeshellcmd("python ./app/Console/python/data.py");
+                $output = shell_exec($input);
+                if($output){
+                    $output = str_replace( array('[', ']', '\n'), '', $output);
+                    $output = preg_replace( "/\n/", "", $output);
+                    $values = explode(", ", $output);
+                    $data = new Datas;
+    
+                    $data->added_on = $timestamp;
+                    
+                    //ph & ss
+                    $data->T01_6_ph_pre = number_format($values[1], 1, '.', ','); //port 103
+                    $data->T01_6_ph_aft = number_format($values[2]/100, 1, '.', ','); // port 101
+                    $data->T01_6_ss = number_format($values[3], 1, '.', ','); // port 102
+                    $data->T01_12_ph_pre = number_format($values[4]/100, 1, '.', ','); // port 104
+                    $data->T01_12_ph_aft = number_format($values[5]/1000, 1, '.', ','); // port 107 
+                    $data->T01_14_ph = number_format($values[6]/100, 1, '.', ','); // port 105
+    
+                    // drug record
+                    // $data->T01_12_drug_current = number_format($values[5], 1, '.', ',');
+                    // $data->T01_12_drug_daily = number_format($values[6], 1, '.', ',');
+                    $data->T01_12_drug1_current = null;
+                    $data->T01_12_drug2_current = null;
+                    $data->T01_12_drug1_daily = null;
+                    $data->T01_12_drug2_daily = null;
+                    echo($data);
+                    $data->save();
+    
+                    // if power return
+                    $first_p = Power::orderBy('onofftime', 'desc')->first();
+                    if($first_p->status == 0) {
+                        $power = new Power;
+                        $power->status = true;
+                        $power->onofftime = date('Y-m-d H:i:s');
+                        $power->save();
+                    }
                 }
-            }
-            else {
-                throw new Exception("設備斷訊");
-            }
+                else{
+                    throw new \Exception("設備斷訊");
+                }
         } catch (\Exception $e) {
             // if power has ben cut off
             $first_p = Power::orderBy('onofftime', 'desc')->first();

@@ -48,14 +48,17 @@ return new class extends Migration
 
         // defualt value only for testing
         $data = Datas::create([
-            'T01_6_ph' => 5,
-            'T01_6_ss' => 340,
-            'T01_12_ph' => 8,
-            'T01_12_ss' => 210,
-            'T01_12_drug_current' => 80,
-            'T01_12_drug_daily'=> 180,
-            'T01_14_ph'=>7,
-            'added_on' => '2023-06-26 20:28:48',
+            'T01_6_ph_pre' => 5.2,
+            'T01_6_ph_aft' => 6.3,
+            'T01_6_ss' => 34.21,
+            'T01_12_ph_pre' => 8.1,
+            'T01_12_ph_aft' => 7.5,
+            'T01_12_drug1_current' => 80,
+            'T01_12_drug2_current' => 10,
+            'T01_12_drug1_daily'=> 180,
+            'T01_12_drug2_daily'=> 50,
+            'T01_14_ph'=>7.2,
+            'added_on' => '2023-09-25 20:28:48',
         ]);
         
         
@@ -75,7 +78,7 @@ return new class extends Migration
         $model3->save();
 
         $pre1 = Prediction::create([
-           'added_on' => '2023-06-28 11:38:51',
+           'added_on' => '2023-09-26 20:30:48',
            'pred_ss' => 207,
            'fk_model_id' => 1,
         ]);
