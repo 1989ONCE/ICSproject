@@ -47,11 +47,11 @@ class pred extends Command
             # data order: (1)ph (2)ss
             $this->var_pred($datas);
             $this->lstm_pred($datas);
-            for($i=0; $i<=count($model); $i++){
-                if($model[$i]->model_name != 'var' || $model[$i]->model_name != 'lstm' || $model[$i]->model_name != 'arima'){
-                    $this->other_pred($datas, $model[$i]->model_loc, $model[$i]->model_id);
-                }
-            }
+            // for($i=0; $i<=count($model); $i++){
+            //     if($model[$i]->model_name != 'var' || $model[$i]->model_name != 'lstm' || $model[$i]->model_name != 'arima'){
+            //         $this->other_pred($datas, $model[$i]->model_loc, $model[$i]->model_id);
+            //     }
+            // }
             // $this->arima_pred($datas);
 
         } catch (\Exception $e) {
