@@ -63,7 +63,7 @@ class pred extends Command
     public function var_pred($datas): void
     {
         $var = Ai_model::where('model_name', 'var')->first();
-        $input = escapeshellcmd("python ./app/Console/python/stat_model.py $datas $var->model_loc");
+        $input = escapeshellcmd("python3 ./app/Console/python/stat_model.py $datas $var->model_loc");
         $output = shell_exec($input);
         if($output !== null){
             $this->info("[VAR]predicted value of SS for next minute: ".$output);
@@ -82,7 +82,7 @@ class pred extends Command
     public function lstm_pred($datas): void
     {
         $lstm = Ai_model::where('model_name', 'lstm')->first();
-        $input = escapeshellcmd("python ./app/Console/python/rnn_model.py $datas $lstm->model_loc");
+        $input = escapeshellcmd("python3 ./app/Console/python/rnn_model.py $datas $lstm->model_loc");
         $output = shell_exec($input);
         if($output !== null){
             $this->info("[LSTM]predicted value of SS for next minute: ".$output);
@@ -100,9 +100,9 @@ class pred extends Command
     // generate other prediction
     public function other_pred($datas, $loc, $id): void
     {
-        $input1 = escapeshellcmd("python ./app/Console/python/stat_model.py $datas $loc");
+        $input1 = escapeshellcmd("python3 ./app/Console/python/stat_model.py $datas $loc");
         $output1 = shell_exec($input1);
-        $input2 = escapeshellcmd("python ./app/Console/python/rnn_model.py $datas $loc");
+        $input2 = escapeshellcmd("python3 ./app/Console/python/rnn_model.py $datas $loc");
         $output2 = shell_exec($input2);
         if($output1 !== null){
             $this->info("predicted value of SS for next minute: ".$output1);
