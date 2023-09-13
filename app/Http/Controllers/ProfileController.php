@@ -71,6 +71,7 @@ class ProfileController extends Controller
 
         // get file name
         $loc = $currentDate.'_'.$request->file('loc')->getClientOriginalName();
+        $loc = str_replace(' ', '', $loc);
 
         // validate file extension
         $ext = pathinfo($loc);
