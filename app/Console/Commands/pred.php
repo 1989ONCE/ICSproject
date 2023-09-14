@@ -43,10 +43,17 @@ class pred extends Command
                                 $value->T01_14_ph,
                             ];
                         });
-
+            $datas2 = Datas::orderBy('data_id', 'desc')
+                        ->limit(150)->get(['T01_6_ph_aft', 'T01_6_ss'])
+                        ->map(function ($value) {
+                            return [
+                                $value->T01_6_ph_aft,
+                                $value->T01_6_ss,
+                            ];
+                        });
             # data order: (1)ph (2)ss
             $this->var_pred($datas);
-            $this->lstm_pred($datas);
+            $this->lstm_pred($datas2);
             // for($i=0; $i<=count($model); $i++){
             //     if($model[$i]->model_name != 'var' || $model[$i]->model_name != 'lstm' || $model[$i]->model_name != 'arima'){
             //         $this->other_pred($datas, $model[$i]->model_loc, $model[$i]->model_id);
@@ -74,7 +81,7 @@ class pred extends Command
             $this->info('The command was successful!');
             }
         else{
-            $this->info("Not enough realtime data to generate prediction result!");
+            $this->info("No model set or Not enough realtime data to generate prediction result!");
         }
     }
 
@@ -93,7 +100,7 @@ class pred extends Command
             $this->info('The command was successful!');
         }
         else{
-            $this->info("Not enough realtime data to generate prediction result!");
+            $this->info("No model set or Not enough realtime data to generate prediction result!");
         }
     }
 

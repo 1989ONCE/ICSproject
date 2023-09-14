@@ -1,13 +1,12 @@
-import pandas as pd
 import numpy as np
-import statsmodels.api as sm
 from statsmodels.tsa.api import VAR
 import pickle, warnings, os, sys
 warnings.filterwarnings('ignore')
 
-# data order: (1)ph (2)temp (3)ec (4)ss (5)cod
+# data order: (1)ph (2)ss
 datas = sys.argv[1]
 loc = sys.argv[2]
+
 
 # rb: 用2位元度入
 path = os.getcwd() + "/public/models/" + loc.strip()

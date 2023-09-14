@@ -1,13 +1,12 @@
-import pandas as pd
-import numpy as np
-from sklearn.preprocessing import MinMaxScaler
-import tqdm
-from keras.models import Sequential
-from keras.layers import Dense, LSTM, Dropout
-from keras.layers import Activation
-from keras.models import load_model
-from keras.optimizers import Adam
-from keras.callbacks import EarlyStopping
+# import numpy as nps
+# from sklearn.preprocessing import MinMaxScaler
+# import tqdm
+# from keras.models import Sequential
+# from keras.layers import Dense, LSTM, Dropout
+# from keras.layers import Activation
+# from keras.models import load_model
+# from keras.optimizers import Adam
+# from keras.callbacks import EarlyStopping
 import pickle, warnings, os, sys
 warnings.filterwarnings('ignore')
 
@@ -16,9 +15,9 @@ datas = sys.argv[1]
 loc = sys.argv[2]
 
 # rb: 用2位元度入
-path = os.getcwd() + "/public/models/" + loc.strip()
-with open(path, 'rb') as file:
-    model = pickle.load(file)
+# path = os.getcwd() + "/public/models/" + loc.strip()
+# with open(path, 'rb') as file:
+#     model = pickle.load(file)
 
 # data processing
 datas = datas[1:-1]+','
@@ -38,7 +37,7 @@ for d in datas:
 input = np.array(data_arr)
 
 # array type
-prediction = model.get('model').predict(input)
+prediction = np.reshape(model.get('model').predict(input), -1)
 print(prediction[-1])
 file.close()
 
