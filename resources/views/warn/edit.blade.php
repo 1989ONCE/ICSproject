@@ -23,13 +23,12 @@
                             <span class="text-xl pl">偵測之槽體及類別</span>
                         </div>
                         <select id="type" name="type" class="bg-white border border-sky-500 text-gray-600 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value="冷卻塔_ph值" {{$alarm->alarm_type == "冷卻塔_ph值" ? 'selected="selected"' : '' }}> 冷卻塔_ph值 </option>
-                            <option value="快混槽1_ph值" {{$alarm->alarm_type == "快混槽1_ph值" ? 'selected="selected"' : '' }}> 快混槽1_ph值 </option>  
-                            <option value="快混槽2_ph值" {{$alarm->alarm_type == "快混槽2_ph值" ? 'selected="selected"' : '' }}> 快混槽2_ph值 </option>
-                            <option value="放流槽_ph值" {{$alarm->alarm_type == "放流槽_ph值" ? 'selected="selected"' : '' }}> 放流槽_ph值 </option>
-                            <option value="放流槽_水溫" {{$alarm->alarm_type == "放流槽_水溫" ? 'selected="selected"' : '' }}> 放流槽_水溫 </option>
-                            <option value="放流槽_導電度" {{$alarm->alarm_type == "放流槽_導電度" ? 'selected="selected"' : '' }}> 放流槽_導電度 </option>
-                            <option value="放流槽_COD" {{$alarm->alarm_type == "放流槽_COD" ? 'selected="selected"' : '' }}> 放流槽_COD </option>   
+                            <option value="化混1_ph值前" {{$alarm->alarm_type == "化混1_ph值前" ? 'selected="selected"' : '' }}> 化混1_ph值前 </option>
+                            <option value="化混1_ph值後" {{$alarm->alarm_type == "化混1_ph值後" ? 'selected="selected"' : '' }}> 化混1_ph值後 </option>  
+                            <option value="化混1_ss" {{$alarm->alarm_type == "化混1_ss" ? 'selected="selected"' : '' }}> 化混1_ss </option>
+                            <option value="化混2_ph值前" {{$alarm->alarm_type == "化混2_ph值前" ? 'selected="selected"' : '' }}> 化混2_ph值前 </option>
+                            <option value="化混2_ph值後" {{$alarm->alarm_type == "化混2_ph值後" ? 'selected="selected"' : '' }}> 化混2_ph值後 </option>
+                            <option value="放流槽_ph" {{$alarm->alarm_type == "放流槽_ph" ? 'selected="selected"' : '' }}> 放流槽_ph </option>
                         </select>
                     </div>
 

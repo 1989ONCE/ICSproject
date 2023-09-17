@@ -23,13 +23,12 @@
               </div>
                 <select id="type" name="type" class="bg-white border border-sky-500 text-gray-600 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>選擇類別</option>
-                        <option value="冷卻塔_ph值"> 冷卻塔_ph值 </option>
-                        <option value="快混槽1_ph值"> 快混槽1_ph值 </option>  
-                        <option value="快混槽2_ph值"> 快混槽2_ph值 </option>
-                        <option value="放流槽_ph值"> 放流槽_ph值 </option>
-                        <option value="放流槽_水溫"> 放流槽_水溫 </option>
-                        <option value="放流槽_導電度"> 放流槽_導電度 </option>
-                        <option value="放流槽_COD"> 放流槽_COD </option>   
+                        <option value="化混1_ph值前"> 化混1_ph值前 </option>
+                        <option value="化混1_ph值後"> 化混1_ph值後 </option>  
+                        <option value="化混1_ss"> 化混1_ss </option>
+                        <option value="化混2_ph值前"> 化混2_ph值前 </option>
+                        <option value="化混2_ph值後"> 化混2_ph值後 </option>
+                        <option value="放流槽_ph"> 放流槽_ph </option>
                 </select>
             </div>
 

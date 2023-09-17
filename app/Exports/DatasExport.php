@@ -15,10 +15,12 @@ class DatasExport implements FromCollection, WithHeadings
     {
         return Datas::all()->map(function($data) {
             return [
-               'T01_15_ph' => $data->T01_15_ph,
-               'T01_15_temp' => $data->T01_15_temp,
-               'T01_15_ec' => $data->T01_15_ec,
-               'T01_15_cod' => $data->T01_15_cod,
+               'T01_6_ph_pre' => $data->T01_6_ph_pre,
+               'T01_6_ph_aft' => $data->T01_6_ph_aft,
+               'T01_6_ss' => $data->T01_6_ss,
+               'T01_12_ph_pre' => $data->T01_12_ph_pre,
+               'T01_12_ph_aft' => $data->T01_12_ph_aft,
+               'T01_14_ph' => $data->T01_14_ph,
                'added_on' => $data->added_on
             ];
          });
@@ -27,10 +29,12 @@ class DatasExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
+            '化混槽1ph值(前)',
+            '化混槽1ph值(後)',
+            '化混槽ss值',
+            '化混槽2ph值(前)',
+            '化混槽2ph值(後)',
             '放流槽ph值',
-            '放流槽水溫',
-            '放流槽導電度',
-            '放流槽COD',
             '資料添加時間'
         ];
     }

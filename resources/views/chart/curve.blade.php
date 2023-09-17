@@ -16,12 +16,18 @@
                                 var json3 = JSON.parse(data[2]);
                                 var json4 = JSON.parse(data[3]);
                                 var json5 = JSON.parse(data[4]);
+                                var json6 = JSON.parse(data[5]);
+                                var json7 = JSON.parse(data[6]);
 
-                                var T01_15_ph = json1.map(x => x.T01_15_ph);
-                                var T01_15_temp = json2.map(x => x.T01_15_temp);
-                                var T01_15_ec = json3.map(x => x.T01_15_ec);
-                                var T01_15_cod = json4.map(x => x.T01_15_cod);
-                                var added_on = json5.map(x => x.added_on);
+                                
+                                var T01_6_ph_pre = json1.map(x => x.T01_6_ph_pre);
+                                var T01_6_ph_aft = json2.map(x => x.T01_6_ph_aft);
+                                var T01_6_ss = json3.map(x => x.T01_6_ss);
+                                var T01_12_ph_pre = json4.map(x => x.T01_12_ph_pre);
+                                var T01_12_ph_aft = json5.map(x => x.T01_12_ph_aft);
+                                var T01_14_ph = json6.map(x => x.T01_14_ph);
+
+                                var added_on = json7.map(x => x.added_on);
                                 // 基于准备好的dom，初始化echarts实例
                                 var myChart = echarts.init(document.getElementById('main'));
 
@@ -29,13 +35,13 @@
                                 var option = {
                                     backgroundColor: '#ffffff',
                                     title: {
-                                        text: '放流槽數值歷史報表'
+                                        text: '各項數值歷史報表'
                                     },
                                     tooltip: {},
                                     legend: {
                                         top: 2,
-                                        left: 200,
-                                        data: ['pH', 'temp', 'EC', 'COD']
+                                        left: 150,
+                                        data: ['化混槽1-pH(前)', '化混槽1-pH(後)', '化混槽1-ss', '化混槽2-pH(前)', '化混槽2-pH(後)', '放流槽-pH']
                                     },
                                     xAxis: {
                                         data: added_on
@@ -45,24 +51,34 @@
                                     },
                                     series: [
                                         {
-                                            name: 'pH',
+                                            name: '化混槽1-pH(前)',
                                             type: 'line',
-                                            data: T01_15_ph
+                                            data: T01_6_ph_pre
                                         },
                                         {
-                                            name: 'temp',
+                                            name: '化混槽1-pH(後)',
                                             type: 'line',
-                                            data: T01_15_temp
+                                            data: T01_6_ph_aft
                                         },
                                         {
-                                            name: 'EC',
+                                            name: '化混槽1-ss',
                                             type: 'line',
-                                            data: T01_15_ec
+                                            data: T01_6_ss
                                         },
                                         {
-                                            name: 'COD',
+                                            name: '化混槽2-pH(前)',
                                             type: 'line',
-                                            data: T01_15_cod
+                                            data: T01_12_ph_pre
+                                        },
+                                        {
+                                            name: '化混槽2-pH(後)',
+                                            type: 'line',
+                                            data: T01_12_ph_aft
+                                        },
+                                        {
+                                            name: '放流槽-pH',
+                                            type: 'line',
+                                            data: T01_14_ph
                                         },
                                     ]
                                 };
@@ -78,7 +94,7 @@
                 </script>
                 <a href="{{route('export')}}" class="w-fit h-12 -translate-y-6 justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
                     <img width="30px" height="30px" src="{{ asset('img/svg/excel_download.svg') }}" class="grid items-center"></img>
-                    <span class="text-md">按此下載放流槽數值歷史資料</span>
+                    <span class="text-md">按此下載各項數值歷史資料</span>
                 </a>
         </div>
 
@@ -95,22 +111,10 @@
                             var json1 = JSON.parse(data[0]);
                             var json2 = JSON.parse(data[1]);
                             var json3 = JSON.parse(data[2]);
-                            var json4 = JSON.parse(data[3]);
-                            var json5 = JSON.parse(data[4]);
-                            var json6 = JSON.parse(data[5]);
-                            var json7 = JSON.parse(data[6]);
-                            var json8 = JSON.parse(data[7]);
-                            var json9 = JSON.parse(data[8]);
 
-                            var T01_2_drug = json1.map(x => x.T01_2_drug);
-                            var T01_4_drug = json2.map(x => x.T01_4_drug);
-                            var T01_5_drug1 = json3.map(x => x.T01_5_drug1);
-                            var T01_5_drug2 = json4.map(x => x.T01_5_drug2);
-                            var T01_6_drug = json5.map(x => x.T01_6_drug);
-                            var T01_12_drug1 = json6.map(x => x.T01_12_drug1);
-                            var T01_12_drug2 = json7.map(x => x.T01_12_drug2);
-                            var T01_13_drug = json8.map(x => x.T01_13_drug);
-                            var added_on = json9.map(x => x.added_on);
+                            var T01_12_drug1_daily = json1.map(x => x.T01_12_drug1_daily);
+                            var T01_12_drug2_daily = json2.map(x => x.T01_12_drug2_daily);
+                            var added_on = json3.map(x => x.added_on);
 
                             // 基于准备好的dom，初始化echarts实例
                             var myChart2 = echarts.init(document.getElementById('main-2'));
@@ -124,7 +128,7 @@
                                 tooltip: {},
                                 legend: {
                                     left: 60,
-                                    data: ['ph中和槽-液鹼', '冷卻塔-液鹼', '快混槽1-液鹼', '快混槽1-硫酸鋁', '慢混槽1-polymer', '快混槽2-液鹼', '快混槽2-硫酸鋁', '慢混槽2-polymer']
+                                    data: ['化混槽2-液鹼', '化混槽2-硫酸鋁']
                                 },
                                 xAxis: {
                                     data: added_on
@@ -134,45 +138,15 @@
                                 },
                                 series: [
                                     {
-                                        name: 'ph中和槽-液鹼',
+                                        name: '化混槽2-液鹼',
                                         type: 'line',
-                                        data: T01_2_drug
+                                        data: T01_12_drug1_daily
                                     },
                                     {
-                                        name: '冷卻塔-液鹼',
+                                        name: '化混槽2-硫酸鋁',
                                         type: 'line',
-                                        data: T01_4_drug
+                                        data: T01_12_drug2_daily
                                     },
-                                    {
-                                        name: '快混槽1-液鹼',
-                                        type: 'line',
-                                        data: T01_5_drug1
-                                    },
-                                    {
-                                        name: '快混槽1-硫酸鋁',
-                                        type: 'line',
-                                        data: T01_5_drug2
-                                    },
-                                    {
-                                        name: '慢混槽1-polymer',
-                                        type: 'line',
-                                        data: T01_6_drug
-                                    },
-                                    {
-                                        name: '快混槽2-液鹼',
-                                        type: 'line',
-                                        data: T01_12_drug1
-                                    },
-                                    {
-                                        name: '快混槽2-硫酸鋁',
-                                        type: 'line',
-                                        data: T01_12_drug2
-                                    },
-                                    {
-                                        name: '慢混槽2-polymer',
-                                        type: 'line',
-                                        data: T01_13_drug
-                                    }
                                 ]
                             };
 
@@ -188,7 +162,7 @@
             </script>
             <a href="{{route('export2')}}" class="w-fit h-12 -translate-y-[26px] justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
                 <img width="30px" height="30px" src="{{ asset('img/svg/excel_download.svg') }}" class="grid items-center"></img>
-                <span class="text-md">按此下載各槽體藥劑量報表</span>
+                <span class="text-md">按此下載藥劑量報表</span>
             </a>
         </div>
     </div>

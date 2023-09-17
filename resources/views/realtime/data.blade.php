@@ -214,10 +214,10 @@
                      <div id="gui_t01_6_ss" class="absolute text-3xl text-black top-1/4 left-1/4 -translate-x-[6.6rem] translate-y-[130px]"></div>
                      <div id="gui_t01_12_ph_pre" class="absolute text-3xl text-black top-1/4 left-1/2 -translate-x-[2.9rem] translate-y-[145px]"></div>
                      <div id="gui_t01_12_ph_aft" class="absolute text-3xl text-black top-1/4 left-1/2 translate-x-[5.3rem] translate-y-[145px]"></div>
-                     <div id="gui_t01_12_drug1" class="absolute text-3xl text-black top-1/4 left-1/2 -translate-x-[6rem] -translate-y-11"></div>
-                     <div id="gui_t01_12_daily_drug1" class="absolute text-3xl text-black top-1/4 left-1/2 -translate-x-[6rem] translate-y-9"></div>
-                     <div id="gui_t01_12_drug2" class="absolute text-3xl text-black top-1/4 right-1/3 -translate-x-[5.6rem] -translate-y-11"></div>
-                     <div id="gui_t01_12_daily_drug2" class="absolute text-3xl text-black top-1/4 right-1/3 -translate-x-[5.6rem] translate-y-9"></div>
+                     <div id="gui_t01_12_drug1" class="absolute text-2xl text-black top-1/4 left-1/2 -translate-x-[8rem] -translate-y-8"></div>
+                     <div id="gui_t01_12_daily_drug1" class="absolute text-2xl text-black top-1/4 left-1/2 -translate-x-[8rem] translate-y-10"></div>
+                     <div id="gui_t01_12_drug2" class="absolute text-2xl text-black top-1/4 right-1/3 -translate-x-[2.6rem] -translate-y-8"></div>
+                     <div id="gui_t01_12_daily_drug2" class="absolute text-2xl text-black top-1/4 right-1/3 -translate-x-[2.6rem] translate-y-10"></div>
 
 
                      <div id="gui_t01_14_ph" class="absolute text-3xl text-black top-1/4 right-1/4 translate-x-[5rem] -translate-y-12"></div>
