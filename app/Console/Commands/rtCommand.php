@@ -60,8 +60,9 @@ class rtCommand extends Command
                     // drug record
                     // $data->T01_12_drug_current = number_format($values2[1], 1, '.', ',');
                     // $data->T01_12_drug_daily = number_format($values[1], 1, '.', ',');
-                    $data->T01_12_drug1_current = number_format($values2[0], 1, '.', ',');
-                    $data->T01_12_drug2_current = number_format($values2[1], 1, '.', ',');
+		    
+		    $data->T01_12_drug1_current = $values2[1];
+	            $data->T01_12_drug2_current = number_format($values2[2], 2, '.', ',');
                     $data->T01_12_drug1_daily = null;
                     $data->T01_12_drug2_daily = null;
                     $data->save();
