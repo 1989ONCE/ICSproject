@@ -32,10 +32,9 @@ class pred extends Command
         try {
             $model = Ai_model::all();
             $datas = Datas::orderBy('data_id', 'desc')
-                        ->limit(31)->get(['T01_6_ph_pre', 'T01_6_ph_aft', 'T01_6_ss', 'T01_12_ph_pre', 'T01_12_ph_aft', 'T01_14_ph'])
+                        ->limit(31)->get(['T01_6_ph_aft', 'T01_6_ss', 'T01_12_ph_pre', 'T01_12_ph_aft', 'T01_14_ph'])
                         ->map(function ($value) {
                             return [
-                                $value->T01_6_ph_pre,
                                 $value->T01_6_ph_aft,
                                 $value->T01_6_ss,
                                 $value->T01_12_ph_pre,
@@ -74,7 +73,8 @@ class pred extends Command
         $output = shell_exec($input);
         if($output !== null){
             $this->info("[VAR]predicted value of SS for next minute: ".$output);
-            $var_pred = new Prediction();
+	    $var_pred = new Prediction();
+	    $var_pred->added_on = date('Y-m-d H:i:s');
             $var_pred->fk_model_id = $var->model_id;
             $var_pred->pred_ss = (double)$output;
             $var_pred->save();
@@ -94,7 +94,8 @@ class pred extends Command
         if($output !== null){
             $this->info("[LSTM]predicted value of SS for next minute: ".$output);
             $lstm_pred = new Prediction();
-            $lstm_pred->fk_model_id = $lstm->model_id;
+	    $lstm_pred->added_on = date('Y-m-d H:i:s');
+	    $lstm_pred->fk_model_id = $lstm->model_id;
             $lstm_pred->pred_ss = (double)$output;
             $lstm_pred->save();
             $this->info('The command was successful!');
@@ -113,7 +114,8 @@ class pred extends Command
         $output2 = shell_exec($input2);
         if($output1 !== null){
             $this->info("predicted value of SS for next minute: ".$output1);
-            $pred = new Prediction();
+	    $pred = new Prediction();
+	    $pred->added_on = date('Y-m-d H:i:s');
             $pred->fk_model_id = $id;
             $pred->pred_ss = (double)$output1;
             $pred->save();
@@ -121,7 +123,8 @@ class pred extends Command
         }
         else if ($output2 !== null){
             $this->info("predicted value of SS for next minute: ".$output2);
-            $pred = new Prediction();
+	    $pred = new Prediction();
+	    $pred->added_on = date('Y-m-d H:i:s');
             $pred->fk_model_id = $id;
             $pred->pred_ss = (double)$output2;
             $pred->save();

@@ -31,7 +31,7 @@ class rtCommand extends Command
         try {
                 $timestamp = date('Y-m-d H:i:s');
 
-                $input = escapeshellcmd("python ./app/Console/python/data.py");
+                $input = escapeshellcmd("python3 ./app/Console/python/data.py");
                 $output = shell_exec($input);
                 if($output){
                     $output = str_replace( array('[', ']', '\n'), '', $output);
