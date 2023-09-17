@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ICS污水管理系統</title>
+        <title>AI污邊界:污水管理系統</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="icon" href="img/icon.png">
         <meta charset="UTF-8">
