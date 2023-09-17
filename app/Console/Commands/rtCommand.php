@@ -76,6 +76,9 @@ class rtCommand extends Command
                         $power->save();
                     }
                 }
+                else{
+                    throw new Exception("設備斷訊");
+                }
         } catch (\Exception $e) {
             // if power has ben cut off
             $first_p = Power::orderBy('onofftime', 'desc')->first();
