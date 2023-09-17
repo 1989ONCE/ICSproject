@@ -38,11 +38,11 @@
                 <p class="block text-base font-normal leading-relaxed text-black antialiased ml-4">
                     準確度：
                     @if($m->accuracy == null)
-                        <span class="text-cyan-800 text-sm font-bold">資料不足,尚不提供準確度!</span>
+                        <span class="text-cyan-800 text-sm font-bold">請洽管理員!</span>
                     @elseif($m->accuracy < 0.9)
-                        <h5 class="text-red-600 font-bold">{{$m->accuracy}}</h5>
+                        <h5 class="text-red-600 font-bold">{{$m->accuracy}}%</h5>
                     @else
-                        <h5 class="text-green-600 font-bold">{{$m->accuracy}}</h5>
+                        <h5 class="text-green-600 font-bold">{{$m->accuracy}}%</h5>
                     @endif
                 </p>
             </li>

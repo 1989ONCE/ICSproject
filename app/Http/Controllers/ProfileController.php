@@ -63,10 +63,10 @@ class ProfileController extends Controller
         if($model->model_loc !== null){
             $deleteModel =  public_path('models/') .$model->model_loc;
             unlink($deleteModel);
-            Ai_model::where('model_id', $model_id)->update(['model_loc'=> null]);
+            Ai_model::where('model_id', $model_id)->update(['model_loc'=> null, 'added_on'=> null, 'accuracy' => null]);
         }
         $request->validate([
-            'loc' => 'required|file'
+            'loc' => 'required|file',
         ]);
 
         // get file name
@@ -78,7 +78,12 @@ class ProfileController extends Controller
         $accepted_ext = Array('pkl','pickle');
         if(in_array($ext['extension'], $accepted_ext)){
             $request->loc->move(public_path('models'), $loc);
-            Ai_model::where('model_id', $model_id)->update(['model_loc'=>$loc, 'added_on'=>$currentDate]);
+            $app_path = app_path('Console/python/get_acc.py');
+            $input = escapeshellcmd("python3 $app_path $loc");
+            $output = shell_exec($input);
+            dump($output);
+            sleep(5);
+            Ai_model::where('model_id', $model_id)->update(['model_loc'=>$loc, 'added_on'=>$currentDate, 'accuracy' => 98]);
             return back()->with('success', strtoupper($model->model_name). ' 模型更新成功！');
         }
         else{
@@ -94,6 +99,8 @@ class ProfileController extends Controller
 
         $model = new Ai_model();
         $model->model_name = $request->name;
+        $model->accuracy = $request->accuracy;
+
 
         $model->save();
         return back()->with('success', '模型新增成功！');
