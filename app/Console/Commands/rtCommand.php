@@ -32,11 +32,19 @@ class rtCommand extends Command
                 $timestamp = date('Y-m-d H:i:s');
 
                 $input = escapeshellcmd("python3 ./app/Console/python/data.py");
+                $drug_input = escapeshellcmd("python3 ./app/Console/python/data_ID1.py");
+
                 $output = shell_exec($input);
+                $output2 = shell_exec($drug_input);
                 if($output){
                     $output = str_replace( array('[', ']', '\n'), '', $output);
                     $output = preg_replace( "/\n/", "", $output);
                     $values = explode(", ", $output);
+
+                    $output2 = str_replace( array('[', ']', '\n'), '', $output2);
+                    $output2 = preg_replace( "/\n/", "", $output2);
+                    $values2 = explode(", ", $output2);
+
                     $data = new Datas;
     
                     $data->added_on = $timestamp;
@@ -50,10 +58,10 @@ class rtCommand extends Command
                     $data->T01_14_ph = number_format($values[6]/100, 1, '.', ','); // port 105
     
                     // drug record
-                    // $data->T01_12_drug_current = number_format($values[5], 1, '.', ',');
-                    // $data->T01_12_drug_daily = number_format($values[6], 1, '.', ',');
-                    $data->T01_12_drug1_current = null;
-                    $data->T01_12_drug2_current = null;
+                    // $data->T01_12_drug_current = number_format($values2[1], 1, '.', ',');
+                    // $data->T01_12_drug_daily = number_format($values[1], 1, '.', ',');
+                    $data->T01_12_drug1_current = number_format($values2[0], 1, '.', ',');
+                    $data->T01_12_drug2_current = number_format($values2[1], 1, '.', ',');
                     $data->T01_12_drug1_daily = null;
                     $data->T01_12_drug2_daily = null;
                     $data->save();

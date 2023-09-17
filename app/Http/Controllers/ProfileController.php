@@ -81,9 +81,8 @@ class ProfileController extends Controller
             $app_path = app_path('Console/python/get_acc.py');
             $input = escapeshellcmd("python3 $app_path $loc");
             $output = shell_exec($input);
-            dump($output);
-            sleep(5);
-            Ai_model::where('model_id', $model_id)->update(['model_loc'=>$loc, 'added_on'=>$currentDate, 'accuracy' => 98]);
+
+            Ai_model::where('model_id', $model_id)->update(['model_loc'=>$loc, 'added_on'=>$currentDate, 'accuracy' => $output]);
             return back()->with('success', strtoupper($model->model_name). ' 模型更新成功！');
         }
         else{
