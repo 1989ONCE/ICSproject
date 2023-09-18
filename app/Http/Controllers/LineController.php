@@ -29,7 +29,7 @@ class LineController extends Controller
         
         $username = $request->input('name');
         $code = request()->get('code');
-        $callbackUrl = "http://localhost/ICSproject/public/profile/linetest";
+        $callbackUrl = "http://ncumis-ics.com/profile/linetest";
 
         
         $responseData = Http::asForm()->post('https://notify-bot.line.me/oauth/token', [
