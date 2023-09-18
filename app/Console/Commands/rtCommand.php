@@ -54,7 +54,7 @@ class rtCommand extends Command
                     $data->T01_6_ph_aft = number_format($values[2]/100, 1, '.', ','); // port 101
                     $data->T01_6_ss = number_format($values[3], 1, '.', ','); // port 102
                     $data->T01_12_ph_pre = number_format($values[4]/100, 1, '.', ','); // port 104
-                    $data->T01_12_ph_aft = number_format($values[5]/1000, 1, '.', ','); // port 107 
+                    $data->T01_12_ph_aft = number_format(($values[5]-4000)*(14/16000), 1, '.', ','); // port 107 
                     $data->T01_14_ph = number_format($values[6]/100, 1, '.', ','); // port 105
     
                     // drug record
