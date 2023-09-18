@@ -113,7 +113,7 @@
             <div class="flex flex-row flex items-center">
                 <p class="w-40 md:text-lg text-gray-500 text-base">權限 Authority: </p>
                 <div class="bg-sky-200 w-28 min-w-fit p-1 m-1 rounded-full">
-                    <span class="font-normal text-sky-900 text-base flex justify-center underline underline-offset-2 hover:text-gray-500">Admin</span>
+                    <span class="font-normal text-sky-900 text-base flex justify-center underline underline-offset-2 hover:text-gray-500">{{$user->getRoleNames()[0]}}</span>
                 </div>
             </div>
         </div>

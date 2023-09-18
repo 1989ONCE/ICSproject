@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RealTimeController;
 use Illuminate\Support\Facades\Route;
@@ -70,7 +71,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/group', [ProfileController::class, 'group'])->name('profile.group');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/profile/model', [ProfileController::class, 'model'])->name('profile.model');
     Route::delete('/profile/delete-model', [ProfileController::class, 'deleteModel'])->name('profile.deleteModel');
     Route::post('/profile/create-model', [ProfileController::class, 'createModel'])->name('profile.createModel');
     Route::post('/profile/upload-model', [ProfileController::class, 'upload'])->name('profile.upload');
@@ -81,8 +81,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/linetest1', [LineController::class, 'show'])->name('profile.linetest');
     Route::any('/profile/linetest', [LineController::class, 'lineNotifyCallback'])->name('profile.lineconnect');
     Route::delete('/profile/line', [LineController::class, 'lineDestroy'])->name('profile.lineDestroy');
-});
 
+    // admin
+    Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.allUser');
+    Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::patch('/admin/update', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/admin/delete', [AdminController::class, 'destroy'])->name('admin.delete');
+
+
+    Route::get('/admin/model', [ProfileController::class, 'model'])->name('admin.model');
+
+});
 
 
 // email verification
