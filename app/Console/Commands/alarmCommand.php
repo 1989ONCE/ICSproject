@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\Warning;
 use App\Models\Alarm;
-use App\Models\agjoin;
+use App\Models\agJoin;
 use App\Models\User;
 use App\Models\Group;
 use Illuminate\Support\Facades\Notification;
@@ -37,7 +37,7 @@ class alarmCommand extends Command
         $warningData = [
             'body' => 'You received an new warning notification',
             'text' => 'There is something wrong',
-            'url' => url('http://localhost/ICSproject/public/realtime'),
+            'url' => url('http://ncumis-ics.com'),
             'thankyou' => 'Go to check out'
         ];
         
@@ -62,8 +62,8 @@ class alarmCommand extends Command
                 switch($operators1[$i]){
                     case ">":
                         if($datas[$k] > $numbers1[$i]){
-                            $users = agjoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_user_id')->toArray();
-                            $groups = agjoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_group_id')->toArray();
+                            $users = agJoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_user_id')->toArray();
+                            $groups = agJoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_group_id')->toArray();
                             
 
                             $emails = User::whereIn('id',$users)->orWhereIn('fk_group_id',$groups)->get(); //只有取user非email
@@ -89,8 +89,8 @@ class alarmCommand extends Command
                         break;
                     case "=":
                         if($datas[$k] == $numbers1[$i]){
-                            $users = agjoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_user_id')->toArray();
-                            $groups = agjoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_group_id')->toArray();
+                            $users = agJoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_user_id')->toArray();
+                            $groups = agJoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_group_id')->toArray();
                             
                             
                             $emails = User::whereIn('id',$users)->orWhereIn('fk_group_id',$groups)->get();
@@ -115,8 +115,8 @@ class alarmCommand extends Command
                         break;
                     case "<":
                         if($datas[$k] < $numbers1[$i]){
-                            $users = agjoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_user_id')->toArray();
-                            $groups = agjoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_group_id')->toArray();
+                            $users = agJoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_user_id')->toArray();
+                            $groups = agJoin::where('fk_alarm_id',$ids1[$i])->pluck('fk_group_id')->toArray();
                             
                             
                             $emails = User::whereIn('id',$users)->orWhereIn('fk_group_id',$groups)->get();
