@@ -38,8 +38,6 @@ return new class extends Migration
             $table->double('T01_14_ph', 3, 1);
             $table->double('T01_12_drug1_current', 8, 2)->nullable();
             $table->double('T01_12_drug2_current', 8, 2)->nullable();
-            $table->double('T01_12_drug1_daily', 8, 2)->nullable();
-            $table->double('T01_12_drug2_daily', 8, 2)->nullable();
             $table->timestamp('added_on');
         });
        

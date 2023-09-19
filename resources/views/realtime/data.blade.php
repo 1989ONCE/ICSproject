@@ -64,7 +64,6 @@
                                         <div class="bg-gray-200 row-span-2 w-full lg:w-auto text-gray-800 text-center border-r border-gray-600 block table-cell relative lg:static"><div class="translate-y-3">液鹼(45%)</div>
                                     </div>
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">瞬間流量</div>
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">累積流量</div>
                                 </div>
                                 <div class="table-cell">
                                     <div class="grid grid-rows-2">
@@ -75,7 +74,6 @@
                                 <div class="table-cell">
                                     <div class="grid grid-rows-2">
                                         <div id="excel_drug1" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
-                                        <div id="excel_drug1_daily" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
                                     </div>
                                 </div>
                                 <div class="table-cell">
@@ -93,7 +91,6 @@
                                         <div class="translate-y-3">硫酸鋁(7.5%)</div>
                                     </div>
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">瞬間流量</div>
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">累積流量</div>
                                 </div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
@@ -101,7 +98,6 @@
                                 </div></div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
                                     <div id="excel_drug2" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
-                                    <div id="excel_drug2_daily" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
                                 </div></div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
@@ -215,9 +211,7 @@
                      <div id="gui_t01_12_ph_pre" class="absolute text-3xl text-black top-1/4 left-1/2 -translate-x-[2.9rem] translate-y-[145px]"></div>
                      <div id="gui_t01_12_ph_aft" class="absolute text-3xl text-black top-1/4 left-1/2 translate-x-[5.3rem] translate-y-[145px]"></div>
                      <div id="gui_t01_12_drug1" class="absolute text-2xl text-black top-1/4 left-1/2 -translate-x-[8rem] -translate-y-8"></div>
-                     <div id="gui_t01_12_daily_drug1" class="absolute text-2xl text-black top-1/4 left-1/2 -translate-x-[8rem] translate-y-10"></div>
                      <div id="gui_t01_12_drug2" class="absolute text-2xl text-black top-1/4 right-1/3 -translate-x-[2.6rem] -translate-y-8"></div>
-                     <div id="gui_t01_12_daily_drug2" class="absolute text-2xl text-black top-1/4 right-1/3 -translate-x-[2.6rem] translate-y-10"></div>
 
 
                      <div id="gui_t01_14_ph" class="absolute text-3xl text-black top-1/4 right-1/4 translate-x-[5rem] -translate-y-12"></div>
@@ -292,9 +286,7 @@
                         document.getElementById("excel_ph5").innerHTML = current.T01_14_ph;
 
                         document.getElementById("excel_drug1").innerHTML = current.T01_12_drug1_current;
-                        document.getElementById("excel_drug1_daily").innerHTML = current.T01_12_drug1_daily;
                         document.getElementById("excel_drug2").innerHTML = current.T01_12_drug2_current;
-                        document.getElementById("excel_drug2_daily").innerHTML = current.T01_12_drug2_daily;
 
                         // excel 放流口ph值燈號
                         const complete = document.querySelector('#complete');
@@ -413,9 +405,7 @@
                 document.getElementById("gui_t01_12_ph_pre").innerHTML = current.T01_12_ph_pre;
                 document.getElementById("gui_t01_12_ph_aft").innerHTML = current.T01_12_ph_aft;
                 document.getElementById("gui_t01_12_drug1").innerHTML = current.T01_12_drug1_current;
-                document.getElementById("gui_t01_12_daily_drug1").innerHTML = current.T01_12_drug1_daily;
                 document.getElementById("gui_t01_12_drug2").innerHTML = current.T01_12_drug2_current;
-                document.getElementById("gui_t01_12_daily_drug2").innerHTML = current.T01_12_drug2_daily;
                 document.getElementById("gui_t01_14_ph").innerHTML = current.T01_14_ph;
                 document.getElementById("gui_time").innerHTML = current.added_on;
 

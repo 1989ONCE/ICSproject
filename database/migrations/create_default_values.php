@@ -47,22 +47,20 @@ return new class extends Migration
         $group_4->save();
 
         // defualt value only for testing
-        $data = Datas::create([
-            'T01_6_ph_pre' => 1.2,
-            'T01_6_ph_aft' => 6.3,
-            'T01_6_ss' => 10.21,
-            'T01_12_ph_pre' => 8.1,
-            'T01_12_ph_aft' => 7.5,
-            'T01_12_drug1_current' => 80,
-            'T01_12_drug2_current' => 10,
-            'T01_12_drug1_daily'=> 180,
-            'T01_12_drug2_daily'=> 50,
-            'T01_14_ph'=>7.2,
-            'added_on' => '2023-09-18 20:28:48',
-        ]);
+        // $data = Datas::create([
+        //     'T01_6_ph_pre' => 1.2,
+        //     'T01_6_ph_aft' => 6.3,
+        //     'T01_6_ss' => 10.21,
+        //     'T01_12_ph_pre' => 8.1,
+        //     'T01_12_ph_aft' => 7.5,
+        //     'T01_12_drug1_current' => ,
+        //     'T01_12_drug2_current' => 10,
+        //     'T01_14_ph'=>7.2,
+        //     'added_on' => '2023-09-18 20:28:48',
+        // ]);
         
         
-        $data->save();
+        // $data->save();
 
         $model1 = Ai_model::create([
             'model_name' => 'var',

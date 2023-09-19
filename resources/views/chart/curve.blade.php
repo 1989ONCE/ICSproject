@@ -112,8 +112,8 @@
                             var json2 = JSON.parse(data[1]);
                             var json3 = JSON.parse(data[2]);
 
-                            var T01_12_drug1_daily = json1.map(x => x.T01_12_drug1_daily);
-                            var T01_12_drug2_daily = json2.map(x => x.T01_12_drug2_daily);
+                            var T01_12_drug1_current = json1.map(x => x.T01_12_drug1_current);
+                            var T01_12_drug2_current = json2.map(x => x.T01_12_drug2_current);
                             var added_on = json3.map(x => x.added_on);
 
                             // 基于准备好的dom，初始化echarts实例
@@ -140,12 +140,12 @@
                                     {
                                         name: '化混槽2-液鹼',
                                         type: 'line',
-                                        data: T01_12_drug1_daily
+                                        data: T01_12_drug1_current
                                     },
                                     {
                                         name: '化混槽2-硫酸鋁',
                                         type: 'line',
-                                        data: T01_12_drug2_daily
+                                        data: T01_12_drug2_current
                                     },
                                 ]
                             };
@@ -162,7 +162,7 @@
             </script>
             <a href="{{route('export2')}}" class="w-fit h-12 -translate-y-[26px] justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
                 <img width="30px" height="30px" src="{{ asset('img/svg/excel_download.svg') }}" class="grid items-center"></img>
-                <span class="text-md">按此下載藥劑量報表</span>
+                <span class="text-md">按此下載瞬間藥劑量流量報表</span>
             </a>
         </div>
     </div>

@@ -15,8 +15,8 @@ class DrugsExport implements FromCollection, WithHeadings
     {
         return Datas::all()->map(function($data) {
             return [
-               'T01_12_drug1_daily' => $data->T01_12_drug1_daily,
-               'T01_12_drug2_daily' => $data->T01_12_drug2_daily,
+               'T01_12_drug1_current' => $data->T01_12_drug1_current,
+               'T01_12_drug2_current' => $data->T01_12_drug2_current,
                'added_on' => $data->added_on
             ];
          });

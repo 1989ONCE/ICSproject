@@ -33,9 +33,12 @@ class rtCommand extends Command
 
                 $input = escapeshellcmd("python3 ./app/Console/python/data.py");
                 $drug_input = escapeshellcmd("python3 ./app/Console/python/data_ID1.py");
+                $drug_input2 = escapeshellcmd("python3 ./app/Console/python/data_ID2.py");
 
                 $output = shell_exec($input);
                 $output2 = shell_exec($drug_input);
+                $output3 = shell_exec($drug_input2);
+
                 if($output){
                     $output = str_replace( array('[', ']', '\n'), '', $output);
                     $output = preg_replace( "/\n/", "", $output);
@@ -44,6 +47,10 @@ class rtCommand extends Command
                     $output2 = str_replace( array('[', ']', '\n'), '', $output2);
                     $output2 = preg_replace( "/\n/", "", $output2);
                     $values2 = explode(", ", $output2);
+
+                    $output3 = str_replace( array('[', ']', '\n'), '', $output3);
+                    $output3 = preg_replace( "/\n/", "", $output3);
+                    $values3 = explode(", ", $output3);
 
                     $data = new Datas;
     
@@ -58,13 +65,9 @@ class rtCommand extends Command
                     $data->T01_14_ph = number_format($values[6]/100, 1, '.', ','); // port 105
     
                     // drug record
-                    // $data->T01_12_drug_current = number_format($values2[1], 1, '.', ',');
-                    // $data->T01_12_drug_daily = number_format($values[1], 1, '.', ',');
 		    
-		            $data->T01_12_drug1_current = $values2[1];
-	                $data->T01_12_drug2_current = number_format($values2[2], 2, '.', ',');
-                    $data->T01_12_drug1_daily = null;
-                    $data->T01_12_drug2_daily = null;
+		            $data->T01_12_drug1_current = number_format($values2[1], 2, '.', ',');
+	                $data->T01_12_drug2_current = number_format($values3[1], 2, '.', ',');
                     $data->save();
     
                     // if power return

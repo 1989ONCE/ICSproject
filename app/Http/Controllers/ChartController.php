@@ -48,12 +48,12 @@ class ChartController extends Controller
 
     public function linechart2(): String
     {
-        $T01_12_drug1_daily = Datas::all(['T01_12_drug1_daily'])->toJson();
-        $T01_12_drug2_daily = Datas::all(['T01_12_drug2_daily'])->toJson();
+        $T01_12_drug1_current = Datas::all(['T01_12_drug1_current'])->toJson();
+        $T01_12_drug2_current = Datas::all(['T01_12_drug2_current'])->toJson();
 
         $added_on = Datas::all(['added_on'])->toJson();
 
     	return json_encode(
-            [$T01_12_drug1_daily, $T01_12_drug2_daily, $added_on]);
+            [$T01_12_drug1_current, $T01_12_drug2_current, $added_on]);
     }
 }
