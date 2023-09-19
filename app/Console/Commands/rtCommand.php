@@ -65,9 +65,9 @@ class rtCommand extends Command
                     $data->T01_14_ph = number_format($values[6]/100, 1, '.', ','); // port 105
     
                     // drug record
-		    
-		            $data->T01_12_drug1_current = number_format($values2[1], 2, '.', ',');
-	                $data->T01_12_drug2_current = number_format($values3[1], 2, '.', ',');
+
+		            $data->T01_12_drug1_current = $values2[1];
+	                $data->T01_12_drug2_current = $values3[1];
                     $data->save();
     
                     // if power return
