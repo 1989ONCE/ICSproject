@@ -48,8 +48,8 @@ if __name__ == "__main__":
     data_results = read_data(IP, PORTS, common_header)
         
     if data_results:
-        id1 = data_results[0][0]
-        long_data = data_results[0][1]
+        id1 = float(data_results[0][0])
+        long_data = float(data_results[0][1])
 
         results.append([timestamp, id1, long_data])
 
