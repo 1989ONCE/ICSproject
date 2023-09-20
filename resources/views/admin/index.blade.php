@@ -25,7 +25,7 @@
                                         <div class="flex items-center">
                                             <div class="ml-3">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                #{{$u->id}}&ensp; ({{$user->getRoleNames()[0]}})&ensp;&ensp;{{$u->name}}
+                                                #{{$u->id}}&ensp; ({{$u->getRoleNames()[0]}})&ensp;&ensp;{{$u->name}}
                                                 </p>
                                             </div>
                                         </div>
