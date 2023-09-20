@@ -25,7 +25,7 @@
                                         <div class="flex items-center">
                                             <div class="ml-3">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                {{$u->name}}
+                                                #{{$u->id}}&ensp;&ensp;&ensp;{{$u->name}}
                                                 </p>
                                             </div>
                                         </div>

@@ -10,6 +10,12 @@
         @method('patch')
 
         <div>
+            <x-input-label for="badge_num" :value="__('員工編號 Badge Number')" />
+            <x-text-input id="badge_num" name="Badge_num" type="text" class="mt-1 block flex w-full bg-gray-200" :value="old('Badge_num', $editUser->Badge_num)" readonly autofocus autocomplete="Badge_num" />
+            <x-input-error class="mt-2" :messages="$errors->get('Badge_num')" />
+        </div>
+
+        <div>
             <x-input-label for="name" :value="__('姓名 Full Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block flex w-full" :value="old('name', $editUser->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
