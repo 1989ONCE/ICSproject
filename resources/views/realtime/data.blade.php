@@ -60,25 +60,23 @@
                             </div>
                             <div class="table-row-group">
                                 <div id="json_rt1" class="table-row bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                                    <div class="grid grid-rows-2 grid-cols-2">
-                                        <div class="bg-gray-200 row-span-2 w-full lg:w-auto text-gray-800 text-center border-r border-gray-600 block table-cell relative lg:static"><div class="translate-y-3">液鹼(45%)</div>
+                                    <div class="grid grid-rows-1 grid-cols-2">
+                                        <div class="bg-gray-200 row-span-1 w-full lg:w-auto text-gray-800 text-center border-r border-gray-600 block table-cell relative lg:static"><div>液鹼</div>
                                     </div>
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">瞬間流量</div>
                                 </div>
                                 <div class="table-cell">
-                                    <div class="grid grid-rows-2">
-                                        <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
+                                    <div class="grid grid-rows-1">
                                         <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
                                     </div>
                                 </div>
                                 <div class="table-cell">
-                                    <div class="grid grid-rows-2">
+                                    <div class="grid grid-rows-1">
                                         <div id="excel_drug1" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
                                     </div>
                                 </div>
                                 <div class="table-cell">
-                                    <div class="grid grid-rows-2">
-                                        <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
+                                    <div class="grid grid-rows-1">
                                         <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
                                     </div>
                                 </div>
@@ -86,21 +84,19 @@
                             </div>
 
                             <div id="json_rt1_2" class="table-row bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                                <div class="grid grid-rows-2 grid-cols-2">
-                                    <div class="bg-gray-200 row-span-2 w-full lg:w-auto text-gray-800 text-center border-r border-gray-600 block table-cell relative lg:static">
-                                        <div class="translate-y-3">硫酸鋁(7.5%)</div>
+                                <div class="grid grid-rows-1 grid-cols-2">
+                                    <div class="bg-gray-200 row-span-1 w-full lg:w-auto text-gray-800 text-center border-r border-gray-600 block table-cell relative lg:static">
+                                        <div>硫酸鋁</div>
                                     </div>
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">瞬間流量</div>
                                 </div>
-                                <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
+                                <div class="table-cell"><div class="grid grid-rows-1">
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
                                 </div></div>
-                                <div class="table-cell"><div class="grid grid-rows-2">
+                                <div class="table-cell"><div class="grid grid-rows-1">
                                     <div id="excel_drug2" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
                                 </div></div>
-                                <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
+                                <div class="table-cell"><div class="grid grid-rows-1">
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
                                 </div></div>
                             </div>
