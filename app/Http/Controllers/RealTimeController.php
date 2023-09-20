@@ -36,7 +36,7 @@ class RealTimeController extends Controller
     {
         $id = $request->option;
         if($id == null){
-            $pred = Prediction::orderBy('added_on', 'desc')->orderBy('fk_model_id', 'asc')->first();
+            $pred = Prediction::orderBy('fk_model_id', 'asc')->orderBy('added_on', 'desc')->first();
         }
         else{
             $pred = Prediction::where('fk_model_id', '=', $id)->orderBy('added_on', 'desc')->first();
@@ -53,7 +53,7 @@ class RealTimeController extends Controller
         $id = $request->option;
 
         if($id == ''){
-            $pred = Prediction::orderBy('added_on', 'desc')->orderBy('fk_model_id', 'asc')->first();
+            $pred = Prediction::orderBy('fk_model_id', 'asc')->orderBy('added_on', 'desc')->first();
             $option = '';
         }
         else{
