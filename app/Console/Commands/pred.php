@@ -50,12 +50,12 @@ class pred extends Command
             # data order: (1)ph (2)ss
             $this->var_pred($datas);
             $this->lstm_pred($datas2);
+            $this->arima_pred($datas);
             // for($i=0; $i<=count($model); $i++){
             //     if($model[$i]->model_name != 'var' || $model[$i]->model_name != 'lstm' || $model[$i]->model_name != 'arima'){
             //         $this->other_pred($datas, $model[$i]->model_loc, $model[$i]->model_id);
             //     }
             // }
-            // $this->arima_pred($datas);
 
         } catch (\Exception $e) {
              $this->info('Predict Command Error: ' . $e->getMessage() . "\n");
@@ -95,6 +95,26 @@ class pred extends Command
 	    $lstm_pred->fk_model_id = $lstm->model_id;
             $lstm_pred->pred_ss = (double)$output;
             $lstm_pred->save();
+            $this->info('The command was successful!');
+        }
+        else{
+            $this->info("No model set or Not enough realtime data to generate prediction result!");
+        }
+    }
+
+    // generate armia prediction
+    public function arima_pred($datas): void
+    {
+        $arima = Ai_model::where('model_name', 'arima')->first();
+        $input = escapeshellcmd("python3 ./app/Console/python/stat_model.py $datas $arima->model_loc");
+        $output = shell_exec($input);
+        if($output !== null){
+            $this->info("[ARIMA]predicted value of SS for next minute: ".$output);
+            $arima_pred = new Prediction();
+            $arima_pred->added_on = date('Y-m-d H:i:s');
+            $arima_pred->fk_model_id = $arima->model_id;
+            $arima_pred->pred_ss = (double)$output;
+            $arima_pred->save();
             $this->info('The command was successful!');
         }
         else{
