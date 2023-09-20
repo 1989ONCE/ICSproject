@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
         })->everyMinute();
 
         $schedule->command('cron:alarm_send')->everyMinute();
-        $schedule->command('cron:pred')->hourly();
+        $schedule->command('cron:pred')->everyMinute();
     }
 
     /**
