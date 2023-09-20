@@ -52,14 +52,14 @@ class RegisteredUserController extends Controller
             'fk_group_id' => $request->group,
         ]);
 
-        if($request->Badge_num == 00000){
+        if($request->Badge_num == 000 || $request->Badge_num == 001){
             $user->assignRole('Admin');
         }
         else{
             $user->assignRole('General');
         }
 
-        event(new Registered($user));
+        // event(new Registered($user));
 
         Auth::login($user);
 
