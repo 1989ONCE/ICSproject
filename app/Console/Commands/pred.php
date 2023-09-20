@@ -91,8 +91,8 @@ class pred extends Command
         if($output !== null){
             $this->info("[LSTM]predicted value of SS for next minute: ".$output);
             $lstm_pred = new Prediction();
-	    $lstm_pred->added_on = date('Y-m-d H:i:s');
-	    $lstm_pred->fk_model_id = $lstm->model_id;
+            $lstm_pred->added_on = date('Y-m-d H:i:s');
+            $lstm_pred->fk_model_id = $lstm->model_id;
             $lstm_pred->pred_ss = (double)$output;
             $lstm_pred->save();
             $this->info('The command was successful!');
@@ -106,7 +106,7 @@ class pred extends Command
     public function arima_pred($datas): void
     {
         $arima = Ai_model::where('model_name', 'arima')->first();
-        $input = escapeshellcmd("python3 ./app/Console/python/stat_model.py $datas $arima->model_loc");
+        $input = escapeshellcmd("python3 ./app/Console/python/stat_model2.py $datas $arima->model_loc");
         $output = shell_exec($input);
         if($output !== null){
             $this->info("[ARIMA]predicted value of SS for next minute: ".$output);

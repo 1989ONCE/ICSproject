@@ -1,12 +1,12 @@
-import pandas as pd
 import numpy as np
+from statsmodels.tsa.api import VAR
 import pickle, warnings, os, sys
 warnings.filterwarnings('ignore')
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # data order: (1)ph (2)ss
 datas = sys.argv[1]
 loc = sys.argv[2]
+
 
 # rb: 用2位元度入
 path = os.getcwd() + "/public/models/" + loc.strip()
@@ -17,8 +17,6 @@ with open(path, 'rb') as file:
 datas = datas[1:-1]+','
 datas = datas.replace('[', '').replace(',', ' ').split(']')
 data_arr = []
-min_data = 9999
-max_data = -1
 for d in datas:
     temp_arr = []
     d = d.split(' ')
@@ -26,22 +24,16 @@ for d in datas:
         if d[i] == "":
             continue
         else:
-            num = float(d[i].strip())
-            if i == 2:
-                if num > max_data:
-                    max_data = num
-                elif num < min_data:
-                    min_data = num
-
-            temp_arr.append(num)
+            temp_arr.append(float(d[i].strip()))
     if temp_arr:
         data_arr.append(temp_arr)
 
+# sliding window, window size=31 
 input = np.array(data_arr)
-input2 = np.reshape(input, (1, 150, 2))
 
-#array type
-prediction = np.reshape(model.get('model').predict(input2, verbose=0), -1)
-prediction *= (max_data-min_data) + min_data
-print('%.2f'%prediction[-1])
+# array type
+prediction = np.reshape(model.get('model_fitted').forecast(steps=1), -1)
+print(prediction[-1])
 file.close()
+
+
