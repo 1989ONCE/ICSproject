@@ -13,7 +13,7 @@
             var URL = 'https://notify-bot.line.me/oauth/authorize?';
             URL += 'response_type=code';
             URL += '&client_id=	Fmqcpg21ohTgNGSU6xo499';
-            URL += '&redirect_uri=http://ncumis-ics.com/public/profile/linetest';
+            URL += '&redirect_uri=http://ncumis-ics.com/profile/linetest';
             URL += '&scope=notify';
             URL += '&state=NO_STATE';
             window.location.href = URL;
