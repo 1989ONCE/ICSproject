@@ -176,7 +176,7 @@
                             <div id="json_rt1_6" class="table-row bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                                 <div class="grid grid-rows-2 grid-cols-2">
                                     <div class="bg-gray-200 row-span-2 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 border-t-gray-100 block table-cell relative lg:static"><div class="translate-y-3">放流水質</div></div>
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">預測之放流SS值</div>
+                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">下一小時之預測SS值</div>
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">水質狀況燈號</div>
                                 </div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
@@ -185,7 +185,7 @@
                                 </div></div>
 
                                 <div class="table-cell"><div class="grid grid-rows-2">
-                                <div id="excel_pred_ss" class="row-span-1 w-full lg:w-auto text-gray-800 text-center block table-cell relative lg:static"></div>
+                                <div id="excel_pred_ss" class="font-bold row-span-1 w-full lg:w-auto text-gray-800 text-center block table-cell relative lg:static"></div>
                                     <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center block table-cell relative lg:static">
                                         <div id="complete" class="w-4 h-4 rounded-full"></div>
                                     </div>
@@ -364,10 +364,10 @@
                         ss.classList.remove('bg-[#4cb631]');
                         ss.classList.remove('bg-[#ffa100]');
                         ss.classList.remove('bg-[#ff1616]');
-                        if(parseInt(current.T01_6_ss) < 6 && parseInt(current.T01_6_ss) > 9){
+                        if(parseInt(current.T01_6_ss) > 20){
                             ss.classList.add('bg-[#ff1616]'); //red(danger)
                         }
-                        else if(parseInt(current.T01_6_ss) < 7 || parseInt(current.T01_6_ss) > 8){
+                        else if(parseInt(current.T01_6_ss) > 15){
                             ss.classList.add('bg-[#ffa100]'); //orange(warning)
                         }
                         else {
@@ -495,10 +495,10 @@
                 ss_gui.classList.remove('bg-[#4cb631]');
                 ss_gui.classList.remove('bg-[#ffa100]');
                 ss_gui.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_6_ss) < 6 && parseInt(current.T01_6_ss) > 9){
+                if(parseInt(current.T01_6_ss) > 20){
                     ss_gui.classList.add('bg-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(current.T01_6_ss) < 7 || parseInt(current.T01_6_ss) > 8){
+                else if(parseInt(current.T01_6_ss) > 15){
                     ss_gui.classList.add('bg-[#ffa100]'); //orange(warning)
                 }
                 else {
@@ -521,6 +521,18 @@
                         // Excel pred data
 
                         document.getElementById("excel_pred_ss").innerHTML = pred.pred_ss;
+                        excel_pred_ss.classList.remove('bg-[#4cb631]');
+                        excel_pred_ss.classList.remove('bg-[#ffa100]');
+                        excel_pred_ss.classList.remove('bg-[#ff1616]');
+                        if(parseInt(pred.pred_ss) > 20){
+                            excel_pred_ss.classList.add('text-[#ff1616]'); //red(danger)
+                        }
+                        else if(parseInt(pred.pred_ss) > 15){
+                            excel_pred_ss.classList.add('text-[#ffa100]'); //orange(warning)
+                        }
+                        else {
+                            excel_pred_ss.classList.add('text-[#4cb631]'); //green(normal)
+                        }
                     },
                     error: function(errmsg) {
                        console.log("Ajax獲取伺服器資料出現錯誤！"+ errmsg);
@@ -532,10 +544,10 @@
                 pred_ss_gui.classList.remove('bg-[#4cb631]');
                 pred_ss_gui.classList.remove('bg-[#ffa100]');
                 pred_ss_gui.classList.remove('bg-[#ff1616]');
-                if(parseInt(pred.pred_ss) < 6 && parseInt(pred.pred_ss) > 9){
+                if(parseInt(pred.pred_ss) > 20){
                     pred_ss_gui.classList.add('bg-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(pred.pred_ss) < 7 || parseInt(pred.pred_ss) > 8){
+                else if(parseInt(pred.pred_ss) > 15){
                     pred_ss_gui.classList.add('bg-[#ffa100]'); //orange(warning)
                 }
                 else {
