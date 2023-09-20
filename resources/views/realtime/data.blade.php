@@ -211,7 +211,7 @@
 
 
                      <div id="gui_t01_14_ph" class="absolute text-3xl text-black top-1/4 right-1/4 translate-x-[5rem] -translate-y-12"></div>
-                     <div id="gui_pred_ss" class="absolute text-3xl text-black top-1/4 right-1/4 translate-x-[5rem] translate-y-12"></div>
+                     <div id="gui_pred_ss" class="absolute text-3xl text-black top-1/4 right-1/4 translate-x-[5.8rem] translate-y-12"></div>
                      <div id="gui_time" class="absolute text-lg text-black bottom-1/4 left-1/4 -translate-x-[8rem] translate-y-[126px]"></div>
 
                      
