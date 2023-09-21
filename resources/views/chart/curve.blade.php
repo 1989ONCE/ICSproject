@@ -12,20 +12,17 @@
                             dataType: 'json',
                             success:function(data){
                                 var json1 = JSON.parse(data[0]);
-                                var json2 = JSON.parse(data[1]);
-                                var json3 = JSON.parse(data[2]);
-                                var json4 = JSON.parse(data[3]);
-                                var json5 = JSON.parse(data[4]);
-                                var json6 = JSON.parse(data[5]);
-                                var json7 = JSON.parse(data[6]);
+                                var json2 = JSON.parse(data[2]);
+                                var json3 = JSON.parse(data[3]);
+                                var json4 = JSON.parse(data[4]);
+                                var json5 = JSON.parse(data[5]);
+                                var json6 = JSON.parse(data[6]);
 
                                 
-                                var T01_6_ph_pre = json1.map(x => x.T01_6_ph_pre);
-                                var T01_6_ph_aft = json2.map(x => x.T01_6_ph_aft);
-                                var T01_6_ss = json3.map(x => x.T01_6_ss);
-                                var T01_12_ph_pre = json4.map(x => x.T01_12_ph_pre);
-                                var T01_12_ph_aft = json5.map(x => x.T01_12_ph_aft);
-                                var T01_14_ph = json6.map(x => x.T01_14_ph);
+                                var T01_6_ph = json1.map(x => x.T01_6_ph);
+                                var T01_6_ss = json2.map(x => x.T01_6_ss);
+                                var T01_12_ph = json3.map(x => x.T01_12_ph);
+                                var T01_14_ph = json4.map(x => x.T01_14_ph);
 
                                 var added_on = json7.map(x => x.added_on);
                                 // 基于准备好的dom，初始化echarts实例
@@ -41,7 +38,7 @@
                                     legend: {
                                         top: 2,
                                         left: 150,
-                                        data: ['化混槽1-pH(前)', '化混槽1-pH(後)', '化混槽1-ss', '化混槽2-pH(前)', '化混槽2-pH(後)', '放流槽-pH']
+                                        data: ['化混槽1-pH值', '化混槽1-ss', '化混槽2-pH值', '放流槽-pH']
                                     },
                                     xAxis: {
                                         data: added_on
@@ -51,14 +48,9 @@
                                     },
                                     series: [
                                         {
-                                            name: '化混槽1-pH(前)',
+                                            name: '化混槽1-pH值',
                                             type: 'line',
-                                            data: T01_6_ph_pre
-                                        },
-                                        {
-                                            name: '化混槽1-pH(後)',
-                                            type: 'line',
-                                            data: T01_6_ph_aft
+                                            data: T01_6_ph
                                         },
                                         {
                                             name: '化混槽1-ss',
@@ -66,14 +58,9 @@
                                             data: T01_6_ss
                                         },
                                         {
-                                            name: '化混槽2-pH(前)',
+                                            name: '化混槽2-pH',
                                             type: 'line',
                                             data: T01_12_ph_pre
-                                        },
-                                        {
-                                            name: '化混槽2-pH(後)',
-                                            type: 'line',
-                                            data: T01_12_ph_aft
                                         },
                                         {
                                             name: '放流槽-pH',

@@ -41,16 +41,14 @@ class alarmCommand extends Command
             'thankyou' => 'Go to check out'
         ];
         
-        $data1 =  DB::table('datas')->latest('added_on')->value('T01_6_ph_pre');
-        $data2 =  DB::table('datas')->latest('added_on')->value('T01_6_ph_aft');
-        $data3 =  DB::table('datas')->latest('added_on')->value('T01_6_ss');
+        $data1 =  DB::table('datas')->latest('added_on')->value('T01_6_ph');
+        $data2 =  DB::table('datas')->latest('added_on')->value('T01_6_ss');
 
-        $data4 =  DB::table('datas')->latest('added_on')->value('T01_12_ph_pre');
-        $data5 =  DB::table('datas')->latest('added_on')->value('T01_12_ph_aft');
-        $data6 =  DB::table('datas')->latest('added_on')->value('T01_14_ph');
+        $data3 =  DB::table('datas')->latest('added_on')->value('T01_12_ph');
+        $data4 =  DB::table('datas')->latest('added_on')->value('T01_14_ph');
 
-        $check_type = array("化混1_ph值前","化混1_ph值後","化混1_ss","化混2_ph值前","化混2_ph值後","放流槽_ph");
-        $datas = array($data1,$data2,$data3,$data4,$data5,$data6); 
+        $check_type = array("化混1_ph值","化混1_ss","化混2_ph值","放流槽_ph");
+        $datas = array($data1,$data2,$data3,$data4); 
 
         for($k = 0; $k < 6; $k++){
             //info($data1) ;

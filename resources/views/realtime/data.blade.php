@@ -103,14 +103,14 @@
 
                             <div id="json_rt1_3" class="table-row bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                                 <div class="grid grid-rows-2 grid-cols-2">
-                                    <div class="bg-gray-200 row-span-2 w-full lg:w-auto text-gray-800 text-center border-r border-gray-600 block table-cell relative lg:static"><div class="translate-y-3">pH值(前)</div></div>
+                                    <div class="bg-gray-200 row-span-2 w-full lg:w-auto text-gray-800 text-center border-r border-gray-600 block table-cell relative lg:static"><div class="translate-y-3">pH值</div></div>
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">數值</div>
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">狀態</div>
                                 </div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div id="excel_ph1" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
+                                    <div id="excel_ph2" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
                                     <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">
-                                        <div id="ph-1" class="w-4 h-4 rounded-full"></div>
+                                        <div id="ph-2" class="w-4 h-4 rounded-full"></div>
                                     </div>
                                 </div></div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
@@ -122,32 +122,6 @@
                                 <div class="table-cell"><div class="grid grid-rows-2">
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
-                                </div></div>
-                            </div>
-
-                            <div id="json_rt1_4" class="table-row bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                                <div class="grid grid-rows-2 grid-cols-2">
-                                    <div class="bg-gray-200 row-span-2 w-full lg:w-auto text-gray-800 text-center border-r border-gray-600 block table-cell relative lg:static"><div class="translate-y-3">pH值(後)</div></div>
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">數值</div>
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">狀態</div>
-                                </div>
-                                <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div id="excel_ph2" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
-                                    <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">
-                                        <div id="ph-2" class="w-4 h-4 rounded-full"></div>
-                                    </div>
-                                </div></div>
-                                <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div id="excel_ph4" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
-                                    <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">
-                                        <div id="ph-4" class="w-4 h-4 rounded-full"></div>
-                                    </div>
-                                </div></div>
-                                <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div id="excel_ph5" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
-                                    <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">
-                                        <div id="ph-5" class="w-4 h-4 rounded-full"></div>
-                                    </div>
                                 </div></div>
                             </div>
 
@@ -201,11 +175,9 @@
         const GuiIcon = `<img class="w-[100rem] pb-4" src="{{ asset('img/svg/gui_icon.svg') }}" alt="guiIcon" />`
         const guiText = `<p id="mode-btn-text" class="text-right duration-700">流程形式<p>`
         const Gui = `<img class="w-[66rem] px-2" src="{{ asset('img/flow-chart.png') }}" alt="flow chart" />
-                     <div id="gui_t01_6_ph_pre" class="absolute text-3xl text-black top-1/4 left-1/4 -translate-x-[9.6rem] -translate-y-2"></div>
-                     <div id="gui_t01_6_ph_aft" class="absolute text-3xl text-black top-1/4 left-1/4 -translate-y-2"></div>
+                     <div id="gui_t01_6_ph" class="absolute text-3xl text-black top-1/4 left-1/4 -translate-x-[9.6rem] -translate-y-2"></div>
                      <div id="gui_t01_6_ss" class="absolute text-3xl text-black top-1/4 left-1/4 -translate-x-[6.6rem] translate-y-[130px]"></div>
-                     <div id="gui_t01_12_ph_pre" class="absolute text-3xl text-black top-1/4 left-1/2 -translate-x-[2.9rem] translate-y-[145px]"></div>
-                     <div id="gui_t01_12_ph_aft" class="absolute text-3xl text-black top-1/4 left-1/2 translate-x-[5.3rem] translate-y-[145px]"></div>
+                     <div id="gui_t01_12_ph" class="absolute text-3xl text-black top-1/4 left-1/2 -translate-x-[2.9rem] translate-y-[145px]"></div>
                      <div id="gui_t01_12_drug1" class="absolute text-2xl text-black top-1/3 left-1/2 -translate-x-[8rem] -translate-y-8"></div>
                      <div id="gui_t01_12_drug2" class="absolute text-2xl text-black top-1/3 right-1/3 -translate-x-[2.6rem] -translate-y-8"></div>
 
@@ -216,11 +188,9 @@
 
                      
                      <div id="sign" class="absolute w-8 h-8 rounded-full top-1/4 left-3/4 -translate-x-5 translate-y-36"></div>
-                     <div id="ph_gui-1" class="absolute w-7 h-7 rounded-full top-1/4 left-1/4 -translate-x-[12rem] -translate-y-[2px]"></div>
-                     <div id="ph_gui-2" class="absolute w-7 h-7 rounded-full top-1/4 left-1/4 -translate-x-[2.5rem] -translate-y-[2px]"></div>
+                     <div id="ph_gui-2" class="absolute w-7 h-7 rounded-full top-1/4 left-1/4 -translate-x-[12rem] -translate-y-[2px]"></div>
                      <div id="ss_gui" class="absolute w-7 h-7 rounded-full top-1/2 left-1/4 -translate-x-[9rem] translate-y-[3px]"></div>
                      <div id="ph_gui-3" class="absolute w-6 h-6 rounded-full top-1/2 left-1/2 -translate-x-[5.1rem] translate-y-[20px]"></div>
-                     <div id="ph_gui-4" class="absolute w-6 h-6 rounded-full top-1/2 right-1/2 translate-x-[4.8rem] translate-y-[20px]"></div>
                      <div id="ph_gui-5" class="absolute w-7 h-7 rounded-full top-1/2 right-1/4 translate-x-[0.5rem] -translate-y-[176px]"></div>
                      <div id="pred_ss_gui" class="absolute w-7 h-7 rounded-full top-1/3 right-1/4 translate-x-[0.5rem] translate-y-[10px]"></div>`
         function toggleTheme (){
@@ -274,12 +244,10 @@
                         // Excel realtime data
 
                         document.getElementById("time").innerHTML = '資料更新時間：'+ current.added_on;
-                        document.getElementById("excel_ph1").innerHTML = current.T01_6_ph_pre;
-                        document.getElementById("excel_ph2").innerHTML = current.T01_6_ph_aft;
-                        document.getElementById("excel_ph3").innerHTML = current.T01_12_ph_pre;
-                        document.getElementById("excel_ph4").innerHTML = current.T01_12_ph_aft;
+                        document.getElementById("excel_ph1").innerHTML = current.T01_6_ph;
+                        document.getElementById("excel_ph2").innerHTML = current.T01_12_ph;
                         document.getElementById("excel_ss").innerHTML = current.T01_6_ss;
-                        document.getElementById("excel_ph5").innerHTML = current.T01_14_ph;
+                        document.getElementById("excel_ph3").innerHTML = current.T01_14_ph;
 
                         document.getElementById("excel_drug1").innerHTML = current.T01_12_drug1_current;
                         document.getElementById("excel_drug2").innerHTML = current.T01_12_drug2_current;
@@ -299,66 +267,36 @@
                             complete.classList.add('bg-[#4cb631]'); //green(normal)
                         }
 
-                    // excel t01-6 ph(前)燈號
-                    const ph_1 = document.querySelector('#ph-1');
-                        ph_1.classList.remove('bg-[#4cb631]');
-                        ph_1.classList.remove('bg-[#ffa100]');
-                        ph_1.classList.remove('bg-[#ff1616]');
-                        if(parseInt(current.T01_6_ph_pre) < 6 && parseInt(current.T01_6_ph_pre) > 9){
-                            ph_1.classList.add('bg-[#ff1616]'); //red(danger)
-                        }
-                        else if(parseInt(current.T01_6_ph_pre) < 7 || parseInt(current.T01_6_ph_pre) > 8){
-                            ph_1.classList.add('bg-[#ffa100]'); //orange(warning)
-                        }
-                        else {
-                            ph_1.classList.add('bg-[#4cb631]'); //green(normal)
-                        }
-                    
-                    // excel t01-6 ph(後)燈號
+                    // excel t01-6 ph燈號
                     const ph_2 = document.querySelector('#ph-2');
                         ph_2.classList.remove('bg-[#4cb631]');
                         ph_2.classList.remove('bg-[#ffa100]');
                         ph_2.classList.remove('bg-[#ff1616]');
-                        if(parseInt(current.T01_6_ph_aft) < 6 && parseInt(current.T01_6_ph_aft) > 9){
+                        if(parseInt(current.T01_6_ph) < 6 && parseInt(current.T01_6_ph) > 9){
                             ph_2.classList.add('bg-[#ff1616]'); //red(danger)
                         }
-                        else if(parseInt(current.T01_6_ph_aft) < 7 || parseInt(current.T01_6_ph_aft) > 8){
+                        else if(parseInt(current.T01_6_ph) < 7 || parseInt(current.T01_6_ph) > 8){
                             ph_2.classList.add('bg-[#ffa100]'); //orange(warning)
                         }
                         else {
                             ph_2.classList.add('bg-[#4cb631]'); //green(normal)
-                        }
+                        }     
 
-                    // excel t01-12 ph(前)燈號
+                    // excel t01-12 ph燈號
                     const ph_3 = document.querySelector('#ph-3');
                         ph_3.classList.remove('bg-[#4cb631]');
                         ph_3.classList.remove('bg-[#ffa100]');
                         ph_3.classList.remove('bg-[#ff1616]');
-                        if(parseInt(current.T01_12_ph_pre) < 6 && parseInt(current.T01_12_ph_pre) > 9){
+                        if(parseInt(current.T01_12_ph) < 6 && parseInt(current.T01_12_ph) > 9){
                             ph_3.classList.add('bg-[#ff1616]'); //red(danger)
                         }
-                        else if(parseInt(current.T01_12_ph_pre) < 7 || parseInt(current.T01_12_ph_pre) > 8){
+                        else if(parseInt(current.T01_12_ph) < 7 || parseInt(current.T01_12_ph) > 8){
                             ph_3.classList.add('bg-[#ffa100]'); //orange(warning)
                         }
                         else {
                             ph_3.classList.add('bg-[#4cb631]'); //green(normal)
                         }
                         
-                    // excel t01-12 ph(後)燈號
-                    const ph_4 = document.querySelector('#ph-4');
-                        ph_4.classList.remove('bg-[#4cb631]');
-                        ph_4.classList.remove('bg-[#ffa100]');
-                        ph_4.classList.remove('bg-[#ff1616]');
-                        if(parseInt(current.T01_12_ph_aft) < 6 && parseInt(current.T01_12_ph_aft) > 9){
-                            ph_4.classList.add('bg-[#ff1616]'); //red(danger)
-                        }
-                        else if(parseInt(current.T01_12_ph_aft) < 7 || parseInt(current.T01_12_ph_aft) > 8){
-                            ph_4.classList.add('bg-[#ffa100]'); //orange(warning)
-                        }
-                        else {
-                            ph_4.classList.add('bg-[#4cb631]'); //green(normal)
-                        } 
-                    
                     // excel t01-6 ss燈號
                     const ss = document.querySelector('#ss');
                         ss.classList.remove('bg-[#4cb631]');
@@ -395,11 +333,9 @@
                 })
 
                 // GUI realtime
-                document.getElementById("gui_t01_6_ph_pre").innerHTML = current.T01_6_ph_pre;
-                document.getElementById("gui_t01_6_ph_aft").innerHTML = current.T01_6_ph_aft;
+                document.getElementById("gui_t01_6_ph").innerHTML = current.T01_6_ph;
                 document.getElementById("gui_t01_6_ss").innerHTML = current.T01_6_ss;
-                document.getElementById("gui_t01_12_ph_pre").innerHTML = current.T01_12_ph_pre;
-                document.getElementById("gui_t01_12_ph_aft").innerHTML = current.T01_12_ph_aft;
+                document.getElementById("gui_t01_12_ph").innerHTML = current.T01_12_ph;
                 document.getElementById("gui_t01_12_drug1").innerHTML = current.T01_12_drug1_current;
                 document.getElementById("gui_t01_12_drug2").innerHTML = current.T01_12_drug2_current;
                 document.getElementById("gui_t01_14_ph").innerHTML = current.T01_14_ph;
@@ -419,20 +355,6 @@
                 }
                 else {
                     sign.classList.add('bg-[#4cb631]'); //green(normal)
-                }
-
-                const ph_gui_1 = document.querySelector('#ph_gui-1');
-                ph_gui_1.classList.remove('bg-[#4cb631]');
-                ph_gui_1.classList.remove('bg-[#ffa100]');
-                ph_gui_1.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_6_ph_pre) < 6 && parseInt(current.T01_6_ph_pre) > 9){
-                    ph_gui_1.classList.add('bg-[#ff1616]'); //red(danger)
-                }
-                else if(parseInt(current.T01_6_ph_pre) < 7 || parseInt(current.T01_6_ph_pre) > 8){
-                    ph_gui_1.classList.add('bg-[#ffa100]'); //orange(warning)
-                }
-                else {
-                    ph_gui_1.classList.add('bg-[#4cb631]'); //green(normal)
                 }
 
                 const ph_gui_2 = document.querySelector('#ph_gui-2');
@@ -461,20 +383,6 @@
                 }
                 else {
                     ph_gui_3.classList.add('bg-[#4cb631]'); //green(normal)
-                }
-
-                const ph_gui_4 = document.querySelector('#ph_gui-4');
-                ph_gui_4.classList.remove('bg-[#4cb631]');
-                ph_gui_4.classList.remove('bg-[#ffa100]');
-                ph_gui_4.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_12_ph_aft) < 6 && parseInt(current.aft) > 9){
-                    ph_gui_4.classList.add('bg-[#ff1616]'); //red(danger)
-                }
-                else if(parseInt(current.T01_12_ph_aft) < 7 || parseInt(current.T01_12_ph_aft) > 8){
-                    ph_gui_4.classList.add('bg-[#ffa100]'); //orange(warning)
-                }
-                else {
-                    ph_gui_4.classList.add('bg-[#4cb631]'); //green(normal)
                 }
 
                 const ph_gui_5 = document.querySelector('#ph_gui-5');

@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     IP = '111.70.2.140'
 
-    PORTS = [103, 101, 102, 104, 107, 105]
+    PORTS = [101, 102, 104, 105]
 
     common_header = ['Timestamp'] + [str(port) for port in PORTS]
 

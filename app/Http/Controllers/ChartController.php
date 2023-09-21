@@ -31,18 +31,16 @@ class ChartController extends Controller
     // generate linechart
     public function linechart(): String
     {
-        $T01_6_ph_pre = Datas::all(['T01_6_ph_pre'])->toJson();
-        $T01_6_ph_aft = Datas::all(['T01_6_ph_aft'])->toJson();
+        $T01_6_ph = Datas::all(['T01_6_ph'])->toJson();
         $T01_6_ss = Datas::all(['T01_6_ss'])->toJson();
 
-        $T01_12_ph_pre = Datas::all(['T01_12_ph_pre'])->toJson();
-        $T01_12_ph_aft = Datas::all(['T01_12_ph_aft'])->toJson();
+        $T01_12_ph = Datas::all(['T01_12_ph'])->toJson();
         $T01_14_ph = Datas::all(['T01_14_ph'])->toJson();
 
         $added_on = Datas::all(['added_on'])->toJson();
 
     	return json_encode(
-            [$T01_6_ph_pre, $T01_6_ph_aft, $T01_6_ss, $T01_12_ph_pre, $T01_12_ph_aft, $T01_14_ph, $added_on]
+            [$T01_6_ph, $T01_6_ss, $T01_12_ph, $T01_14_ph, $added_on]
         );
     }
 

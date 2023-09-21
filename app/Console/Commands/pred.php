@@ -32,7 +32,7 @@ class pred extends Command
         try {
             $model = Ai_model::all();
             $datas = Datas::orderBy('data_id', 'desc')
-                        ->limit(31)->get(['T01_6_ph_aft', 'T01_6_ss'])
+                        ->limit(31)->get(['T01_6_ph', 'T01_6_ss'])
                         ->map(function ($value) {
                             return [
                                 $value->T01_6_ph_aft,
@@ -40,7 +40,7 @@ class pred extends Command
                             ];
                         });
             $datas2 = Datas::orderBy('data_id', 'desc')
-                        ->limit(150)->get(['T01_6_ph_aft', 'T01_6_ss'])
+                        ->limit(150)->get(['T01_6_ph', 'T01_6_ss'])
                         ->map(function ($value) {
                             return [
                                 $value->T01_6_ph_aft,
