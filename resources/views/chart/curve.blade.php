@@ -12,11 +12,10 @@
                             dataType: 'json',
                             success:function(data){
                                 var json1 = JSON.parse(data[0]);
-                                var json2 = JSON.parse(data[2]);
-                                var json3 = JSON.parse(data[3]);
-                                var json4 = JSON.parse(data[4]);
-                                var json5 = JSON.parse(data[5]);
-                                var json6 = JSON.parse(data[6]);
+                                var json2 = JSON.parse(data[1]);
+                                var json3 = JSON.parse(data[2]);
+                                var json4 = JSON.parse(data[3]);
+                                var json5 = JSON.parse(data[4]);
 
                                 
                                 var T01_6_ph = json1.map(x => x.T01_6_ph);
@@ -24,7 +23,7 @@
                                 var T01_12_ph = json3.map(x => x.T01_12_ph);
                                 var T01_14_ph = json4.map(x => x.T01_14_ph);
 
-                                var added_on = json7.map(x => x.added_on);
+                                var added_on = json5.map(x => x.added_on);
                                 // 基于准备好的dom，初始化echarts实例
                                 var myChart = echarts.init(document.getElementById('main'));
 
