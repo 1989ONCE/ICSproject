@@ -59,7 +59,7 @@
                                         {
                                             name: '化混槽2-pH',
                                             type: 'line',
-                                            data: T01_12_ph_pre
+                                            data: T01_12_ph
                                         },
                                         {
                                             name: '放流槽-pH',
