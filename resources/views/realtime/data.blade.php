@@ -108,20 +108,22 @@
                                     <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-r-gray-600 block relative lg:static">狀態</div>
                                 </div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div id="excel_ph2" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
+                                    <div id="excel_ph1" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
                                     <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">
                                         <div id="ph-2" class="w-4 h-4 rounded-full"></div>
                                     </div>
                                 </div></div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div id="excel_ph3" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
+                                    <div id="excel_ph2" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
                                     <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">
                                         <div id="ph-3" class="w-4 h-4 rounded-full"></div>
                                     </div>
                                 </div></div>
                                 <div class="table-cell"><div class="grid grid-rows-2">
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
-                                    <div class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">——</div>
+                                    <div id="excel_ph3" class="row-span-1 w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static"></div>
+                                    <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center border border-b block table-cell relative lg:static">
+                                        <div id="ph-5" class="w-4 h-4 rounded-full"></div>
+                                    </div>
                                 </div></div>
                             </div>
 
