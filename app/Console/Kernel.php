@@ -41,7 +41,7 @@ class Kernel extends ConsoleKernel
     protected function shortSchedule(\Spatie\ShortSchedule\ShortSchedule $shortSchedule): void
     {
         // this artisan command will run every second
-        $shortSchedule->command('cron:rtdata')->everySecond();
+        $shortSchedule->command('cron:rtdata')->everySecond()->withoutOverlapping();
     }
 
     /**
