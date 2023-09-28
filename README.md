@@ -2,6 +2,7 @@
 MIS-project: Building an Integrated Control System for Sewage Treatment(including COD prediction model)
 
 ### **Currently hosting on Hostinger's Virtual Private Server**</br> website URL: http://ncumis-ics.com/
+if the url above didn't work, try this: http://85.31.232.40/
 
 ## Project Structure: </br>
 Backend: php 8.2.0(Laravel 10 Framework with MVC architecture), Laravel Breeze Installation</br>
