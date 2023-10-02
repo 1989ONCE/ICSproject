@@ -161,7 +161,7 @@
                                 </div></div>
 
                                 <div class="table-cell"><div class="grid grid-rows-2">
-                                <div id="excel_pred_ss" class="font-bold row-span-1 w-full lg:w-auto text-gray-800 text-center block table-cell relative lg:static"></div>
+                                <div id="excel_pred_ph" class="font-bold row-span-1 w-full lg:w-auto text-gray-800 text-center block table-cell relative lg:static"></div>
                                     <div class="row-span-1 grid place-content-center w-full lg:w-auto text-gray-800 text-center block table-cell relative lg:static">
                                         <div id="complete" class="w-4 h-4 rounded-full"></div>
                                     </div>
@@ -185,7 +185,7 @@
 
 
                      <div id="gui_t01_14_ph" class="absolute text-3xl text-black top-1/4 right-1/4 translate-x-[5rem] -translate-y-12"></div>
-                     <div id="gui_pred_ss" class="absolute text-3xl text-black top-1/4 right-1/4 translate-x-[5.8rem] translate-y-12"></div>
+                     <div id="gui_pred_ph" class="absolute text-3xl text-black top-1/4 right-1/4 translate-x-[5.8rem] translate-y-12"></div>
                      <div id="gui_time" class="absolute text-lg text-black bottom-1/4 left-1/4 -translate-x-[8rem] translate-y-[126px]"></div>
 
                      
@@ -194,7 +194,7 @@
                      <div id="ss_gui" class="absolute w-7 h-7 rounded-full top-1/2 left-1/4 -translate-x-[9rem] translate-y-[3px]"></div>
                      <div id="ph_gui-3" class="absolute w-6 h-6 rounded-full top-1/2 left-1/2 -translate-x-[5.1rem] translate-y-[20px]"></div>
                      <div id="ph_gui-5" class="absolute w-7 h-7 rounded-full top-1/2 right-1/4 translate-x-[0.5rem] -translate-y-[176px]"></div>
-                     <div id="pred_ss_gui" class="absolute w-7 h-7 rounded-full top-1/3 right-1/4 translate-x-[0.5rem] translate-y-[10px]"></div>`
+                     <div id="pred_ph_gui" class="absolute w-7 h-7 rounded-full top-1/3 right-1/4 translate-x-[0.5rem] translate-y-[10px]"></div>`
         function toggleTheme (){
         isExcel = !isExcel
         localStorage.setItem('isExcel', isExcel)
@@ -363,10 +363,10 @@
                 ph_gui_2.classList.remove('bg-[#4cb631]');
                 ph_gui_2.classList.remove('bg-[#ffa100]');
                 ph_gui_2.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_6_ph_aft) < 6 && parseInt(current.T01_6_ph_aft) > 9){
+                if(parseInt(current.T01_6_ph) < 6 && parseInt(current.T01_6_ph) > 9){
                     ph_gui_2.classList.add('bg-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(current.T01_6_ph_aft) < 7 || parseInt(current.T01_6_ph_aft) > 8){
+                else if(parseInt(current.T01_6_ph) < 7 || parseInt(current.T01_6_ph) > 8){
                     ph_gui_2.classList.add('bg-[#ffa100]'); //orange(warning)
                 }
                 else {
@@ -377,10 +377,10 @@
                 ph_gui_3.classList.remove('bg-[#4cb631]');
                 ph_gui_3.classList.remove('bg-[#ffa100]');
                 ph_gui_3.classList.remove('bg-[#ff1616]');
-                if(parseInt(current.T01_12_ph_pre) < 6 && parseInt(current.T01_12_ph_pre) > 9){
+                if(parseInt(current.T01_12_ph) < 6 && parseInt(current.T01_12_ph) > 9){
                     ph_gui_3.classList.add('bg-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(current.T01_12_ph_pre) < 7 || parseInt(current.T01_12_ph_pre) > 8){
+                else if(parseInt(current.T01_12_ph) < 7 || parseInt(current.T01_12_ph) > 8){
                     ph_gui_3.classList.add('bg-[#ffa100]'); //orange(warning)
                 }
                 else {
@@ -430,18 +430,18 @@
                         pred = data.pred;
                         // Excel pred data
 
-                        document.getElementById("excel_pred_ss").innerHTML = pred.pred_ss;
-                        excel_pred_ss.classList.remove('bg-[#4cb631]');
-                        excel_pred_ss.classList.remove('bg-[#ffa100]');
-                        excel_pred_ss.classList.remove('bg-[#ff1616]');
-                        if(parseInt(pred.pred_ss) > 20){
-                            excel_pred_ss.classList.add('text-[#ff1616]'); //red(danger)
+                        document.getElementById("excel_pred_ph").innerHTML = pred.pred_ph;
+                        excel_pred_ph.classList.remove('bg-[#4cb631]');
+                        excel_pred_ph.classList.remove('bg-[#ffa100]');
+                        excel_pred_ph.classList.remove('bg-[#ff1616]');
+                        if(parseInt(pred.pred_ph) < 6 && parseInt(pred.pred_ph) > 9){
+                            excel_pred_ph.classList.add('text-[#ff1616]'); //red(danger)
                         }
-                        else if(parseInt(pred.pred_ss) > 15){
-                            excel_pred_ss.classList.add('text-[#ffa100]'); //orange(warning)
+                        else if(parseInt(pred.pred_ph) < 7 && parseInt(pred.pred_ph) > 8){
+                            excel_pred_ph.classList.add('text-[#ffa100]'); //orange(warning)
                         }
                         else {
-                            excel_pred_ss.classList.add('text-[#4cb631]'); //green(normal)
+                            excel_pred_ph.classList.add('text-[#4cb631]'); //green(normal)
                         }
                     },
                     error: function(errmsg) {
@@ -449,19 +449,19 @@
                     },
                 })
                 // GUI pred
-                document.getElementById("gui_pred_ss").innerHTML = pred.pred_ss;
-                const pred_ss_gui = document.querySelector('#pred_ss_gui');
-                pred_ss_gui.classList.remove('bg-[#4cb631]');
-                pred_ss_gui.classList.remove('bg-[#ffa100]');
-                pred_ss_gui.classList.remove('bg-[#ff1616]');
-                if(parseInt(pred.pred_ss) > 20){
-                    pred_ss_gui.classList.add('bg-[#ff1616]'); //red(danger)
+                document.getElementById("gui_pred_ph").innerHTML = pred.pred_ph;
+                const pred_ph_gui = document.querySelector('#pred_ph_gui');
+                pred_ph_gui.classList.remove('bg-[#4cb631]');
+                pred_ph_gui.classList.remove('bg-[#ffa100]');
+                pred_ph_gui.classList.remove('bg-[#ff1616]');
+                if(parseInt(pred.pred_ph) < 6 && parseInt(pred.pred_ph) > 9){
+                    pred_ph_gui.classList.add('text-[#ff1616]'); //red(danger)
                 }
-                else if(parseInt(pred.pred_ss) > 15){
-                    pred_ss_gui.classList.add('bg-[#ffa100]'); //orange(warning)
+                else if(parseInt(pred.pred_ph) < 7 && parseInt(pred.pred_ph) > 8){
+                    pred_ph_gui.classList.add('text-[#ffa100]'); //orange(warning)
                 }
                 else {
-                    pred_ss_gui.classList.add('bg-[#4cb631]'); //green(normal)
+                    pred_ph_gui.classList.add('text-[#4cb631]'); //green(normal)
                 }
             }
             setInterval(getPredData, 1000); //every 1 secs

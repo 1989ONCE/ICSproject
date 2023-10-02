@@ -54,7 +54,7 @@ return new class extends Migration
         });
         Schema::create('predictions', function (Blueprint $table) {
             $table->id('predict_id');
-            $table->double('pred_ss', 7, 2)->nullable();
+            $table->double('pred_ph', 7, 2)->nullable();
             $table->timestamp('added_on');
             $table->bigInteger('fk_model_id')->unsigned();
             $table->foreign('fk_model_id')
