@@ -32,31 +32,33 @@ class pred extends Command
         try {
             $model = Ai_model::all();
             $datas = Datas::orderBy('data_id', 'desc')
-                        ->limit(31)->get(['T01_6_ph', 'T01_6_ss'])
+                        ->limit(31)->get(['T01_6_ph', 'T01_6_ss', 'T01_12_ph', 'T01_14_ph', 'T01_12_drug1_current', 'T01_12_drug2_current'])
                         ->map(function ($value) {
                             return [
-                                $value->T01_6_ph_aft,
+                                $value->T01_6_ph,
                                 $value->T01_6_ss,
+                                $value->T01_12_ph,
+                                $value->T01_14_ph,
+                                $value->T01_12_drug1_current,
+                                $value->T01_12_drug2_current,
                             ];
                         });
             $datas2 = Datas::orderBy('data_id', 'desc')
-                        ->limit(150)->get(['T01_6_ph', 'T01_6_ss'])
+                        ->limit(150)->get(['T01_6_ph', 'T01_6_ss', 'T01_12_ph', 'T01_14_ph', 'T01_12_drug1_current', 'T01_12_drug2_current'])
                         ->map(function ($value) {
                             return [
-                                $value->T01_6_ph_aft,
+                                $value->T01_6_ph,
                                 $value->T01_6_ss,
+                                $value->T01_12_ph,
+                                $value->T01_14_ph,
+                                $value->T01_12_drug1_current,
+                                $value->T01_12_drug2_current,
                             ];
                         });
-            # data order: (1)ph (2)ss
+            # data order: (1)t01-6-ph (2)t01-6-ss (3)t01-12-ph (4)t01-14-ph (5)t01-12-drug1 (6)t01-12-drug2
             $this->var_pred($datas);
             $this->lstm_pred($datas2);
             $this->arima_pred($datas);
-            // for($i=0; $i<=count($model); $i++){
-            //     if($model[$i]->model_name != 'var' || $model[$i]->model_name != 'lstm' || $model[$i]->model_name != 'arima'){
-            //         $this->other_pred($datas, $model[$i]->model_loc, $model[$i]->model_id);
-            //     }
-            // }
-
         } catch (\Exception $e) {
              $this->info('Predict Command Error: ' . $e->getMessage() . "\n");
         }
@@ -73,7 +75,7 @@ class pred extends Command
             $var_pred = new Prediction();
             $var_pred->added_on = date('Y-m-d H:i:s');
             $var_pred->fk_model_id = $var->model_id;
-            $var_pred->pred_ss = (double)$output;
+            $var_pred->pred_ph = (double)$output;
             $var_pred->save();
             $this->info('The command was successful!');
             }
@@ -93,7 +95,7 @@ class pred extends Command
             $lstm_pred = new Prediction();
             $lstm_pred->added_on = date('Y-m-d H:i:s');
             $lstm_pred->fk_model_id = $lstm->model_id;
-            $lstm_pred->pred_ss = (double)$output;
+            $lstm_pred->pred_ph = (double)$output;
             $lstm_pred->save();
             $this->info('The command was successful!');
         }
@@ -113,7 +115,7 @@ class pred extends Command
             $arima_pred = new Prediction();
             $arima_pred->added_on = date('Y-m-d H:i:s');
             $arima_pred->fk_model_id = $arima->model_id;
-            $arima_pred->pred_ss = (double)$output;
+            $arima_pred->pred_ph = (double)$output;
             $arima_pred->save();
             $this->info('The command was successful!');
         }
@@ -134,7 +136,7 @@ class pred extends Command
 	    $pred = new Prediction();
 	    $pred->added_on = date('Y-m-d H:i:s');
             $pred->fk_model_id = $id;
-            $pred->pred_ss = (double)$output1;
+            $pred->pred_ph = (double)$output1;
             $pred->save();
             $this->info('The command was successful!');
         }
@@ -143,7 +145,7 @@ class pred extends Command
 	    $pred = new Prediction();
 	    $pred->added_on = date('Y-m-d H:i:s');
             $pred->fk_model_id = $id;
-            $pred->pred_ss = (double)$output2;
+            $pred->pred_ph = (double)$output2;
             $pred->save();
             $this->info('The command was successful!');
         }
