@@ -12,7 +12,7 @@ class Prediction extends Model
 
     protected $fillable = [
         'added_on',
-        'pred_ss',
+        'pred_ph',
         'fk_model_id',
     ];
     
