@@ -19,6 +19,7 @@ datas = datas.replace('[', '').replace(',', ' ').split(']')
 data_arr = []
 min_data = 9999
 max_data = -1
+
 for d in datas:
     temp_arr = []
     d = d.split(' ')
@@ -27,7 +28,7 @@ for d in datas:
             continue
         else:
             num = float(d[i].strip())
-            if i == 2:
+            if i == 4:
                 if num > max_data:
                     max_data = num
                 elif num < min_data:
@@ -38,10 +39,10 @@ for d in datas:
         data_arr.append(temp_arr)
 
 input = np.array(data_arr)
-input2 = np.reshape(input, (1, 150, 2))
+input2 = np.reshape(input, (1, 900, 6))
 
 #array type
 prediction = np.reshape(model.get('model').predict(input2, verbose=0), -1)
 prediction *= (max_data-min_data) + min_data
-print('%.2f'%prediction[-1])
+print(prediction)
 file.close()

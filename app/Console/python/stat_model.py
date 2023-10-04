@@ -30,10 +30,9 @@ for d in datas:
 
 # sliding window, window size=31 
 input = np.array(data_arr)
-
 # array type
 prediction = np.reshape(model.get('model_fitted').forecast(input, steps=1), -1)
-print(prediction[-1])
+print(prediction[3]/100)
 file.close()
 
 

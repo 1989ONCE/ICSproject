@@ -35,22 +35,22 @@ class pred extends Command
                         ->limit(32)->get(['T01_6_ph', 'T01_6_ss', 'T01_12_ph', 'T01_14_ph', 'T01_12_drug1_current', 'T01_12_drug2_current'])
                         ->map(function ($value) {
                             return [
-                                $value->T01_6_ph,
+                                $value->T01_6_ph*100,
                                 $value->T01_6_ss,
-                                $value->T01_12_ph,
-                                $value->T01_14_ph,
+                                $value->T01_12_ph*100,
+                                $value->T01_14_ph*100,
                                 $value->T01_12_drug1_current,
                                 $value->T01_12_drug2_current,
                             ];
                         });
             $datas2 = Datas::orderBy('data_id', 'desc')
-                        ->limit(150)->get(['T01_6_ph', 'T01_6_ss', 'T01_12_ph', 'T01_14_ph', 'T01_12_drug1_current', 'T01_12_drug2_current'])
+                        ->limit(900)->get(['T01_6_ph', 'T01_6_ss', 'T01_12_ph', 'T01_14_ph', 'T01_12_drug1_current', 'T01_12_drug2_current'])
                         ->map(function ($value) {
                             return [
-                                $value->T01_6_ph,
+                                $value->T01_6_ph*100,
                                 $value->T01_6_ss,
-                                $value->T01_12_ph,
-                                $value->T01_14_ph,
+                                $value->T01_12_ph*100,
+                                $value->T01_14_ph*100,
                                 $value->T01_12_drug1_current,
                                 $value->T01_12_drug2_current,
                             ];
@@ -71,7 +71,7 @@ class pred extends Command
         $input = escapeshellcmd("python3 ./app/Console/python/stat_model.py $datas $var->model_loc");
         $output = shell_exec($input);
         if($output !== null){
-            $this->info("[VAR]predicted value of SS for next minute: ".$output);
+            $this->info("[VAR]predicted value of pH for next minute: ".$output);
             $var_pred = new Prediction();
             $var_pred->added_on = date('Y-m-d H:i:s');
             $var_pred->fk_model_id = $var->model_id;
@@ -91,7 +91,7 @@ class pred extends Command
         $input = escapeshellcmd("python3 ./app/Console/python/rnn_model.py $datas $lstm->model_loc");
         $output = shell_exec($input);
         if($output !== null){
-            $this->info("[LSTM]predicted value of SS for next minute: ".$output);
+            $this->info("[LSTM]predicted value of pH for next minute: ".$output);
             $lstm_pred = new Prediction();
             $lstm_pred->added_on = date('Y-m-d H:i:s');
             $lstm_pred->fk_model_id = $lstm->model_id;
@@ -111,7 +111,7 @@ class pred extends Command
         $input = escapeshellcmd("python3 ./app/Console/python/stat_model2.py $datas $arima->model_loc");
         $output = shell_exec($input);
         if($output !== null){
-            $this->info("[ARIMA]predicted value of SS for next minute: ".$output);
+            $this->info("[ARIMA]predicted value of pH for next minute: ".$output);
             $arima_pred = new Prediction();
             $arima_pred->added_on = date('Y-m-d H:i:s');
             $arima_pred->fk_model_id = $arima->model_id;
