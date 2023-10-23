@@ -91,12 +91,16 @@
             <div id="main-2" style="width: 450px;height:350px;"></div>
             <script type="text/javascript">
                 function update2() {
+                    // 初始化echarts
+                    var myChart2 = echarts.init(document.getElementById('main-2'));
+                    myChart2.showLoading();
                     $.ajax({
                         method: "POST",
                         url : '/chart2',
                         data: {'_token': '{{csrf_token()}}'},
                         dataType: 'json',
                         success:function(data){
+                            myChart2.hideLoading();
                             var json1 = JSON.parse(data[0]);
                             var json2 = JSON.parse(data[1]);
                             var json3 = JSON.parse(data[2]);
@@ -104,9 +108,6 @@
                             var T01_12_drug1_current = json1.map(x => x.T01_12_drug1_current);
                             var T01_12_drug2_current = json2.map(x => x.T01_12_drug2_current);
                             var added_on = json3.map(x => x.added_on);
-
-                            // 初始化echarts
-                            var myChart2 = echarts.init(document.getElementById('main-2'));
 
                             // 圖表設定
                             var option2 = {
