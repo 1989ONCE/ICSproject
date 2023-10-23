@@ -24,10 +24,10 @@
                                 var T01_14_ph = json4.map(x => x.T01_14_ph);
 
                                 var added_on = json5.map(x => x.added_on);
-                                // 基于准备好的dom，初始化echarts实例
+                                // 初始化echarts
                                 var myChart = echarts.init(document.getElementById('main'));
 
-                                // 指定图表的配置项和数据
+                                // 圖表設定
                                 var option = {
                                     backgroundColor: '#ffffff',
                                     title: {
@@ -37,7 +37,7 @@
                                     legend: {
                                         top: 2,
                                         left: 150,
-                                        data: ['化混槽1-pH值', '化混槽1-ss', '化混槽2-pH值', '放流槽-pH']
+                                        data: ['化混槽1-pH值', '化混槽1-ss', '化混槽2-pH值', '放流槽-pH值']
                                     },
                                     xAxis: {
                                         data: added_on
@@ -57,18 +57,18 @@
                                             data: T01_6_ss
                                         },
                                         {
-                                            name: '化混槽2-pH',
+                                            name: '化混槽2-pH值',
                                             type: 'line',
                                             data: T01_12_ph
                                         },
                                         {
-                                            name: '放流槽-pH',
+                                            name: '放流槽-pH值',
                                             type: 'line',
                                             data: T01_14_ph
                                         },
                                     ]
                                 };
-                                // 使用刚指定的配置项和数据显示图表。
+                                // 顯示圖表
                                 myChart.setOption(option);
                             },
                             error: function(errmsg) {
@@ -102,10 +102,10 @@
                             var T01_12_drug2_current = json2.map(x => x.T01_12_drug2_current);
                             var added_on = json3.map(x => x.added_on);
 
-                            // 基于准备好的dom，初始化echarts实例
+                            // 初始化echarts
                             var myChart2 = echarts.init(document.getElementById('main-2'));
 
-                            // 指定图表的配置项和数据
+                            // 圖表設定
                             var option2 = {
                                 backgroundColor: '#ffffff',
                                 title: {
@@ -136,7 +136,7 @@
                                 ]
                             };
 
-                            // 使用刚指定的配置项和数据显示图表。
+                            // 顯示圖表
                             myChart2.setOption(option2);
                         },
                         error: function(errmsg) {
