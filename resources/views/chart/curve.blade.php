@@ -5,12 +5,16 @@
             <div id="main" style="width: 450px;height:350px;"></div>
                 <script type="text/javascript">
                     function update() {
+                        // 初始化echarts
+                        var myChart = echarts.init(document.getElementById('main'));
+                        myChart.showLoading();
                         $.ajax({
                             method: "POST",
                             url : '/chart',
                             data: {'_token': '{{csrf_token()}}'},
                             dataType: 'json',
                             success:function(data){
+                                myChart.hideLoading();
                                 var json1 = JSON.parse(data[0]);
                                 var json2 = JSON.parse(data[1]);
                                 var json3 = JSON.parse(data[2]);
@@ -24,8 +28,7 @@
                                 var T01_14_ph = json4.map(x => x.T01_14_ph);
 
                                 var added_on = json5.map(x => x.added_on);
-                                // 初始化echarts
-                                var myChart = echarts.init(document.getElementById('main'));
+
 
                                 // 圖表設定
                                 var option = {
