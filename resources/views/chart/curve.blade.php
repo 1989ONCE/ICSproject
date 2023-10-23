@@ -4,10 +4,10 @@
         <div class="flex flex-col grid h-fit w-fit">
             <div id="main" style="width: 450px;height:350px;"></div>
                 <script type="text/javascript">
+                    var myChart = echarts.init(document.getElementById('main'));
+                    myChart.showLoading();
                     function update() {
                         // 初始化echarts
-                        var myChart = echarts.init(document.getElementById('main'));
-                        myChart.showLoading();
                         $.ajax({
                             method: "POST",
                             url : '/chart',
@@ -79,7 +79,7 @@
                             },
                         })
                     }
-                    setInterval(update, 10000); //every 10 secs
+                    setInterval(update, 1000); //every 10 secs
                 </script>
                 <a href="{{route('export')}}" class="w-fit h-12 -translate-y-6 justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
                     <img width="30px" height="30px" src="{{ asset('img/svg/excel_download.svg') }}" class="grid items-center"></img>
@@ -148,7 +148,7 @@
                         },
                     })
                 }
-                setInterval(update2, 10000); //every 10 secs
+                setInterval(update2, 1000); //every 10 secs
             </script>
             <a href="{{route('export2')}}" class="w-fit h-12 -translate-y-[26px] justify-self-end flex flex-row bg-amber-200 hover:bg-amber-300 text-emerald-700 hover:underline underline-offset-4 font-bold py px-1 border rounded items-center">
                 <img width="30px" height="30px" src="{{ asset('img/svg/excel_download.svg') }}" class="grid items-center"></img>
