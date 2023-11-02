@@ -75,7 +75,8 @@ class pred extends Command
             $var_pred = new Prediction();
             $var_pred->added_on = date('Y-m-d H:i:s');
             $var_pred->fk_model_id = $var->model_id;
-            $var_pred->pred_ph = (double)$output;
+            $output = (double)$output;
+            $var_pred->pred_ph = round($output, 2);
             $var_pred->save();
             $this->info('The command was successful!');
             }
@@ -95,7 +96,8 @@ class pred extends Command
             $lstm_pred = new Prediction();
             $lstm_pred->added_on = date('Y-m-d H:i:s');
             $lstm_pred->fk_model_id = $lstm->model_id;
-            $lstm_pred->pred_ph = (double)$output;
+            $output = (double)$output;
+            $lstm_pred->pred_ph = round($output, 2);
             $lstm_pred->save();
             $this->info('The command was successful!');
         }
@@ -115,7 +117,8 @@ class pred extends Command
             $arima_pred = new Prediction();
             $arima_pred->added_on = date('Y-m-d H:i:s');
             $arima_pred->fk_model_id = $arima->model_id;
-            $arima_pred->pred_ph = (double)$output;
+            $output = (double)$output;
+            $arima_pred->pred_ph = round($output, 2);
             $arima_pred->save();
             $this->info('The command was successful!');
         }
