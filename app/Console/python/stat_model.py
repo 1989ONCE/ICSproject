@@ -32,7 +32,9 @@ for d in datas:
 input = np.array(data_arr)
 # array type
 prediction = np.reshape(model.get('model_fitted').forecast(input, steps=1), -1)
-print(prediction[3]/100)
+result = prediction[3]/100
+result = round(result, 2)
+print(result)
 file.close()
 
 
