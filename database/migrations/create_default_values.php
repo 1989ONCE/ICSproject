@@ -62,19 +62,19 @@ return new class extends Migration
 
         $pre1 = Prediction::create([
            'added_on' => '2023-09-18 20:30:48',
-           'pred_ph' => 8.5,
+           'pred_ph' => 7.81,
            'fk_model_id' => 1,
         ]);
 
         $pre2 = Prediction::create([
             'added_on' => '2023-09-18 20:30:48',
-            'pred_ph' => 8.3,
+            'pred_ph' => 7.62,
             'fk_model_id' => 2,
          ]);
 
          $pre3 = Prediction::create([
             'added_on' => '2023-09-18 20:30:48',
-            'pred_ph' => 8.0,
+            'pred_ph' => 7.73,
             'fk_model_id' => 3,
          ]);
 
